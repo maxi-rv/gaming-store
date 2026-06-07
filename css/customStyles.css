@@ -3,7 +3,12 @@
   background-color: #15141b;
 }
 
-.sideBarStyle {
-  color: #c4cdd5;
+.sideNavBarStyle {
+  color: white;
+  background-color: #1f1e24;
+}
+
+.cardStyle {
+  color: white;
   background-color: #191922;
 }

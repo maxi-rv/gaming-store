@@ -1,9 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tienda Web: Inicio de Sesion</title>
+    <link
+      rel="shortcut icon"
+      href="img/favicon-yellow-pc-96.png"
+      type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/customStyles.css" />
     <link
@@ -13,16 +17,16 @@
   <body class="bodyStyle">
     <!-- Barra de navegacion responsive, se convierte en un offcanvas navBar al
     reducirse el tamaño de la venta. -->
-    <nav class="navbar navbar-expand-sm" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-sm bg-black" data-bs-theme="dark">
       <div class="container-fluid flex-row flex-nowrap">
         <div
-          class="offcanvas offcanvas-start sideBarStyle"
+          class="offcanvas offcanvas-start bodyStyle"
           tabindex="-1"
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
+          <div class="offcanvas-header bg-black">
             <img
-              src="img/log-yellow-pc-100.png"
+              src="img/logo-yellow-pc-100.png"
               class="mx-1"
               height="50"
               alt="Logo" />
@@ -46,7 +50,7 @@
                   <i class="bi bi-search"></i>
                 </button>
                 <input
-                  class="form-control border-warning rounded-end-pill"
+                  class="form-control border-warning-subtle rounded-end-pill"
                   type="search"
                   placeholder="Buscar"
                   aria-label="Search" />
@@ -129,12 +133,12 @@
     </nav>
 
     <main class="my-2">
-      <div class="card text-bg-dark shadow mx-auto w-50" data-bs-theme="dark">
-        <div class="card-header">
+      <div class="card mx-auto w-50 border-0 shadow-lg" data-bs-theme="dark">
+        <div class="card-header cardStyle border-bottom border-warning">
           <i class="bi bi-door-open text-warning"></i>
           <span>Inicio de Sesion</span>
         </div>
-        <div class="card-body">
+        <div class="card-body cardStyle">
           <form class="formAltaUsuario">
             <div class="input-group my-2 w-75 mx-auto">
               <span
