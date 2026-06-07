@@ -57,6 +57,7 @@
 
             <div class="d-sm-flex gap-1 ms-sm-auto">
               <a
+                id="linkIniciarSesion"
                 class="btn rounded-pill btn-warning my-1"
                 href="#"
                 role="button">
@@ -64,7 +65,7 @@
                 <span>Iniciar Sesion</span>
               </a>
 
-              <div class="dropdown">
+              <div class="dropdown" data-bs-theme="dark">
                 <button
                   type="button"
                   id="buttonAdminActions"
@@ -75,7 +76,9 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-sm-end">
                   <li>
-                    <h6 class="dropdown-header">Acciones de Administrador</h6>
+                    <h5 class="dropdown-header text-warning">
+                      Acciones de Administrador
+                    </h5>
                   </li>
                   <li>
                     <a class="dropdown-item" href="#">Alta de Usuarios</a>
@@ -117,34 +120,36 @@
           <form class="formAltaUsuario">
             <div class="input-group my-2 w-75 mx-auto">
               <span
-                class="input-group-text rounded-start-pill text-bg-dark border-warning"
+                class="input-group-text rounded-start-pill text-warning border-warning-subtle"
                 id="basic-addon-username">
                 <i class="bi bi-person"></i>
               </span>
               <input
                 type="text"
                 id="inputUsername"
-                class="form-control rounded-end-pill text-bg-dark border-warning"
+                class="form-control rounded-end-pill text-white border-warning-subtle"
                 placeholder="Usuario"
                 aria-label="Usuario"
                 aria-describedby="basic-addon-username" />
             </div>
             <div class="input-group my-2 w-75 mx-auto">
               <span
-                class="input-group-text rounded-start-pill text-bg-dark border-warning"
+                class="input-group-text rounded-start-pill text-warning border-warning-subtle"
                 id="basic-addon-password">
                 <i class="bi bi-key"></i>
               </span>
               <input
                 type="password"
                 id="inputPassword"
-                class="form-control rounded-end-pill text-bg-dark border-warning"
+                class="form-control rounded-end-pill text-white border-warning-subtle"
                 placeholder="Contraseña"
                 aria-label="Contraseña"
                 aria-describedby="basic-addon-password" />
             </div>
             <div class="d-grid my-4 w-75 mx-auto">
-              <button class="btn btn-warning" type="submit">Ingresar</button>
+              <button class="btn btn-outline-warning" type="submit">
+                Ingresar
+              </button>
             </div>
           </form>
         </div>
