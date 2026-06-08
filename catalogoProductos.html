@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda Web: Catalogo Productos</title>
+    <link
+      rel="shortcut icon"
+      href="img/favicon-yellow-pc-96.png"
+      type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/customStyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  </head>
+  <body class="bodyStyle">
+    <!-- Barra de navegacion responsive, se convierte en un offcanvas navBar al
+    reducirse el tamaño de la venta. -->
+    <nav class="navbar navbar-expand-md bg-black" data-bs-theme="dark">
+      <div class="container-fluid px-2 px-md-3">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand d-md-none" href="#">
+          <img src="img/logo-yellow-pc-100.png" alt="logo" height="32" />
+        </a>
+
+        <div
+          class="offcanvas offcanvas-start bodyStyle"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel">
+          <div
+            class="offcanvas-header bg-black border-bottom border-warning-subtle">
+            <img
+              src="img/logo-yellow-pc-100.png"
+              class="mx-1"
+              height="40"
+              alt="Logo" />
+            <h4 class="offcanvas-title" id="offcanvasNavbarLabel">
+              Tienda Web
+            </h4>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+          </div>
+
+          <div class="offcanvas-body">
+            <div
+              class="d-flex flex-column flex-md-row align-items-center gap-2 w-100 original-stack-order">
+              <div
+                class="order-md-1 me-md-auto d-flex flex-column flex-md-row flex-nowrap gap-2 w-100 w-md-auto"
+                style="min-width: 180px">
+                <a class="navbar-brand d-none d-md-inline" href="#">
+                  <img
+                    src="img/logo-yellow-pc-100.png"
+                    alt="logo"
+                    height="32" />
+                  <span>Tienda Web</span>
+                </a>
+              </div>
+
+              <div
+                class="order-md-2 w-100 w-md-autoorder-md-1 d-flex flex-column-reverse flex-md-row-reverse flex-nowrap gap-2 w-md-auto">
+                <a
+                  id="linkIniciarSesion"
+                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
+                  href="inicioSesion.html"
+                  role="button">
+                  <i class="bi bi-door-open-fill"></i>
+                  <span>Iniciar Sesión</span>
+                </a>
+                <a
+                  id="linkCarrito"
+                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
+                  href="#"
+                  role="button">
+                  <i class="bi bi-cart-fill"></i>
+                  <span>Carrito</span>
+                </a>
+                <a
+                  id="linkCatalogo"
+                  class="btn rounded-pill btn-warning text-nowrap my-1"
+                  href="#"
+                  role="button">
+                  <i class="bi bi-bag-fill"></i>
+                  <span>Catálogo</span>
+                </a>
+              </div>
+
+              <div class="dropdown order-md-3" data-bs-theme="dark">
+                <button
+                  type="button"
+                  id="buttonAdminActions"
+                  class="btn rounded-pill btn-outline-warning dropdown-toggle text-nowrap my-1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="bi bi-gear-fill"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-sm-end">
+                  <li>
+                    <h5 class="dropdown-header text-warning">
+                      Acciones de Administrador
+                    </h5>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Alta de Usuarios</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Usuarios Registrados</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Catálogo de Productos</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Etiquetas/Categorías</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section id="sectionFilters"></section>
+
+    <main class="my-5">
+      <div class="container text-center" data-bs-theme="dark">
+        <div class="row justify-content-center my-2">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center my-2">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center my-2">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-8">
+            <div class="card text-bg-dark m-1 shadow border-0">
+              <img
+                src="img/logo-yellow-pc-100.png"
+                class="card-img-top p-2 h"
+                alt="Imagen de prueba" />
+              <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">
+                  Una breve descripcion de prueba para la carta del producto en
+                  el catalogo.
+                </p>
+
+                <div class="input-group">
+                  <button
+                    id="buttonProductCardTest01"
+                    class="btn btn-outline-warning rounded-start-pill"
+                    type="button">
+                    <i class="bi bi-cart-plus"></i>
+                  </button>
+                  <input
+                    id="inputNumberProductCardTest01"
+                    class="form-control border-warning-subtle rounded-end-pill"
+                    type="number"
+                    placeholder=""
+                    aria-label="Cantidad de Productos" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-2"></footer>
+
+    <script src="js/bootstrap.bundle.js"></script>
+  </body>
+</html>
