@@ -134,12 +134,14 @@
 
     <section
       id="sectionFilters"
-      class="d-flex justify-content-center align-items-center mx-1 my-2"
+      class="d-flex justify-content-center my-2"
       data-bs-theme="dark">
       <div class="card bg-black border-1 shadow border-warning rounded-pill">
         <div class="card-body">
-          <form class="needs-validation" novalidate>
-            <div class="d-inline-block">
+          <form
+            class="needs-validation d-flex flex-wrap justify-content-center align-items-center gap-2"
+            novalidate>
+            <div>
               <select
                 class="form-select bg-black text-warning rounded-pill border-warning-subtle"
                 id="validationCustom04"
@@ -152,7 +154,7 @@
               </select>
             </div>
 
-            <div class="d-inline-block">
+            <div>
               <div class="btn-group dropdown-center">
                 <button
                   class="btn btn-outline-warning border-warning-subtle rounded-pill dropdown-toggle"
@@ -173,9 +175,9 @@
                       autocomplete="off" />
                     <label
                       class="btn btn-outline-warning rounded-pill"
-                      for="etiqueta01">
-                      Etiqueta 01
-                    </label>
+                      for="etiqueta01"
+                      >Etiqueta 01</label
+                    >
                   </li>
                   <li class="mb-2">
                     <input
@@ -185,9 +187,9 @@
                       autocomplete="off" />
                     <label
                       class="btn btn-outline-warning rounded-pill"
-                      for="etiqueta02">
-                      Etiqueta 02
-                    </label>
+                      for="etiqueta02"
+                      >Etiqueta 02</label
+                    >
                   </li>
                   <li class="mb-2">
                     <input
@@ -197,28 +199,26 @@
                       autocomplete="off" />
                     <label
                       class="btn btn-outline-warning rounded-pill"
-                      for="etiqueta03">
-                      Etiqueta 03
-                    </label>
+                      for="etiqueta03"
+                      >Etiqueta 03</label
+                    >
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div class="d-inline-block">
+            <div>
               <input
                 type="checkbox"
                 class="btn-check"
                 id="conStock"
                 autocomplete="off" />
-              <label
-                class="btn btn-outline-warning rounded-pill"
-                for="conStock">
-                Con Stock
-              </label>
+              <label class="btn btn-outline-warning rounded-pill" for="conStock"
+                >Con Stock</label
+              >
             </div>
 
-            <div class="d-inline-block">
+            <div>
               <button
                 class="btn btn-warning rounded-pill text-nowrap"
                 type="button">
