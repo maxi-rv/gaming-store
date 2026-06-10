@@ -19,92 +19,93 @@
   <body class="bodyStyle">
     <!-- Barra de navegacion responsive, se convierte en un offcanvas navBar al
     reducirse el tamaño de la venta. -->
-    <nav class="navbar navbar-expand-sm bg-black" data-bs-theme="dark">
-      <div class="container-fluid flex-row flex-nowrap">
+    <nav class="navbar navbar-expand-md bg-black" data-bs-theme="dark">
+      <div class="container-fluid px-2 px-md-3">
+        <button
+          class="navbar-toggler border-warning-subtle text-warning"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation">
+          <i class="bi bi-list"></i>
+        </button>
+        <a class="navbar-brand d-md-none" href="#">
+          <img src="../img/logo-yellow-pc-100.png" alt="logo" height="32" />
+        </a>
+
         <div
           class="offcanvas offcanvas-start bodyStyle"
           tabindex="-1"
           id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-        >
-          <div class="offcanvas-header bg-black">
+          aria-labelledby="offcanvasNavbarLabel">
+          <div
+            class="offcanvas-header bg-black border-bottom border-warning-subtle">
             <img
               src="../img/logo-yellow-pc-100.png"
               class="mx-1"
-              height="50"
-              alt="Logo"
-            />
+              height="40"
+              alt="Logo" />
             <h4 class="offcanvas-title" id="offcanvasNavbarLabel">
               Tienda Web
             </h4>
             <button
               type="button"
-              class="btn-close"
+              class="btn-close btn-close-white"
               data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
+              aria-label="Close"></button>
           </div>
 
           <div class="offcanvas-body">
-            <form class="my-1" role="search" style="width: 280px">
-              <div class="input-group">
-                <button
-                  class="btn btn-outline-warning rounded-start-pill"
-                  type="button"
-                  id="searchButton"
-                >
-                  <i class="bi bi-search"></i>
-                </button>
-                <input
-                  class="form-control border-warning-subtle rounded-end-pill"
-                  type="search"
-                  placeholder="Buscar"
-                  aria-label="Search"
-                />
+            <div
+              class="d-flex flex-column flex-md-row align-items-center gap-2 w-100 original-stack-order">
+              <div
+                class="order-md-1 me-md-auto d-flex flex-column flex-md-row flex-nowrap gap-2 w-100 w-md-auto"
+                style="min-width: 180px">
+                <a class="navbar-brand d-none d-md-inline" href="#">
+                  <img
+                    src="../img/logo-yellow-pc-100.png"
+                    alt="logo"
+                    height="32" />
+                  <span>Tienda Web</span>
+                </a>
               </div>
-            </form>
 
-            <div class="row my-sm-0 my-3"></div>
+              <div
+                class="order-md-2 w-100 w-md-autoorder-md-1 d-flex flex-column-reverse flex-md-row-reverse flex-nowrap gap-2 w-md-auto">
+                <a
+                  id="linkIniciarSesion"
+                  class="btn rounded-pill btn-warning text-nowrap my-1"
+                  href="#"
+                  role="button">
+                  <i class="bi bi-door-open-fill"></i>
+                  <span>Iniciar Sesión</span>
+                </a>
+                <a
+                  id="linkCarrito"
+                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
+                  href="#"
+                  role="button">
+                  <i class="bi bi-cart-fill"></i>
+                  <span>Carrito</span>
+                </a>
+                <a
+                  id="linkCatalogo"
+                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
+                  href="../Html/catalogoProductos.html"
+                  role="button">
+                  <i class="bi bi-bag-fill"></i>
+                  <span>Catálogo</span>
+                </a>
+              </div>
 
-            <div class="d-sm-flex gap-1 ms-sm-auto">
-              <a
-                id="linkCatalogo"
-                class="btn rounded-pill btn-outline-warning my-1"
-                href="#"
-                role="button"
-              >
-                <i class="bi bi-bag-fill"></i>
-                <span>Catalogo</span>
-              </a>
-
-              <a
-                id="linkCarrito"
-                class="btn rounded-pill btn-outline-warning my-1"
-                href="#"
-                role="button"
-              >
-                <i class="bi bi-cart-fill"></i>
-                <span>Carrito</span>
-              </a>
-
-              <a
-                id="linkIniciarSesion"
-                class="btn rounded-pill btn-outline-warning my-1"
-                href="#"
-                role="button"
-              >
-                <i class="bi bi-door-open-fill"></i>
-                <span>Iniciar Sesion</span>
-              </a>
-
-              <div class="dropdown" data-bs-theme="dark">
+              <div class="dropdown order-md-3" data-bs-theme="dark">
                 <button
                   type="button"
                   id="buttonAdminActions"
-                  class="btn rounded-pill btn-outline-warning dropdown-toggle ms-sm-auto my-1"
+                  class="btn rounded-pill btn-outline-warning dropdown-toggle text-nowrap my-1"
                   data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                  aria-expanded="false">
                   <i class="bi bi-gear-fill"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-sm-end">
@@ -114,33 +115,22 @@
                     </h5>
                   </li>
                   <li>
-                    <a class="dropdown-item text-warning" href="#">Alta de Usuarios</a>
+                    <a class="dropdown-item" href="#">Alta de Usuarios</a>
                   </li>
                   <li>
                     <a class="dropdown-item" href="#">Usuarios Registrados</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">Catalogo de Productos</a>
+                    <a class="dropdown-item" href="#">Catálogo de Productos</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">Etiquetas/Categorias</a>
+                    <a class="dropdown-item" href="#">Etiquetas/Categorías</a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
       </div>
     </nav>
 
