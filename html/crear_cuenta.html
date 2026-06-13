@@ -149,7 +149,7 @@
           <span>Crear cuenta</span>
         </div>
         <div class="card-body cardStyle">
-          <form class="formAltaUsuario needs-validation" id="formulario_registro">
+          <form class="formAltaUsuario">
             <div class="input-group my-2 w-75 pb-2 mx-auto">
               <span
                 class="input-group-text rounded-start-pill text-warning border-warning-subtle"
@@ -164,7 +164,6 @@
                 placeholder="Nombre de usuario"
                 aria-label="Nombre de usuario"
                 aria-describedby="basic-addon-username" />
-                <div class="invalid-feedback" id="error_username"></div>
             </div>
 
             <div class="input-group my-2 w-75 pb-2 mx-auto">
@@ -181,7 +180,6 @@
                 placeholder="Email"
                 aria-label="Email"
                 aria-describedby="basic-addon-email" />
-                <div class="invalid-feedback" id="error_email"></div>
             </div>
 
             <div class="input-group my-2 w-75 pb-2 mx-auto">
@@ -198,7 +196,6 @@
                 placeholder="Telefono"
                 aria-label="Telefono"
                 aria-describedby="basic-addon-telephone" />
-                <div class="invalid-feedback" id="error_telefono"></div>
             </div>
 
             <div class="input-group my-2 w-75 pb-2 mx-auto">
@@ -214,17 +211,31 @@
                 placeholder="Contraseña"
                 aria-label="Contraseña"
                 aria-describedby="basic-addon-password" />
-                <div class="invalid-feedback" id="error_password"></div>
+            </div>
+
+            <div class="input-group my-2 w-75 pb-2 mx-auto">
+              <span
+                class="input-group-text rounded-start-pill text-warning border-warning-subtle"
+                id="basic-addon-confirm-password">
+                <i class="bi bi-check-circle"></i>
+              </span>
+              <input
+                type="password"
+                id="input_confirm_password"
+                class="form-control rounded-end-pill text-white border-warning-subtle"
+                placeholder="Confirmar contraseña"
+                aria-label="Confirmar Contraseña"
+                aria-describedby="basic-addon-confirm-password" />
             </div>
 
             <div class="mb-3 form-check my-2 w-75 pb-2 mx-auto">
               <input
                 type="checkbox"
                 class="form-check-input"
-                id="terminos_y_condiciones"/>
-              <label class="form-check-label" for="terminos_y_condiciones"
-                >Acepto los terminos y condiciones</label>
-              <div class="invalid-feedback" id="error_terminos"></div>
+                id="exampleCheck1" />
+              <label class="form-check-label" for="exampleCheck1"
+                >Acepto los terminos y condiciones</label
+              >
             </div>
 
             <div class="d-grid my-4 w-75 mx-auto">
@@ -240,7 +251,5 @@
     <footer class="my-2"></footer>
 
     <script src="../js/bootstrap.bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.15.15/validator.min.js"></script>
-    <script src="../js/validacion_crear_cuenta.js"></script>
   </body>
 </html>
