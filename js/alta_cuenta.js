@@ -92,7 +92,8 @@ function crear_objeto(){
         username: username.value,
         email: email.value,
         tel: telefono.value,
-        contraseña: password.value
+        contraseña: password.value,
+        sesion: false
     }
     cuentas.push(usuario);
   localStorage.setItem("cuentas", JSON.stringify(cuentas));
