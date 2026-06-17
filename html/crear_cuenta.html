@@ -149,7 +149,10 @@
           <span>Crear cuenta</span>
         </div>
         <div class="card-body cardStyle">
-          <form class="formAltaUsuario needs-validation" id="formulario_registro" novalidate>
+          <form
+            class="formAltaUsuario needs-validation"
+            id="formulario_registro"
+            novalidate>
             <div class="input-group my-2 w-75 pb-2 mx-auto">
               <span
                 class="input-group-text rounded-start-pill text-warning border-warning-subtle"
@@ -164,7 +167,7 @@
                 placeholder="Nombre de usuario"
                 aria-label="Nombre de usuario"
                 aria-describedby="basic-addon-username" />
-                <div class="invalid-feedback" id="error_username"></div>
+              <div class="invalid-feedback" id="error_username"></div>
             </div>
 
             <div class="input-group my-2 w-75 pb-2 mx-auto">
@@ -181,7 +184,7 @@
                 placeholder="Email"
                 aria-label="Email"
                 aria-describedby="basic-addon-email" />
-                <div class="invalid-feedback" id="error_email"></div>
+              <div class="invalid-feedback" id="error_email"></div>
             </div>
 
             <div class="input-group my-2 w-75 pb-2 mx-auto">
@@ -198,7 +201,7 @@
                 placeholder="Telefono"
                 aria-label="Telefono"
                 aria-describedby="basic-addon-telephone" />
-                <div class="invalid-feedback" id="error_telefono"></div>
+              <div class="invalid-feedback" id="error_telefono"></div>
             </div>
 
             <div class="input-group my-2 w-75 pb-2 mx-auto">
@@ -214,21 +217,25 @@
                 placeholder="Contraseña"
                 aria-label="Contraseña"
                 aria-describedby="basic-addon-password" />
-                <div class="invalid-feedback" id="error_password"></div>
+              <div class="invalid-feedback" id="error_password"></div>
             </div>
 
             <div class="mb-3 form-check my-2 w-75 pb-2 mx-auto">
               <input
                 type="checkbox"
                 class="form-check-input"
-                id="terminos_y_condiciones"/>
+                id="terminos_y_condiciones" />
               <label class="form-check-label" for="terminos_y_condiciones"
-                >Acepto los terminos y condiciones</label>
+                >Acepto los terminos y condiciones</label
+              >
               <div class="invalid-feedback" id="error_terminos"></div>
             </div>
 
             <div class="d-grid my-4 w-75 mx-auto">
-              <button class="btn btn-outline-warning rounded-5" type="submit" id="crear_cuenta">
+              <button
+                class="btn btn-outline-warning rounded-5"
+                type="submit"
+                id="crear_cuenta">
                 Registrar usuario
               </button>
             </div>
