@@ -200,6 +200,8 @@
                   placeholder="Nombre"
                   aria-label="Nombre" 
                   required/>
+                  <div class="valid-feedback">OK</div>
+                  <div class="invalid-feedback" id="invalidNameCrearCategoria"></div>
               </div>
               <div class="input-group my-2 w-75 pb-2 mx-auto">
                 <span
@@ -213,6 +215,8 @@
                   placeholder="Descripción"
                   aria-label="Descripción"
                   required></textarea>
+                  <div class="valid-feedback">OK</div>
+                  <div class="invalid-feedback" id="invalidDescripcionCrearCategoria"></div>
               </div>
 
               <div class="d-grid my-4 w-75 mx-auto">
@@ -235,7 +239,7 @@
             <span>Crear nueva Etiqueta</span>
           </div>
           <div class="card-body cardStyle">
-            <form id="formCrearEtiqueta" novalidate>
+            <form id="formCrearEtiqueta" class="needs-validation" novalidate>
               <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                 <span
                   class="input-group-text rounded-start-pill text-warning border-warning-subtle"
@@ -250,6 +254,8 @@
                   aria-label="Nombre"
                   aria-describedby="basic-addon-name"
                   required />
+                  <div class="valid-feedback">OK</div>
+                  <div class="invalid-feedback" id="invalidNameCrearEtiqueta"></div>
               </div>
               <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                 <span
@@ -264,6 +270,8 @@
                   aria-label="Descripción"
                   aria-describedby="basic-addon-descrip"
                   required></textarea>
+                  <div class="valid-feedback">OK</div>
+                  <div class="invalid-feedback" id="invalidDescripcionCrearEtiqueta"></div>
               </div>
 
               <div class="d-grid my-4 w-75 mx-auto">
@@ -300,7 +308,7 @@
             </div>
 
             <div class="modal-body">
-              <form class="formEdicionCategoria" novalidate>
+              <form class="formEdicionCategoria" class="needs-validation" novalidate>
                 <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                   <span
                     class="input-group-text rounded-start-pill text-warning border-warning-subtle"
@@ -315,6 +323,8 @@
                     aria-label="Nombre"
                     aria-describedby="basic-addon-name" 
                     required/>
+                    <div class="valid-feedback">OK</div>
+                    <div class="invalid-feedback" id="invalidNameEdicionCategoria"></div>
                 </div>
                 <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                   <span
@@ -329,6 +339,8 @@
                     aria-label="Descripción"
                     aria-describedby="basic-addon-descrip"
                     required></textarea>
+                    <div class="valid-feedback">OK</div>
+                    <div class="invalid-feedback" id="invalidDescripcionEdicionCategoria"></div>
                 </div>
 
                 <div class="d-grid my-4 w-75 mx-auto">
@@ -365,7 +377,7 @@
             </div>
 
             <div class="modal-body">
-              <form class="formEdicionEtiqueta" novalidate>
+              <form class="formEdicionEtiqueta" class="needs-validation" novalidate>
                 <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                   <span
                     class="input-group-text rounded-start-pill text-warning border-warning-subtle"
@@ -380,6 +392,8 @@
                     aria-label="Nombre"
                     aria-describedby="basic-addon-name" 
                     required/>
+                    <div class="valid-feedback">OK</div>
+                    <div class="invalid-feedback" id="invalidNameEdicionEtiqueta"></div>
                 </div>
                 <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                   <span
@@ -394,6 +408,8 @@
                     aria-label="Descripción"
                     aria-describedby="basic-addon-descrip"
                     required></textarea>
+                    <div class="valid-feedback">OK</div>
+                    <div class="invalid-feedback" id="invalidDescripcionEdicionEtiqueta"></div>
                 </div>
 
                 <div class="d-grid my-4 w-75 mx-auto">
