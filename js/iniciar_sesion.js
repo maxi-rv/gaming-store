@@ -9,7 +9,7 @@ let data = localStorage.getItem("cuentas")
 let cuentas = JSON.parse(data)
 
 function inicializar(){
-    const form = document.getElementById("formulario_registro")
+    const form = document.getElementById("formulario_inicio_sesion")
 
     form.addEventListener("submit", function(event) {
         event.preventDefault()
@@ -17,7 +17,7 @@ function inicializar(){
         limpiar_estados()
 
         if (validacion()) {
-            alert("Inicio sesion correctamente")
+            window.location.href = "../html/catalogoProductos.html";
             form.reset()
             limpiar_estados()
         }
@@ -59,6 +59,7 @@ for (let i = 0; i < cuentas.length; i++) {
 
 if (!usuarioEncontrado) {
     mostrar_error(username,"error_inicio_username","El nombre de usuario es incorrecto");
+    mostrar_error(password,"error_inicio_password","La contraseña es incorrecta");
     return false
 }
 
