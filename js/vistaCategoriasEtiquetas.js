@@ -203,6 +203,7 @@ function inicializarCrearCategoria() {
       );
       formCrearCategoria.reset();
       limpiarValidacion();
+      cargarTablaCategorias();
     }
   });
 }
@@ -227,6 +228,7 @@ function inicializarCrearEtiqueta() {
       );
       formCrearEtiqueta.reset();
       limpiarValidacion();
+      cargarTablaEtiquetas();
     }
   });
 }
@@ -247,6 +249,7 @@ function inicializarEdicionCategoria() {
     ) {
       formEdicionCategoria.reset();
       limpiarValidacion();
+      cargarTablaCategorias();
     }
   });
 }
@@ -267,6 +270,7 @@ function inicializarEdicionEtiqueta() {
     ) {
       formEdicionEtiqueta.reset();
       limpiarValidacion();
+      cargarTablaEtiquetas();
     }
   });
 }
