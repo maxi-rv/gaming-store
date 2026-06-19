@@ -16,14 +16,16 @@ const etiquetasTemplate = [
 ];
 
 export function agregarEtiqueta(nombre, descripcion) {
-  let etiquetas = JSON.parse(localStorage.getItem(claveEtiquetas)) || [];
+  let etiquetas =
+    JSON.parse(localStorage.getItem(claveEtiquetas)) || etiquetasTemplate;
   let etiqueta = crearEtiqueta(nombre, descripcion);
   etiquetas.push(etiqueta);
   localStorage.setItem(claveEtiquetas, JSON.stringify(etiquetas));
 }
 
 export function listadoEtiquetas() {
-  let etiquetas = JSON.parse(localStorage.getItem(claveEtiquetas)) || [];
+  let etiquetas =
+    JSON.parse(localStorage.getItem(claveEtiquetas)) || etiquetasTemplate;
   return etiquetas;
 }
 

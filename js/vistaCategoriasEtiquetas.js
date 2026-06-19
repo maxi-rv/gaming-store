@@ -71,6 +71,10 @@ const invalidDescripcionEdicionEtiqueta = document.getElementById(
   "invalidDescripcionEdicionEtiqueta",
 );
 
+/*
+  Setea los forms para responder a intentos de submit.
+  Carga las tablas por unica vez.
+*/
 window.addEventListener("load", function () {
   inicializarCrearCategoria();
   inicializarCrearEtiqueta();
@@ -81,6 +85,9 @@ window.addEventListener("load", function () {
   cargarTablaEtiquetas();
 });
 
+/*
+  Elimina y vuelve a generar la tabla completa.
+*/
 function cargarTablaCategorias() {
   let categorias = listadoCategorias();
   tbodyCategorias.innerHTML = "";
@@ -108,8 +115,34 @@ function cargarTablaCategorias() {
   }
 }
 
+/*
+  Elimina y vuelve a generar la tabla completa.
+*/
 function cargarTablaEtiquetas() {
   let etiquetas = listadoEtiquetas();
+  tbodyEtiquetas.innerHTML = "";
+
+  for (let i = 0; i < etiquetas.length; i++) {
+    const etiqueta = etiquetas[i];
+
+    const tr = document.createElement("tr");
+
+    const tdNombre = document.createElement("td");
+    tdNombre.textContent = etiqueta.nombre;
+
+    const tdDescripcion = document.createElement("td");
+    tdDescripcion.textContent = etiqueta.descripcion;
+
+    const tdAcciones = document.createElement("td");
+    tdAcciones.appendChild(crearBotonEdicion(etiqueta.id));
+    tdAcciones.appendChild(crearBotonEliminar(etiqueta.id));
+
+    tr.appendChild(tdNombre);
+    tr.appendChild(tdDescripcion);
+    tr.appendChild(tdAcciones);
+
+    tbodyEtiquetas.appendChild(tr);
+  }
 }
 
 function crearBotonEdicion(id) {
