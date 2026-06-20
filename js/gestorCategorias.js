@@ -1,13 +1,13 @@
 const claveCategorias = "categorias";
 const categoriasTemplate = [
-  { id: Date.now(), nombre: "Procesadores", descripcion: "..." },
-  { id: Date.now(), nombre: "Motherboards", descripcion: "..." },
-  { id: Date.now(), nombre: "Memorias RAM", descripcion: "..." },
-  { id: Date.now(), nombre: "Placas de Video", descripcion: "..." },
-  { id: Date.now(), nombre: "Discos SSD/HDD", descripcion: "..." },
-  { id: Date.now(), nombre: "Monitores", descripcion: "..." },
-  { id: Date.now(), nombre: "Notebooks", descripcion: "..." },
-  { id: Date.now(), nombre: "Perifericos", descripcion: "..." },
+  { id: crypto.randomUUID(), nombre: "Procesadores", descripcion: "..." },
+  { id: crypto.randomUUID(), nombre: "Motherboards", descripcion: "..." },
+  { id: crypto.randomUUID(), nombre: "Memorias RAM", descripcion: "..." },
+  { id: crypto.randomUUID(), nombre: "Placas de Video", descripcion: "..." },
+  { id: crypto.randomUUID(), nombre: "Discos SSD/HDD", descripcion: "..." },
+  { id: crypto.randomUUID(), nombre: "Monitores", descripcion: "..." },
+  { id: crypto.randomUUID(), nombre: "Notebooks", descripcion: "..." },
+  { id: crypto.randomUUID(), nombre: "Perifericos", descripcion: "..." },
 ];
 
 export function agregarCategoria(nombre, descripcion) {
@@ -18,10 +18,38 @@ export function agregarCategoria(nombre, descripcion) {
   localStorage.setItem(claveCategorias, JSON.stringify(categorias));
 }
 
+export function editarCategoria(id, nombre, descripcion) {
+  let categorias =
+    JSON.parse(localStorage.getItem(claveCategorias)) || categoriasTemplate;
+  let categoria = encontrarEtiquetaPorID(id);
+
+  categoria.nombre = nombre;
+  categoria.descripcion = descripcion;
+
+  categorias.push(categoria);
+  localStorage.setItem(claveCategorias, JSON.stringify(categorias));
+}
+
+export function eliminarCategoria(id) {
+  let categorias =
+    JSON.parse(localStorage.getItem(claveCategorias)) || categoriasTemplate;
+  let categoria = encontrarCategoriaPorID(id);
+
+  categorias = categorias.filter((e) => e.id !== id);
+
+  localStorage.setItem(claveCategorias, JSON.stringify(categorias));
+}
+
 export function listadoCategorias() {
   let categorias =
     JSON.parse(localStorage.getItem(claveCategorias)) || categoriasTemplate;
   return categorias;
+}
+
+function encontrarCategoriaPorID(id) {
+  const categorias =
+    JSON.parse(localStorage.getItem(claveCategorias)) || categoriasTemplate;
+  return categorias.findIndex((categoria) => categoria.id === id);
 }
 
 function crearCategoria(nombre, descripcion) {
