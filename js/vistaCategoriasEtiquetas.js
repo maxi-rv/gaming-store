@@ -1,15 +1,5 @@
-import {
-  agregarCategoria,
-  listadoCategorias,
-  editarCategoria,
-  eliminarCategoria,
-} from "../js/gestorCategorias.js";
-import {
-  agregarEtiqueta,
-  listadoEtiquetas,
-  editarEtiqueta,
-  eliminarEtiqueta,
-} from "../js/gestorEtiquetas.js";
+import { agregarCategoria, listadoCategorias } from "../js/gestorCategorias.js";
+import { agregarEtiqueta, listadoEtiquetas } from "../js/gestorEtiquetas.js";
 
 // Tablas tBody
 const tbodyCategorias = document.getElementById("tbodyCategorias");
@@ -114,16 +104,8 @@ function cargarTablaCategorias() {
     tdDescripcion.textContent = categoria.descripcion;
 
     const tdAcciones = document.createElement("td");
-    let botonEdicion = crearBotonEdicion();
-    let botonEliminar = crearBotonEliminar();
-
-    tdAcciones.appendChild(botonEdicion);
-    tdAcciones.appendChild(botonEliminar);
-
-    botonEliminar.addEventListener("click", function (event) {
-      eliminarCategoria(categoria.id);
-      cargarTablaCategorias();
-    });
+    tdAcciones.appendChild(crearBotonEdicion(categoria.id));
+    tdAcciones.appendChild(crearBotonEliminar(categoria.id));
 
     tr.appendChild(tdNombre);
     tr.appendChild(tdDescripcion);
@@ -152,16 +134,8 @@ function cargarTablaEtiquetas() {
     tdDescripcion.textContent = etiqueta.descripcion;
 
     const tdAcciones = document.createElement("td");
-    let botonEdicion = crearBotonEdicion();
-    let botonEliminar = crearBotonEliminar();
-
-    tdAcciones.appendChild(botonEdicion);
-    tdAcciones.appendChild(botonEliminar);
-
-    botonEliminar.addEventListener("click", function (event) {
-      eliminarEtiqueta(etiqueta.id);
-      cargarTablaEtiquetas();
-    });
+    tdAcciones.appendChild(crearBotonEdicion(etiqueta.id));
+    tdAcciones.appendChild(crearBotonEliminar(etiqueta.id));
 
     tr.appendChild(tdNombre);
     tr.appendChild(tdDescripcion);
@@ -171,11 +145,12 @@ function cargarTablaEtiquetas() {
   }
 }
 
-function crearBotonEdicion() {
+function crearBotonEdicion(id) {
   const boton = document.createElement("button");
 
+  boton.id = id;
   boton.type = "button";
-  boton.className = "btn btn-outline-warning m-1 text-nowrap";
+  boton.className = "btn btn-outline-warning";
   boton.setAttribute("data-bs-toggle", "modal");
   boton.setAttribute("data-bs-target", "#modalEdicionCategoria");
 
@@ -191,11 +166,14 @@ function crearBotonEdicion() {
   return boton;
 }
 
-function crearBotonEliminar() {
+function crearBotonEliminar(id) {
   const boton = document.createElement("button");
 
+  boton.id = id;
   boton.type = "button";
-  boton.className = "btn btn-outline-danger m-1";
+  boton.className = "btn btn-outline-danger";
+  boton.setAttribute("data-bs-toggle", "modal");
+  boton.setAttribute("data-bs-target", "#modalEdicionCategoria");
 
   let i = document.createElement("i");
   i.className = "bi bi-trash";
@@ -269,7 +247,6 @@ function inicializarEdicionCategoria() {
         invalidDescripcionEdicionCategoria,
       )
     ) {
-      // TO-DO: Editar categoria por id.
       formEdicionCategoria.reset();
       limpiarValidacion();
       cargarTablaCategorias();
@@ -291,7 +268,6 @@ function inicializarEdicionEtiqueta() {
         invalidDescripcionEdicionEtiqueta,
       )
     ) {
-      // TO-DO: Editar etiqueta por id.
       formEdicionEtiqueta.reset();
       limpiarValidacion();
       cargarTablaEtiquetas();
