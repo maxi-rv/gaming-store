@@ -188,6 +188,7 @@
                   placeholder="Nombre del producto"
                   aria-label="Nombre del producto"
                   aria-describedby="basic-addon-name-product" />
+                  <div class="invalid-feedback" id="error_nombre_producto"></div>
               </div>
 
               <div class="input-group my-2 w-75 mx-auto">
@@ -203,6 +204,7 @@
                   placeholder="Precio"
                   aria-label="Precio"
                   aria-describedby="basic-addon-precio" />
+                  <div class="invalid-feedback" id="error_precio_producto"></div>
               </div>
 
               <div class="input-group my-2 w-75 mx-auto">
@@ -218,6 +220,7 @@
                   placeholder="Cantidad de stock"
                   aria-label="stock"
                   aria-describedby="basic-addon-stock" />
+                  <div class="invalid-feedback" id="error_stock_producto"></div>
               </div>
 
               <div class="input-group my-2 w-75 pb-2 mx-auto">
@@ -226,15 +229,16 @@
                   <i class="bi bi-images"></i>
                 </span>
                 <select
-                  name="tipo"
-                  id="tipo"
+                  name="input_imagen"
+                  id="select_imagen"
                   class="form-select rounded-end-pill text-white border-warning-subtle">
-                  <option value="Seleccionar" disabled selected hidden>
+                  <option value="Seleccionar_img" disabled selected hidden>
                     Seleccionar Imagen
                   </option>
                   <option value="img1">imagen 1</option>
                   <option value="img2">imagen 2</option>
                 </select>
+                <div class="invalid-feedback" id="error_img_producto"></div>
               </div>
 
               <div class="input-group my-2 w-75 pb-2 mx-auto">
@@ -243,15 +247,16 @@
                   <i class="bi bi-tag"></i>
                 </span>
                 <select
-                  name="tipo"
-                  id="tipo"
+                  name="input_categoria"
+                  id="select_categorias"
                   class="form-select rounded-end-pill text-white border-warning-subtle">
-                  <option value="Seleccionar" disabled selected hidden>
+                  <option value="Seleccionar_categoria" disabled selected hidden>
                     Seleccionar Categoria
                   </option>
-                  <option value="img1">Categoria 1</option>
-                  <option value="img2">Categoria 2</option>
+                  <option value="cat1">Categoria 1</option>
+                  <option value="cat2">Categoria 2</option>
                 </select>
+                <div class="invalid-feedback" id="error_categoria_producto"></div>
               </div>
 
               <div
@@ -325,6 +330,7 @@
                   placeholder="Descripcion"
                   aria-label="Descripcion"
                   aria-describedby="basic-addon-description"></textarea>
+                  <div class="invalid-feedback" id="error_descripcion_producto"></div>
               </div>
 
               <div class="d-grid my-4 w-75 mx-auto">
@@ -538,7 +544,7 @@
                   </span>
                   <select
                     name="tipo"
-                    id="tipo"
+                    id="select_imagen"
                     class="form-select rounded-end-pill text-white border-warning-subtle">
                     <option value="Seleccionar" disabled selected hidden>
                       Seleccionar Imagen
@@ -555,7 +561,7 @@
                   </span>
                   <select
                     name="tipo"
-                    id="tipo"
+                    id="select_categoria"
                     class="form-select rounded-end-pill text-white border-warning-subtle">
                     <option value="Seleccionar" disabled selected hidden>
                       Seleccionar Categoria
@@ -588,7 +594,7 @@
                           type="checkbox"
                           class="btn-check"
                           id="inputCheckboxSeleccionarEtiqueta01"
-                          autocomplete="off" />
+                          autocomplete="off"/>
                         <label
                           class="btn btn-outline-warning rounded-pill"
                           for="inputCheckboxSeleccionarEtiqueta01"
@@ -712,7 +718,7 @@
                 <tr>
                   <th scope="col">Nombre</th>
                   <th scope="col">Precio</th>
-                  <th scope="col">Stick</th>
+                  <th scope="col">Stock</th>
                   <th scope="col">Imagen</th>
                   <th scope="col">Etiquetas</th>
                   <th scope="col">Acciones</th>
@@ -768,5 +774,7 @@
     <footer class="my-2"></footer>
 
     <script src="../js/bootstrap.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.15.15/validator.min.js"></script>
+    <script src="../js/crear_producto.js"></script>
   </body>
 </html>
