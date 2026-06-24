@@ -32,7 +32,6 @@ function limpiar_estados() {
     const inputs = document.querySelectorAll(".form-control, .form-check-input")
     for (const input of inputs) {
         input.classList.remove("is-invalid")
-        input.classList.remove("is-valid")
     }
 }
 
@@ -86,17 +85,17 @@ function mostrar_exito(input) {
     input.classList.add("is-valid")
 }
 
-function crear_objeto(){
-    let usuario = {
-        id: Date.now(),
-        username: username.value,
-        email: email.value,
-        tel: telefono.value,
-        contraseña: password.value,
-        sesion: false
-    }
-    cuentas.push(usuario);
-  localStorage.setItem("cuentas", JSON.stringify(cuentas));
-}
+        function crear_objeto(){
+            let usuario = {
+                id: Date.now(),
+                username: username.value,
+                email: email.value,
+                tel: telefono.value,
+                contraseña: password.value,
+                sesion: false
+            }
+            cuentas.push(usuario);
+        localStorage.setItem("cuentas", JSON.stringify(cuentas));
+        }
 
 
