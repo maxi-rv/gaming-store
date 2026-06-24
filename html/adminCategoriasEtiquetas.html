@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tienda Web: Creacion de etiquetas</title>
+    <title>Tienda Web: Administrador de Categorias/Etiquetas</title>
     <link
       rel="shortcut icon"
       href="../img/favicon-yellow-pc-96.png"
@@ -130,7 +130,7 @@
                   <li>
                     <a
                       class="dropdown-item text-warning"
-                      href="../html/creacion_etiquetas.html"
+                      href="../html/adminCategoriasEtiquetas.html"
                       >Categorías/Etiquetas</a
                     >
                   </li>
@@ -157,7 +157,7 @@
               aria-expanded="false"
               aria-controls="collapseCrearCategoria">
               <i class="bi bi-bookmark-plus text-warning"></i>
-              <span>Crear  Categoria</span>
+              <span>Crear Categoria</span>
             </button>
             <button
               class="btn rounded-pill btn-outline-warning text-nowrap"
@@ -176,113 +176,127 @@
       <!-- Collapse Section-->
       <section class="row my-4">
         <!-- Collapse Crear Categoria -->
-      <div class="collapse" id="collapseCrearCategoria">
-        <div
-          class="card mx-auto col-8 col-md-6 border-0 shadow-lg my-2"
-          data-bs-theme="dark">
-          <div class="card-header cardStyle border-bottom border-warning">
-            <i class="bi bi-bookmark-plus text-warning"></i>
-            <span>Crear nueva Categoria</span>
-          </div>
+        <div class="collapse" id="collapseCrearCategoria">
+          <div
+            class="card mx-auto col-8 col-md-6 border-0 shadow-lg my-2"
+            data-bs-theme="dark">
+            <div class="card-header cardStyle border-bottom border-warning">
+              <i class="bi bi-bookmark-plus text-warning"></i>
+              <span>Crear nueva Categoria</span>
+            </div>
 
-          <div class="card-body cardStyle" data-bs-theme="dark">
-            <form id="formCrearCategoria" class="needs-validation" novalidate>
-              <div class="input-group my-2 w-75 pb-2 mx-auto">
-                <span
-                  class="input-group-text rounded-start-pill text-warning border-warning-subtle"
-                  id="basic-addon-name">
-                  <i class="bi bi-pencil"></i>
-                </span>
-                <input
-                  type="text"
-                  id="inputNameCrearCategoria"
-                  class="form-control rounded-end-pill text-white border-warning-subtle"
-                  placeholder="Nombre"
-                  aria-label="Nombre" 
-                  required/>
+            <div class="card-body cardStyle" data-bs-theme="dark">
+              <form id="formCrearCategoria" class="needs-validation" novalidate>
+                <div class="input-group my-2 w-75 pb-2 mx-auto">
+                  <span
+                    class="input-group-text rounded-start-pill text-warning border-warning-subtle"
+                    id="basic-addon-name">
+                    <i class="bi bi-pencil"></i>
+                  </span>
+                  <input
+                    type="text"
+                    id="inputNameCrearCategoria"
+                    class="form-control rounded-end-pill text-white border-warning-subtle"
+                    placeholder="Nombre"
+                    aria-label="Nombre"
+                    required />
                   <div class="valid-feedback">OK</div>
-                  <div class="invalid-feedback" id="invalidNameCrearCategoria"></div>
-              </div>
-              <div class="input-group my-2 w-75 pb-2 mx-auto">
-                <span
-                  class="input-group-text text-warning border-warning-subtle"
-                  id="basic-addon-descrip">
-                  <i class="bi bi-file-text"></i>
-                </span>
-                <textarea
-                  class="form-control border-warning-subtle"
-                  id="inputDescripcionCrearCategoria"
-                  placeholder="Descripción"
-                  aria-label="Descripción"
-                  required></textarea>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidNameCrearCategoria"></div>
+                </div>
+                <div class="input-group my-2 w-75 pb-2 mx-auto">
+                  <span
+                    class="input-group-text text-warning border-warning-subtle"
+                    id="basic-addon-descrip">
+                    <i class="bi bi-file-text"></i>
+                  </span>
+                  <textarea
+                    class="form-control border-warning-subtle"
+                    id="inputDescripcionCrearCategoria"
+                    placeholder="Descripción"
+                    aria-label="Descripción"
+                    required></textarea>
                   <div class="valid-feedback">OK</div>
-                  <div class="invalid-feedback" id="invalidDescripcionCrearCategoria"></div>
-              </div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidDescripcionCrearCategoria"></div>
+                </div>
 
-              <div class="d-grid my-4 w-75 mx-auto">
-                <button id="buttonCrearCategoria" class="btn btn-warning rounded-5" type="submit">
-                  Crear Categoria
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <!-- Collapse Crear Etiqueta -->
-      <div class="collapse" id="collapseCrearEtiqueta">
-        <div
-          class="card mx-auto col-8 col-md-6 border-0 shadow-lg my-2"
-          data-bs-theme="dark">
-          <div class="card-header cardStyle border-bottom border-warning">
-            <i class="bi bi-tag text-warning"></i>
-            <span>Crear nueva Etiqueta</span>
-          </div>
-          <div class="card-body cardStyle">
-            <form id="formCrearEtiqueta" class="needs-validation" novalidate>
-              <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
-                <span
-                  class="input-group-text rounded-start-pill text-warning border-warning-subtle"
-                  id="basic-addon-name">
-                  <i class="bi bi-pencil"></i>
-                </span>
-                <input
-                  type="text"
-                  id="inputNameCrearEtiqueta"
-                  class="form-control rounded-end-pill text-white border-warning-subtle"
-                  placeholder="Nombre"
-                  aria-label="Nombre"
-                  aria-describedby="basic-addon-name"
-                  required />
-                  <div class="valid-feedback">OK</div>
-                  <div class="invalid-feedback" id="invalidNameCrearEtiqueta"></div>
-              </div>
-              <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
-                <span
-                  class="input-group-text text-warning border-warning-subtle"
-                  id="basic-addon-descrip">
-                  <i class="bi bi-file-text"></i>
-                </span>
-                <textarea
-                  class="form-control border-warning-subtle"
-                  id="inputDescripcionCrearEtiqueta"
-                  placeholder="Descripción"
-                  aria-label="Descripción"
-                  aria-describedby="basic-addon-descrip"
-                  required></textarea>
-                  <div class="valid-feedback">OK</div>
-                  <div class="invalid-feedback" id="invalidDescripcionCrearEtiqueta"></div>
-              </div>
-
-              <div class="d-grid my-4 w-75 mx-auto">
-                <button id="buttonCrearEtiqueta" class="btn btn-warning rounded-5" type="submit">
-                  Crear Etiqueta
-                </button>
-              </div>
-            </form>
+                <div class="d-grid my-4 w-75 mx-auto">
+                  <button
+                    id="buttonCrearCategoria"
+                    class="btn btn-warning rounded-5"
+                    type="submit">
+                    Crear Categoria
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+
+        <!-- Collapse Crear Etiqueta -->
+        <div class="collapse" id="collapseCrearEtiqueta">
+          <div
+            class="card mx-auto col-8 col-md-6 border-0 shadow-lg my-2"
+            data-bs-theme="dark">
+            <div class="card-header cardStyle border-bottom border-warning">
+              <i class="bi bi-tag text-warning"></i>
+              <span>Crear nueva Etiqueta</span>
+            </div>
+            <div class="card-body cardStyle">
+              <form id="formCrearEtiqueta" class="needs-validation" novalidate>
+                <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
+                  <span
+                    class="input-group-text rounded-start-pill text-warning border-warning-subtle"
+                    id="basic-addon-name">
+                    <i class="bi bi-pencil"></i>
+                  </span>
+                  <input
+                    type="text"
+                    id="inputNameCrearEtiqueta"
+                    class="form-control rounded-end-pill text-white border-warning-subtle"
+                    placeholder="Nombre"
+                    aria-label="Nombre"
+                    aria-describedby="basic-addon-name"
+                    required />
+                  <div class="valid-feedback">OK</div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidNameCrearEtiqueta"></div>
+                </div>
+                <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
+                  <span
+                    class="input-group-text text-warning border-warning-subtle"
+                    id="basic-addon-descrip">
+                    <i class="bi bi-file-text"></i>
+                  </span>
+                  <textarea
+                    class="form-control border-warning-subtle"
+                    id="inputDescripcionCrearEtiqueta"
+                    placeholder="Descripción"
+                    aria-label="Descripción"
+                    aria-describedby="basic-addon-descrip"
+                    required></textarea>
+                  <div class="valid-feedback">OK</div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidDescripcionCrearEtiqueta"></div>
+                </div>
+
+                <div class="d-grid my-4 w-75 mx-auto">
+                  <button
+                    id="buttonCrearEtiqueta"
+                    class="btn btn-warning rounded-5"
+                    type="submit">
+                    Crear Etiqueta
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Ventana Modal de Edicion de Categoria -->
@@ -291,7 +305,6 @@
         id="modalEdicionCategoria"
         tabindex="-1"
         aria-labelledby="modalEdicionCategoriaLabel"
-        aria-hidden="true"
         data-bs-theme="dark">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -308,7 +321,10 @@
             </div>
 
             <div class="modal-body">
-              <form id="formEdicionCategoria" class="needs-validation" novalidate>
+              <form
+                id="formEdicionCategoria"
+                class="needs-validation"
+                novalidate>
                 <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                   <span
                     class="input-group-text rounded-start-pill text-warning border-warning-subtle"
@@ -321,10 +337,12 @@
                     class="form-control rounded-end-pill text-white border-warning-subtle"
                     placeholder="Nombre"
                     aria-label="Nombre"
-                    aria-describedby="basic-addon-name" 
-                    required/>
-                    <div class="valid-feedback">OK</div>
-                    <div class="invalid-feedback" id="invalidNameEdicionCategoria"></div>
+                    aria-describedby="basic-addon-name"
+                    required />
+                  <div class="valid-feedback">OK</div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidNameEdicionCategoria"></div>
                 </div>
                 <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                   <span
@@ -339,12 +357,17 @@
                     aria-label="Descripción"
                     aria-describedby="basic-addon-descrip"
                     required></textarea>
-                    <div class="valid-feedback">OK</div>
-                    <div class="invalid-feedback" id="invalidDescripcionEdicionCategoria"></div>
+                  <div class="valid-feedback">OK</div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidDescripcionEdicionCategoria"></div>
                 </div>
 
                 <div class="d-grid my-4 w-75 mx-auto">
-                  <button id="buttonEdicionCategoria" class="btn btn-warning rounded-5" type="submit">
+                  <button
+                    id="buttonEdicionCategoria"
+                    class="btn btn-warning rounded-5"
+                    type="submit">
                     Guardar Categoria
                   </button>
                 </div>
@@ -360,7 +383,6 @@
         id="modalEdicionEtiqueta"
         tabindex="-1"
         aria-labelledby="modalEdicionEtiquetaLabel"
-        aria-hidden="true"
         data-bs-theme="dark">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -377,7 +399,10 @@
             </div>
 
             <div class="modal-body">
-              <form id="formEdicionEtiqueta" class="needs-validation" novalidate>
+              <form
+                id="formEdicionEtiqueta"
+                class="needs-validation"
+                novalidate>
                 <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                   <span
                     class="input-group-text rounded-start-pill text-warning border-warning-subtle"
@@ -390,10 +415,12 @@
                     class="form-control rounded-end-pill text-white border-warning-subtle"
                     placeholder="Nombre"
                     aria-label="Nombre"
-                    aria-describedby="basic-addon-name" 
-                    required/>
-                    <div class="valid-feedback">OK</div>
-                    <div class="invalid-feedback" id="invalidNameEdicionEtiqueta"></div>
+                    aria-describedby="basic-addon-name"
+                    required />
+                  <div class="valid-feedback">OK</div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidNameEdicionEtiqueta"></div>
                 </div>
                 <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                   <span
@@ -408,12 +435,17 @@
                     aria-label="Descripción"
                     aria-describedby="basic-addon-descrip"
                     required></textarea>
-                    <div class="valid-feedback">OK</div>
-                    <div class="invalid-feedback" id="invalidDescripcionEdicionEtiqueta"></div>
+                  <div class="valid-feedback">OK</div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidDescripcionEdicionEtiqueta"></div>
                 </div>
 
                 <div class="d-grid my-4 w-75 mx-auto">
-                  <button id="buttonEdicionEtiqueta" class="btn btn-warning rounded-5" type="submit">
+                  <button
+                    id="buttonEdicionEtiqueta"
+                    class="btn btn-warning rounded-5"
+                    type="submit">
                     Guardar Etiqueta
                   </button>
                 </div>
@@ -441,51 +473,7 @@
                   <th scope="col">Acciones</th>
                 </tr>
               </thead>
-              <tbody id="tbodyCategorias" class="align-text-bottom">
-                <tr >
-                  <td>Procesadores</td>
-                  <td>...</td>
-                  <td>
-                    <button
-                      type="button"
-                      id="buttonEditCategoria"
-                      class="btn btn-outline-warning"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEdicionCategoria">
-                      <i class="bi bi-pencil-square"></i>
-                      <span>Editar</span>
-                    </button>
-                    <button
-                      type="button"
-                      id="buttonDeleteCategoria"
-                      class="btn btn-outline-danger">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Placas de Video</td>
-                  <td>...</td>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      id="buttonEditUser"
-                      class="btn btn-outline-warning"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEdicionCategoria">
-                      <i class="bi bi-pencil-square"></i>
-                      <span>Editar</span>
-                    </button>
-                    <button
-                      type="button"
-                      id="buttonDeleteUser"
-                      class="btn btn-outline-danger">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody id="tbodyCategorias" class="align-text-bottom"></tbody>
             </table>
           </div>
         </div>
@@ -509,73 +497,7 @@
                   <th scope="col">Acciones</th>
                 </tr>
               </thead>
-              <tbody id="tbodyEtiquetas" class="align-text-bottom">
-                <tr >
-                  <td>AMD</td>
-                  <td>...</td>
-                  <td>
-                    <button
-                      type="button"
-                      id="buttonEditEtiqueta"
-                      class="btn btn-outline-warning"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEdicionEtiqueta">
-                      <i class="bi bi-pencil-square"></i>
-                      <span>Editar</span>
-                    </button>
-                    <button
-                      type="button"
-                      id="buttonDeleteEtiqueta"
-                      class="btn btn-outline-danger">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Intel</td>
-                  <td>...</td>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      id="buttonEditEtiqueta"
-                      class="btn btn-outline-warning"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEdicionEtiqueta">
-                      <i class="bi bi-pencil-square"></i>
-                      <span>Editar</span>
-                    </button>
-                    <button
-                      type="button"
-                      id="buttonDeleteEtiqueta"
-                      class="btn btn-outline-danger">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr >
-                  <td>Nvidia</td>
-                  <td>...</td>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      id="buttonEditEtiqueta"
-                      class="btn btn-outline-warning"
-                      data-bs-toggle="modal"
-                      data-bs-target="#modalEdicionEtiqueta">
-                      <i class="bi bi-pencil-square"></i>
-                      <span>Editar</span>
-                    </button>
-                    <button
-                      type="button"
-                      id="buttonDeleteEtiqueta"
-                      class="btn btn-outline-danger">
-                      <i class="bi bi-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody id="tbodyEtiquetas" class="align-text-bottom"></tbody>
             </table>
           </div>
         </div>
@@ -584,7 +506,12 @@
 
     <footer class="my-2"></footer>
 
-    <script type="module" src="../js/vistaCategoriasEtiquetas.js"></script>
+    <script
+      type="module"
+      src="../js/adminCategoriasEtiquetas/vistaCategorias.js"></script>
+    <script
+      type="module"
+      src="../js/adminCategoriasEtiquetas/vistaEtiquetas.js"></script>
     <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>
   </body>
