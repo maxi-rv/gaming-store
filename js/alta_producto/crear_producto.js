@@ -1,3 +1,8 @@
+import {
+    cargar_categorias,
+    cargar_etiquetas,
+} from "./importar_etiquetas_producto.js";
+
 let name_producto = document.getElementById("input_nombre_producto")
 let precio_producto = document.getElementById("input_precio")
 let stock_producto = document.getElementById("input_stock")
@@ -7,6 +12,8 @@ let descripcion_producto = document.getElementById("input_descripcion")
 
 window.addEventListener("load", function(){
     inicializar()
+    cargar_etiquetas()
+    cargar_categorias()
 })
 
 let productos = JSON.parse(localStorage.getItem("productos")) || [];
