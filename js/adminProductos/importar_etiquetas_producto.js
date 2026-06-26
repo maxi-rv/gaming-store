@@ -16,23 +16,19 @@ window.addEventListener("load", function () {
   etiquetas = listadoEtiquetas();
 });
 
-export function cargar_categorias() {
-  const categoria_producto = document.getElementById("select_categorias");
-
+export function cargar_categorias(select_categorias) {
   categorias.forEach((categoria) => {
     const option = document.createElement("option");
 
     option.value = categoria.id;
     option.textContent = categoria.nombre;
 
-    categoria_producto.appendChild(option);
+    select_categorias.appendChild(option);
   });
 }
 
-export function cargar_etiquetas() {
-  const contenedor = document.getElementById("contenedor_de_etiquetas");
-
-  contenedor.innerHTML = "";
+export function cargar_etiquetas(contenedor_de_etiquetas) {
+  contenedor_de_etiquetas.innerHTML = "";
 
   etiquetas.forEach((etiqueta) => {
     const col = document.createElement("div");
@@ -52,6 +48,6 @@ export function cargar_etiquetas() {
     col.appendChild(checkbox);
     col.appendChild(label);
 
-    contenedor.appendChild(col);
+    contenedor_de_etiquetas.appendChild(col);
   });
 }

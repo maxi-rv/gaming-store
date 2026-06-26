@@ -10,23 +10,24 @@ window.addEventListener("load", function () {
   productosTemplate = [
     {
       id: crypto.randomUUID(),
-      nombre: "Laptop A",
+      nombre: "Laptop Gamer",
       precio: 1500000,
       stock: 10,
       img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
       categoria: listadoCategorias()[6].id,
       etiquetas: [listadoEtiquetas()[2].id, listadoEtiquetas()[5].id],
-      descripcion: "...",
+      descripcion:
+        "Una computadora portatil estandar con capacidades graficas.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Laptop B",
+      nombre: "Macbook Pro",
       precio: 2500000,
       stock: 5,
       img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-      categoria: listadoCategorias()[6],
+      categoria: listadoCategorias()[6].id,
       etiquetas: [listadoEtiquetas()[3].id, listadoEtiquetas()[8].id],
-      descripcion: "...",
+      descripcion: "La oferta portatil de apple para profesionales.",
     },
   ];
   productos =

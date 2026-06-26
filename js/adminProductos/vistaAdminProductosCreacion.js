@@ -5,17 +5,24 @@ import {
 
 import { agregarProducto } from "../gestores/gestorProductos.js";
 
-let name_producto = document.getElementById("input_nombre_producto");
-let precio_producto = document.getElementById("input_precio");
-let stock_producto = document.getElementById("input_stock");
-let imagen_producto = document.getElementById("select_imagen");
-let categoria_producto = document.getElementById("select_categorias");
-let descripcion_producto = document.getElementById("input_descripcion");
+import { cargarTabla } from "../adminProductos/vistaAdminProductosTabla.js";
+
+const name_producto = document.getElementById("input_nombre_producto");
+const precio_producto = document.getElementById("input_precio");
+const stock_producto = document.getElementById("input_stock");
+const imagen_producto = document.getElementById("select_imagen");
+const categoria_producto = document.getElementById("select_categorias");
+const descripcion_producto = document.getElementById("input_descripcion");
+
+const contenedor_de_etiquetas = document.getElementById(
+  "contenedor_de_etiquetas",
+);
+const select_categorias = document.getElementById("select_categorias");
 
 window.addEventListener("load", function () {
   inicializar();
-  cargar_etiquetas();
-  cargar_categorias();
+  cargar_etiquetas(contenedor_de_etiquetas);
+  cargar_categorias(select_categorias);
 });
 
 function inicializar() {
@@ -33,12 +40,13 @@ function inicializar() {
         Number(stock_producto.value),
         imagen_producto.value,
         categoria_producto.value,
-        obtener_etiquetas(),
+        obtener_etiquetas(contenedor_de_etiquetas),
         descripcion_producto.value.trim(),
       );
       alert("producto registrado correctamente");
       form.reset();
       limpiar_estados();
+      cargarTabla();
     }
   });
 }

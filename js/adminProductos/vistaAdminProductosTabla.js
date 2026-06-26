@@ -5,11 +5,14 @@ import {
   conseguirProducto,
 } from "../gestores/gestorProductos.js";
 
+import { conseguirCategoria } from "../gestores/gestorCategorias.js";
+import { conseguirEtiqueta } from "../gestores/gestorEtiquetas.js";
+
 // Modal
 const modalEdicionProducto = document.getElementById("modalEdicionProducto");
 
 // Tabla tBody
-const tbodyCategorias = document.getElementById("tbodyCategorias");
+const tbodyProductos = document.getElementById("tbodyProductos");
 
 // Constantes Form Edicion Producto
 const formEdicionProducto = document.getElementById("formEdicionProducto");
@@ -88,9 +91,9 @@ function inicializar() {
 /*
   Elimina y vuelve a generar la tabla completa.
 */
-function cargarTabla() {
+export function cargarTabla() {
   let productos = listadoProductos();
-  tbodyCategorias.innerHTML = "";
+  tbodyProductos.innerHTML = "";
 
   for (let i = 0; i < productos.length; i++) {
     const producto = productos[i];
@@ -113,10 +116,20 @@ function cargarTabla() {
     tdImagen.appendChild(img);
 
     const tdCategoria = document.createElement("td");
-    tdCategoria.textContent = producto.categoria;
+    tdCategoria.textContent = conseguirCategoria(producto.categoria).nombre;
 
     const tdEtiquetas = document.createElement("td");
-    tdEtiquetas.textContent = producto.etiquetas;
+    let etiquetas = producto.etiquetas;
+
+    for (let index = 0; index < etiquetas.length; index++) {
+      let nombreEtiqueta = conseguirEtiqueta(etiquetas[index]).nombre;
+
+      if (index + 1 == etiquetas.length) {
+        tdEtiquetas.textContent += nombreEtiqueta;
+      } else {
+        tdEtiquetas.textContent += nombreEtiqueta + ", ";
+      }
+    }
 
     const tdDescripcion = document.createElement("td");
     tdDescripcion.textContent = producto.descripcion;
@@ -142,7 +155,7 @@ function cargarTabla() {
     tr.appendChild(tdDescripcion);
     tr.appendChild(tdAcciones);
 
-    tbodyCategorias.appendChild(tr);
+    tbodyProductos.appendChild(tr);
   }
 }
 
