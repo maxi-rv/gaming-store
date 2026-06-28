@@ -23,7 +23,7 @@ window.addEventListener("load", function () {
   inicializar();
   cargarCatalogo();
   cargar_categorias(select_categorias);
-  //cargar_etiquetas(contenedor_de_etiquetas);
+  cargar_etiquetas(contenedor_de_etiquetas);
 });
 
 function inicializar() {
@@ -118,8 +118,23 @@ function cargarCatalogo() {
     inputGroupStock.appendChild(spanStock);
 
     botonCarrito.addEventListener("click", function (event) {
-      event.preventDefault();
       //TODO: añadir a carrito con productos[index].id y inputCantidad.value
     });
   }
+}
+
+function obtener_etiquetas() {
+  const checkboxes = contenedor_de_etiquetas.querySelectorAll(
+    'input[type="checkbox"]',
+  );
+
+  const etiquetas = [];
+
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      etiquetas.push(checkbox.getAttribute("data-identificador"));
+    }
+  });
+  console.log(etiquetas);
+  return etiquetas;
 }
