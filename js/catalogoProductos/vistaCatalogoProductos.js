@@ -1,39 +1,15 @@
-import {
-  cargar_categorias,
-  cargar_etiquetas,
-} from "../adminProductos/importar_etiquetas_producto.js";
-
-import {
-  listadoProductos,
-  conseguirProducto,
-} from "../gestores/gestorProductos.js";
-
-const formFiltros = document.getElementById("formFiltros");
-const select_categorias = document.getElementById("select_categorias");
-const contenedor_de_etiquetas = document.getElementById(
-  "contenedor_de_etiquetas",
-);
-const conStock = document.getElementById("conStock");
-const botonAplicarFiltros = document.getElementById("botonAplicarFiltros");
+import { listadoProductos } from "../gestores/gestorProductos.js";
 
 // Tabla tBody
 const catalogo = document.getElementById("cardContainer");
 
+// Inicialmente carga completamente todo el listado de productos.
 window.addEventListener("load", function () {
-  inicializar();
-  cargarCatalogo();
-  cargar_categorias(select_categorias);
-  cargar_etiquetas(contenedor_de_etiquetas);
+  const productos = listadoProductos();
+  cargarCatalogo(productos);
 });
 
-function inicializar() {
-  formFiltros.addEventListener("submit", function (event) {
-    event.preventDefault();
-  });
-}
-
-function cargarCatalogo() {
-  const productos = listadoProductos();
+export function cargarCatalogo(productos) {
   catalogo.innerHTML = "";
 
   for (let index = 0; index < productos.length; index++) {
@@ -121,20 +97,4 @@ function cargarCatalogo() {
       //TODO: añadir a carrito con productos[index].id y inputCantidad.value
     });
   }
-}
-
-function obtener_etiquetas() {
-  const checkboxes = contenedor_de_etiquetas.querySelectorAll(
-    'input[type="checkbox"]',
-  );
-
-  const etiquetas = [];
-
-  checkboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      etiquetas.push(checkbox.getAttribute("data-identificador"));
-    }
-  });
-  console.log(etiquetas);
-  return etiquetas;
 }

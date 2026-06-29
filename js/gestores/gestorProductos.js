@@ -470,6 +470,77 @@ window.addEventListener("load", function () {
       descripcion:
         "Mouse pad de gran tamaño con iluminación RGB periférica. Superficie optimizada para precisión en juegos y trabajo.",
     },
+    {
+      id: crypto.randomUUID(),
+      nombre: "Laptop Gamer (Outlet)",
+      precio: 1200000,
+      stock: 0,
+      img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
+      categoria: listadoCategorias()[6].id,
+      etiquetas: [listadoEtiquetas()[2].id, listadoEtiquetas()[6].id],
+      descripcion:
+        "Laptop gaming de exhibición o reacondicionada. Funciona perfectamente.",
+    },
+    {
+      id: crypto.randomUUID(),
+      nombre: "Kit de Memorias 2x16GB DDR5 (Outlet)",
+      precio: 200000,
+      stock: 0,
+      img: "../img/products/computerchip-technology-electronics-industry.jpg",
+      categoria: listadoCategorias()[2].id,
+      etiquetas: [listadoEtiquetas()[9].id],
+      descripcion: "Kit de 32GB DDR5 de segunda mano o reacondicionado.",
+    },
+    {
+      id: crypto.randomUUID(),
+      nombre: "SSD NVMe 1TB PCIe 4.0 (Outlet)",
+      precio: 80000,
+      stock: 0,
+      img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
+      categoria: listadoCategorias()[4].id,
+      etiquetas: [listadoEtiquetas()[4].id],
+      descripcion: "Unidad SSD NVMe 1TB reacondicionada.",
+    },
+    {
+      id: crypto.randomUUID(),
+      nombre: "Procesador AMD Ryzen 7 7800X3D (Outlet)",
+      precio: 600000,
+      stock: 0,
+      img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+      categoria: listadoCategorias()[0].id,
+      etiquetas: [listadoEtiquetas()[0].id],
+      descripcion: "Procesador AMD Ryzen 7 de exhibición.",
+    },
+    {
+      id: crypto.randomUUID(),
+      nombre: "Tarjeta Gráfica NVIDIA RTX 4080 SUPER (Outlet)",
+      precio: 900000,
+      stock: 0,
+      img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+      categoria: listadoCategorias()[3].id,
+      etiquetas: [listadoEtiquetas()[2].id],
+      descripcion: "GPU RTX 4080 SUPER reacondicionada.",
+    },
+    {
+      id: crypto.randomUUID(),
+      nombre: 'Monitor 4K 32" IPS (Outlet)',
+      precio: 700000,
+      stock: 0,
+      img: "../img/products/computer-curvy-monitor-digital-device.jpg",
+      categoria: listadoCategorias()[5].id,
+      etiquetas: [listadoEtiquetas()[7].id],
+      descripcion: "Monitor 4K de 32 pulgadas de exhibición",
+    },
+    {
+      id: crypto.randomUUID(),
+      nombre: "Teclado Mecánico RGB (Outlet)",
+      precio: 140000,
+      stock: 0,
+      img: "../img/products/wireless-mouse-keyboard.jpg",
+      categoria: listadoCategorias()[7].id,
+      etiquetas: [listadoEtiquetas()[11].id, listadoEtiquetas()[6].id],
+      descripcion: "Teclado mecánico RGB reacondicionado.",
+    },
   ];
   productos =
     JSON.parse(localStorage.getItem(claveProductos)) || productosTemplate;
@@ -529,6 +600,36 @@ export function eliminarProducto(id) {
 
 export function listadoProductos() {
   return productos;
+}
+
+export function filtrarProductos(idCategoria, idEtiquetas, conStock) {
+  let productosFiltrados = productos;
+
+  if (idCategoria != "" && idCategoria != null) {
+    productosFiltrados = productosFiltrados.filter(
+      (prod) => prod.categoria === idCategoria,
+    );
+  }
+
+  if (
+    idEtiquetas != null &&
+    Array.isArray(idEtiquetas) &&
+    idEtiquetas.length > 0
+  ) {
+    productosFiltrados = productosFiltrados.filter((prod) =>
+      idEtiquetas.every(
+        (eti) => prod.etiquetas && prod.etiquetas.includes(eti),
+      ),
+    );
+  }
+
+  if (conStock === true) {
+    productosFiltrados = productosFiltrados.filter(
+      (prod) => prod.stock != null && prod.stock > 0,
+    );
+  }
+
+  return productosFiltrados;
 }
 
 export function conseguirProducto(id) {
