@@ -1,5 +1,7 @@
 import { listadoProductos } from "../gestores/gestorProductos.js";
 
+import { agregarAlCarrito } from "../gestores/gestorCarrito.js";
+
 // Tabla tBody
 const catalogo = document.getElementById("cardContainer");
 
@@ -60,6 +62,7 @@ export function cargarCatalogo(productos) {
     const botonCarrito = document.createElement("button");
     botonCarrito.className = "btn btn-outline-warning rounded-start-pill";
     botonCarrito.type = "button";
+    botonCarrito.setAttribute("data-identificador", productos[index].id);
     inputGroupCarrito.appendChild(botonCarrito);
 
     const iconoCarrito = document.createElement("i");
@@ -95,6 +98,9 @@ export function cargarCatalogo(productos) {
 
     botonCarrito.addEventListener("click", function (event) {
       //TODO: añadir a carrito con productos[index].id y inputCantidad.value
+      const idProducto = botonCarrito.getAttribute("data-identificador");
+      const cantidad = inputCantidad.value;
+      agregarAlCarrito(idProducto, cantidad);
     });
   }
 }
