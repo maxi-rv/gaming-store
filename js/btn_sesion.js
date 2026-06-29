@@ -1,19 +1,27 @@
 import {
     consultar_sesion,
     cerrar_sesion,
+    
 } from "../js/gestores/gestor_sesion.js";
 
+import {
+    conseguir_rol_usuario,
+} from "../js/gestores/gestor_cuentas.js"
+
 let txt_sesion = document.getElementById("txt_sesion")
+let btn_accion_admin = document.getElementById("buttonAdminActions")
 
 window.addEventListener("load", function(){
     modificar_btn_sesion()
-    
+    modificar_btn_rol()
+
     document.getElementById("linkIniciarSesion").addEventListener("click", function(i){
         if (consultar_sesion() === true){
             window.location.href = "../html/inicioSesion.html";
              i.preventDefault();
             cerrar_sesion()
             modificar_btn_sesion()
+            modificar_btn_rol()
         }
     } )
 
@@ -28,5 +36,17 @@ function modificar_btn_sesion(){
         } else {
             txt_sesion.textContent = "Iniciar sesion";
         }
+    }
+}
+
+function modificar_btn_rol() {
+    const rol = conseguir_rol_usuario();
+
+    if (rol === "admin") {
+        btn_accion_admin.style.visibility = "visible";
+    } else if (rol === "usuario final") {
+        btn_accion_admin.style.visibility = "hidden";
+    } else if (rol === null) {
+        btn_accion_admin.style.visibility = "hidden";
     }
 }
