@@ -150,6 +150,7 @@ function crear_cuenta(username,password, email,tel) {
             email: email,
             tel: tel,
             sesion: false,
+            estado: true,
             rol: "usuario final"
         }
         return cuenta
