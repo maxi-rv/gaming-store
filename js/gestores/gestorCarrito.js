@@ -24,24 +24,42 @@ export function agregarAlCarrito(idProducto, cantidad) {
   }
 }
 
-export function sumarCantidad(idItemCarrito, cantidad) {
+function sumarCantidad(idItemCarrito, cantidadASumar) {
   const index = carrito.findIndex(
     (itemCarrito) => itemCarrito.id === idItemCarrito,
   );
-  if (index !== -1) {
-    carrito[index].cantidad += Number(cantidad);
+
+  const nuevaCantidad =
+    Number(carrito[index].cantidad) + Number(cantidadASumar);
+  const stockMax = Number(carrito[index].producto.stock);
+
+  if (index !== -1 && nuevaCantidad <= stockMax) {
+    carrito[index].cantidad = nuevaCantidad;
+    carrito[index].subtotal =
+      Number(carrito[index].cantidad) * Number(carrito[index].producto.precio);
+    localStorage.setItem(claveCarrito, JSON.stringify(carrito));
+  } else if (index !== -1) {
+    carrito[index].cantidad = stockMax;
     carrito[index].subtotal =
       Number(carrito[index].cantidad) * Number(carrito[index].producto.precio);
     localStorage.setItem(claveCarrito, JSON.stringify(carrito));
   }
 }
 
-export function editarCantidad(idItemCarrito, cantidad) {
+export function editarCantidad(idItemCarrito, nuevaCantidad) {
   const index = carrito.findIndex(
     (itemCarrito) => itemCarrito.id === idItemCarrito,
   );
-  if (index !== -1) {
-    carrito[index].cantidad = Number(cantidad);
+
+  const stockMax = Number(carrito[index].producto.stock);
+
+  if (index !== -1 && nuevaCantidad <= stockMax) {
+    carrito[index].cantidad = nuevaCantidad;
+    carrito[index].subtotal =
+      Number(carrito[index].cantidad) * Number(carrito[index].producto.precio);
+    localStorage.setItem(claveCarrito, JSON.stringify(carrito));
+  } else if (index !== -1) {
+    carrito[index].cantidad = stockMax;
     carrito[index].subtotal =
       Number(carrito[index].cantidad) * Number(carrito[index].producto.precio);
     localStorage.setItem(claveCarrito, JSON.stringify(carrito));

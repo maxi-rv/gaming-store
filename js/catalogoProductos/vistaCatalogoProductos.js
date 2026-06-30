@@ -108,6 +108,7 @@ export function cargarCatalogo(productos) {
     botonCarrito.addEventListener("click", function (event) {
       const idProducto = botonCarrito.getAttribute("data-identificador");
       const cantidad = inputCantidad.value;
+      1;
       agregarAlCarrito(idProducto, cantidad);
     });
   }

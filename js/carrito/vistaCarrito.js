@@ -78,15 +78,17 @@ export function cargarCarrito() {
     inputCantidad.className =
       "form-control border-warning-subtle rounded-pill text-center flex-shrink-0 col-4 col-md-3";
     inputCantidad.type = "number";
-    inputCantidad.value = carrito[index].cantidad;
     inputCantidad.min = 1;
-    inputCantidad.max = carrito[index].producto.stock;
+    inputCantidad.max = Number(carrito[index].producto.stock);
+    inputCantidad.value = Number(carrito[index].cantidad);
     inputCantidad.setAttribute("data-identificador", carrito[index].id);
     divSubTotal.appendChild(inputCantidad);
 
     inputCantidad.addEventListener("input", (event) => {
       const idItemCarrito = inputCantidad.getAttribute("data-identificador");
-      editarCantidad(idItemCarrito, inputCantidad.value);
+
+      editarCantidad(idItemCarrito, Number(inputCantidad.value));
+
       cargarCarrito();
     });
 
