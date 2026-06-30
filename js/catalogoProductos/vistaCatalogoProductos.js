@@ -74,8 +74,16 @@ export function cargarCatalogo(productos) {
       "form-control border-warning-subtle rounded-end-pill flex-grow-1";
     inputCantidad.style = "min-width: 50px; max-width: 50%";
     inputCantidad.type = "number";
-    inputCantidad.value = 1;
-    inputCantidad.min = 1;
+    if (productos[index].stock > 0) {
+      inputCantidad.value = 1;
+      inputCantidad.min = 1;
+    } else {
+      inputCantidad.value = 0;
+      inputCantidad.min = 0;
+      inputCantidad.disabled = true;
+      botonCarrito.disabled = true;
+    }
+    inputCantidad.max = productos[index].stock;
     inputGroupCarrito.appendChild(inputCantidad);
 
     const inputGroupStock = document.createElement("div");
@@ -98,7 +106,6 @@ export function cargarCatalogo(productos) {
     inputGroupStock.appendChild(spanStock);
 
     botonCarrito.addEventListener("click", function (event) {
-      //TODO: añadir a carrito con productos[index].id y inputCantidad.value
       const idProducto = botonCarrito.getAttribute("data-identificador");
       const cantidad = inputCantidad.value;
       agregarAlCarrito(idProducto, cantidad);

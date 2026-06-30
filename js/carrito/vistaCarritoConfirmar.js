@@ -1,4 +1,8 @@
-import { conseguirCarrito, vaciarCarrito } from "../gestores/gestorCarrito.js";
+import {
+  conseguirCarrito,
+  confirmarCarrito,
+  vaciarCarrito,
+} from "../gestores/gestorCarrito.js";
 
 import { cargarCarrito } from "../carrito/vistaCarrito.js";
 
@@ -13,6 +17,7 @@ function inicializarBotonFinalizarCompra() {
   botonFinalizarCompra.addEventListener("click", function (event) {
     const carrito = conseguirCarrito();
 
+    confirmarCarrito();
     //TO-DO: Confirmar Carrito y hacer algo antes de vaciarlo! (Asociar pedido al usuario!)
 
     vaciarCarrito();

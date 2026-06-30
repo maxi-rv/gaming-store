@@ -1,4 +1,7 @@
-import { conseguirProducto } from "../gestores/gestorProductos.js";
+import {
+  conseguirProducto,
+  editarProducto,
+} from "../gestores/gestorProductos.js";
 
 let carrito;
 let claveCarrito = "carrito";
@@ -59,6 +62,21 @@ export function conseguirItemCarrito(idItemCarrito) {
 
 export function conseguirCarrito() {
   return carrito;
+}
+
+export function confirmarCarrito() {
+  for (let index = 0; index < carrito.length; index++) {
+    editarProducto(
+      carrito[index].producto.id,
+      carrito[index].producto.nombre,
+      carrito[index].producto.precio,
+      carrito[index].producto.stock - carrito[index].cantidad,
+      carrito[index].producto.img,
+      carrito[index].producto.categoria,
+      carrito[index].producto.etiquetas,
+      carrito[index].producto.descripcion,
+    );
+  }
 }
 
 export function vaciarCarrito() {

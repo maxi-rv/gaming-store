@@ -80,6 +80,7 @@ export function cargarCarrito() {
     inputCantidad.type = "number";
     inputCantidad.value = carrito[index].cantidad;
     inputCantidad.min = 1;
+    inputCantidad.max = carrito[index].producto.stock;
     inputCantidad.setAttribute("data-identificador", carrito[index].id);
     divSubTotal.appendChild(inputCantidad);
 
