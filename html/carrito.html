@@ -143,6 +143,7 @@
     </nav>
 
     <main class="my-2">
+      <!-- Listado del Carrito -->
       <section>
         <div
           class="card mx-auto col-12 col-sm-11 col-md-10 col-lg-8 col-xl-6 border-0 shadow-lg"
@@ -152,106 +153,17 @@
             <span>Carrito</span>
           </div>
 
-          <div class="border-0 m-2">
-            <div class="border-bottom border-warning pb-2">
-              <div class="row g-0">
-                <div class="col-12 col-sm-4">
-                  <img
-                    src="../img/products/laptop-computer-isolated-on-white-background.jpg"
-                    class="img-fluid rounded-3 h-100 object-fit-cover"
-                    alt="Imagen de prueba" />
-                </div>
-
-                <div class="col-12 col-sm-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Producto</h5>
-
-                    <p class="card-text">
-                      Una breve descripcion de prueba para la carta del producto
-                      en el catalogo.
-                    </p>
-
-                    <div
-                      class="d-flex flex-column flex-md-row align-items-start align-items-md-center col-12 col-md-8">
-                      <button
-                        id="buttonProductCardTest02"
-                        class="btn btn-outline-warning rounded-pill"
-                        type="button">
-                        <i class="bi bi-trash"></i>
-                      </button>
-
-                      <div
-                        class="d-flex align-items-center ms-0 ms-md-3 mt-2 mt-md-0 cantidad">
-                        <input
-                          id="inputNumberProductCardTest02"
-                          class="form-control border-warning-subtle rounded-pill text-center flex-shrink-0 col-4 col-md-3"
-                          type="number"
-                          placeholder="1"
-                          aria-label="Cantidad de Productos" />
-
-                        <p class="mb-0 ms-3 fs-3">$1.200.000</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="border-0 m-2">
-            <div class="border-bottom border-warning pb-2">
-              <div class="row g-0">
-                <div class="col-12 col-sm-4">
-                  <img
-                    src="../img/products/laptop-computer-isolated-on-white-background.jpg"
-                    class="img-fluid rounded-3 h-100 object-fit-cover"
-                    alt="Imagen de prueba" />
-                </div>
-
-                <div class="col-12 col-sm-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Producto</h5>
-
-                    <p class="card-text">
-                      Una breve descripcion de prueba para la carta del producto
-                      en el catalogo.
-                    </p>
-
-                    <div
-                      class="d-flex flex-column flex-md-row align-items-start align-items-md-center col-12 col-md-8">
-                      <button
-                        id="buttonProductCardTest02"
-                        class="btn btn-outline-warning rounded-pill"
-                        type="button">
-                        <i class="bi bi-trash"></i>
-                      </button>
-
-                      <div
-                        class="d-flex align-items-center ms-0 ms-md-3 mt-2 mt-md-0 cantidad">
-                        <input
-                          id="inputNumberProductCardTest02"
-                          class="form-control border-warning-subtle rounded-pill text-center flex-shrink-0 col-4 col-md-3"
-                          type="number"
-                          placeholder="1"
-                          aria-label="Cantidad de Productos" />
-
-                        <p class="mb-0 ms-3 fs-3">$1.200.000</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="contenedorItems"></div>
         </div>
       </section>
 
+      <!-- Total del Carrito -->
       <div class="col-12 col-sm-11 col-md-10 col-lg-6 pt-3 mx-auto">
         <div class="card border-0 shadow-lg sticky-top" data-bs-theme="dark">
           <div class="card-body">
             <div class="d-flex justify-content-between">
-              <h4 id="total">Total:</h4>
-              <h3 class="text-warning">$</h3>
+              <h4>Total:</h4>
+              <h3 id="total" class="text-warning"></h3>
             </div>
 
             <button class="btn btn-warning w-100 mt-3">Finalizar compra</button>
