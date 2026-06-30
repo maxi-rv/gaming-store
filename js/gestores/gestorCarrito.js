@@ -47,9 +47,10 @@ export function editarCantidad(idItemCarrito, cantidad) {
 }
 
 export function eliminarDelCarrito(idItemCarrito) {
-  itemCarrito = carrito.filter(
+  carrito = carrito.filter(
     (itemEncontrado) => itemEncontrado.id !== idItemCarrito,
   );
+  console.log(carrito);
   localStorage.setItem(claveCarrito, JSON.stringify(carrito));
 }
 

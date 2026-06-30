@@ -18,6 +18,8 @@ function cargarCarrito() {
   const carrito = conseguirCarrito();
   let total = 0;
 
+  contenedorItems.innerHTML = "";
+
   for (let index = 0; index < carrito.length; index++) {
     const divContenedor = document.createElement("div");
     divContenedor.className =
@@ -53,10 +55,17 @@ function cargarCarrito() {
     cardBody.appendChild(divBotones);
 
     const botonEliminar = document.createElement("button");
-    botonEliminar.className = "btn btn-outline-warning rounded-pill";
+    botonEliminar.className = "btn btn-outline-danger rounded-pill";
     botonEliminar.type = "button";
     botonEliminar.setAttribute("data-identificador", carrito[index].id);
     divBotones.appendChild(botonEliminar);
+
+    botonEliminar.addEventListener("click", function (event) {
+      const idItemCarrito = botonEliminar.getAttribute("data-identificador");
+      console.log(idItemCarrito);
+      eliminarDelCarrito(idItemCarrito);
+      cargarCarrito();
+    });
 
     const iconoEliminar = document.createElement("i");
     iconoEliminar.className = "bi bi-trash";
