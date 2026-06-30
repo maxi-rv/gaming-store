@@ -10,7 +10,7 @@ const cuentas_template = [
     tel: "",
     sesion: false,
     estado: true,
-    rol: "admin"
+    rol: "Admin"
   },{
     id: crypto.randomUUID(),
     username: "ale",
@@ -19,7 +19,7 @@ const cuentas_template = [
     tel: "",
     sesion: false,
     estado: true,
-    rol: "usuario final"
+    rol: "Usuario"
   },
 ];
 
@@ -151,7 +151,7 @@ function crear_cuenta(username,password, email,tel) {
             tel: tel,
             sesion: false,
             estado: true,
-            rol: "usuario final"
+            rol: "Usuario"
         }
         return cuenta
   };

@@ -17,23 +17,28 @@ function cargar_tabla() {
     tabla_body.innerHTML = "";
     let cuentas = listado_cuentas();
 
+    
     for (let i = 0; i < cuentas.length; i++) {
+        
+        if (cuentas[i].username !== "admin" || cuentas[i].rol !== "Admin") {
 
         const tr = document.createElement("tr");
         tr.classList.add("align-middle");
-
+    
         const tdId = document.createElement("td");
         const tdUsuario = document.createElement("td");
         const tdEmail = document.createElement("td");
         const tdTelefono = document.createElement("td");
         const tdEstado = document.createElement("td");
         const tdAcciones = document.createElement("td");
+        const tdRoles = document.createElement("td");
 
         tdId.textContent = cuentas[i].id;
         tdUsuario.textContent = cuentas[i].username;
         tdEmail.textContent = cuentas[i].email;
         tdTelefono.textContent = cuentas[i].tel;
         tdEstado.textContent = cuentas[i].estado ? "Activa" : "Inactiva";
+        tdRoles.textContent = cuentas[i].rol;
 
         const btnInhabilitar = document.createElement("button");
         if (cuentas[i].estado) {
@@ -46,7 +51,6 @@ function cargar_tabla() {
             btnInhabilitar.title = "Habilitar";
         }
 
-   
         const btnEliminar = document.createElement("button");
         btnEliminar.type = "button";
         btnEliminar.className = "btn btn-outline-danger";
@@ -58,6 +62,7 @@ function cargar_tabla() {
                 cargar_tabla();
             }
         });
+    
 
         tdAcciones.appendChild(btnInhabilitar);
         tdAcciones.appendChild(btnEliminar);
@@ -67,6 +72,7 @@ function cargar_tabla() {
         tr.appendChild(tdEmail);
         tr.appendChild(tdTelefono);
         tr.appendChild(tdEstado);
+        tr.appendChild(tdRoles);
         tr.appendChild(tdAcciones);
 
         tabla_body.appendChild(tr);
@@ -75,5 +81,6 @@ function cargar_tabla() {
         cambiar_estado_cuenta(cuentas[i].id);
         cargar_tabla();
         });
+    }
     }
 }
