@@ -17,7 +17,7 @@ window.addEventListener("load", function(){
 
     document.getElementById("linkIniciarSesion").addEventListener("click", function(i){
         if (consultar_sesion() === true){
-            window.location.href = "../html/inicioSesion.html";
+            window.location.href = "../html/index.html";
              i.preventDefault();
             cerrar_sesion()
             modificar_btn_sesion()
