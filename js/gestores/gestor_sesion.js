@@ -12,8 +12,8 @@ const cuentas_template = [
   },
   {
     id: crypto.randomUUID(),
-    username: "ale",
-    password: "ale",
+    username: "usuario",
+    password: "usuario",
     email: "",
     tel: "",
     sesion: false,

@@ -10,16 +10,17 @@ const cuentas_template = [
     tel: "",
     sesion: false,
     estado: true,
-    rol: "Admin"
-  },{
+    rol: "Admin",
+  },
+  {
     id: crypto.randomUUID(),
-    username: "ale",
-    password: "ale",
+    username: "usuario",
+    password: "usuario",
     email: "",
     tel: "",
     sesion: false,
     estado: true,
-    rol: "Usuario"
+    rol: "Usuario",
   },
 ];
 
@@ -28,134 +29,144 @@ window.addEventListener("load", function () {
   localStorage.setItem(clave_cuentas, JSON.stringify(cuentas));
 });
 
-export function agregar_cuenta(username,password, email,tel) {
-  let cuenta = crear_cuenta( username, password, email,tel);
+export function agregar_cuenta(username, password, email, tel) {
+  let encontrada = conseguirCuentaPorUsername(username);
 
-  cuentas.push(cuenta);
+  if (encontrada == null) {
+    let cuenta = crear_cuenta(username, password, email, tel);
 
-  localStorage.setItem(clave_cuentas, JSON.stringify(cuentas));
+    cuentas.push(cuenta);
+
+    localStorage.setItem(clave_cuentas, JSON.stringify(cuentas));
+  }
 }
 
 export function editar_cuenta(id, username, password, email, tel) {
-    let cuentas = JSON.parse(localStorage.getItem(clave_cuentas)) || [];
+  let cuentas = JSON.parse(localStorage.getItem(clave_cuentas)) || [];
 
-    let index = cuentas.findIndex(c => c.id === id);
+  let index = cuentas.findIndex((c) => c.id === id);
 
-    if (index !== -1) {
-        cuentas[index].username = username;
-        cuentas[index].password = password;
-        cuentas[index].email = email;
-        cuentas[index].tel = tel;
+  if (index !== -1) {
+    cuentas[index].username = username;
+    cuentas[index].password = password;
+    cuentas[index].email = email;
+    cuentas[index].tel = tel;
 
-        localStorage.setItem(clave_cuentas, JSON.stringify(cuentas));
-    }
+    localStorage.setItem(clave_cuentas, JSON.stringify(cuentas));
+  }
 }
 
 export function eliminar_cuenta(id) {
   let nuevas_cuentas = [];
 
-    for (let cuenta of cuentas) {
-        if (cuenta.id !== id) {
-            nuevas_cuentas.push(cuenta);
-        }
+  for (let cuenta of cuentas) {
+    if (cuenta.id !== id) {
+      nuevas_cuentas.push(cuenta);
     }
-    cuentas = nuevas_cuentas;
-    localStorage.setItem(clave_cuentas, JSON.stringify(cuentas));
+  }
+  cuentas = nuevas_cuentas;
+  localStorage.setItem(clave_cuentas, JSON.stringify(cuentas));
 }
 
 export function listado_cuentas() {
-
-
   return JSON.parse(localStorage.getItem("cuentas")) || [];
 }
 
 export function conseguir_cuenta(id) {
-    let encontrada = null;
+  let encontrada = null;
 
-    for (let cuenta of cuentas) {
-        if (cuenta.id === id) {
-            encontrada = cuenta;
-            break;
-        }
+  for (let cuenta of cuentas) {
+    if (cuenta.id === id) {
+      encontrada = cuenta;
+      break;
     }
+  }
 
-    return encontrada
+  return encontrada;
+}
+
+export function conseguirCuentaPorUsername(username) {
+  let encontrada = null;
+
+  for (let cuenta of cuentas) {
+    if (cuenta.username === username) {
+      encontrada = cuenta;
+      break;
+    }
+  }
+
+  return encontrada;
 }
 
 export function conseguir_cuenta_login(username, password) {
+  const cuentas = JSON.parse(localStorage.getItem(clave_cuentas)) || [];
 
-    const cuentas = JSON.parse(localStorage.getItem(clave_cuentas)) || [];
+  let cuenta = null;
 
-    let cuenta = null;
-
-for (let i = 0; i < cuentas.length; i++) {
+  for (let i = 0; i < cuentas.length; i++) {
     if (cuentas[i].username === username) {
-        cuenta = cuentas[i];
-        break;
+      cuenta = cuentas[i];
+      break;
     }
-}
+  }
 
-    if (!cuenta) return -1;
+  if (!cuenta) return -1;
 
-    if (cuenta.password !== password) return -2;
-    
-    return cuenta;
+  if (cuenta.password !== password) return -2;
+
+  return cuenta;
 }
 
 export function conseguir_rol_usuario() {
+  const cuentas = JSON.parse(localStorage.getItem(clave_cuentas)) || [];
 
-    const cuentas = JSON.parse(localStorage.getItem(clave_cuentas)) || [];
-
-    for (let cuenta of cuentas) {
-        if (cuenta.sesion === true) {
-            return cuenta.rol;
-        }
+  for (let cuenta of cuentas) {
+    if (cuenta.sesion === true) {
+      return cuenta.rol;
     }
+  }
 
-    return null;
+  return null;
 }
 
 export function conseguir_estado_cuenta(username) {
+  const cuentas = JSON.parse(localStorage.getItem(clave_cuentas)) || [];
 
-    const cuentas = JSON.parse(localStorage.getItem(clave_cuentas)) || [];
-
-    for (let cuenta of cuentas) {
-        if (cuenta.username === username) {
-            return cuenta.estado;
-        }
+  for (let cuenta of cuentas) {
+    if (cuenta.username === username) {
+      return cuenta.estado;
     }
+  }
 
-    return null;    
+  return null;
 }
 
 export function cambiar_estado_cuenta(id) {
-    let cuentas = listado_cuentas();
+  let cuentas = listado_cuentas();
 
-    for (let i = 0; i < cuentas.length; i++) {
-        if (cuentas[i].id === id) {
-            cuentas[i].estado = !cuentas[i].estado;
-            break;
-        }
+  for (let i = 0; i < cuentas.length; i++) {
+    if (cuentas[i].id === id) {
+      cuentas[i].estado = !cuentas[i].estado;
+      break;
     }
+  }
 
-    localStorage.setItem("cuentas", JSON.stringify(cuentas));
+  localStorage.setItem("cuentas", JSON.stringify(cuentas));
 }
 
-function crear_cuenta(username,password, email,tel) {
-  function crear_objeto(){
-        let cuenta = {
-            id: crypto.randomUUID(),
-            username: username,
-            password: password,
-            email: email,
-            tel: tel,
-            sesion: false,
-            estado: true,
-            rol: "Usuario"
-        }
-        return cuenta
-  };
+function crear_cuenta(username, password, email, tel) {
+  function crear_objeto() {
+    let cuenta = {
+      id: crypto.randomUUID(),
+      username: username,
+      password: password,
+      email: email,
+      tel: tel,
+      sesion: false,
+      estado: true,
+      rol: "Usuario",
+    };
+    return cuenta;
+  }
   return crear_objeto();
-
- 
 }
