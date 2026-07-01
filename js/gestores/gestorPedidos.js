@@ -1,4 +1,4 @@
-import { conseguir_usuario_iniciado } from "../gestores/gestor_sesion";
+import { conseguir_usuario_iniciado } from "../gestores/gestor_sesion.js";
 
 let pedidos;
 let clavePedidos = "pedidos";
@@ -12,7 +12,7 @@ export function agregarPedido(carrito) {
   const idUsuario = conseguir_usuario_iniciado();
 
   if (idUsuario != null) {
-    pedido = crearPedido(idUsuario, carrito);
+    const pedido = crearPedido(idUsuario, carrito);
     pedidos.push(pedido);
     localStorage.setItem(clavePedidos, JSON.stringify(pedidos));
   }

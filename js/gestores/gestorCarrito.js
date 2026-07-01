@@ -94,11 +94,14 @@ export function confirmarCarrito() {
       carrito[index].producto.descripcion,
     );
   }
-  return carrito;
+  const carritoARetornar = carrito;
+  vaciarCarrito();
+  return carritoARetornar;
 }
 
 export function vaciarCarrito() {
   carrito = [];
+  localStorage.setItem(claveCarrito, JSON.stringify(carrito));
 }
 
 function encontrarItemCarritoPorProducto(idProducto) {
