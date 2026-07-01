@@ -4,6 +4,8 @@ import {
   vaciarCarrito,
 } from "../gestores/gestorCarrito.js";
 
+import { agregarPedido } from "../gestores/gestorPedidos.js";
+
 import { actualizarCarritoBadge } from "../carritoBadge.js";
 
 import { cargarCarrito } from "../carrito/vistaCarrito.js";
@@ -19,10 +21,9 @@ function inicializarBotonFinalizarCompra() {
   botonFinalizarCompra.addEventListener("click", function (event) {
     const carrito = conseguirCarrito();
 
-    confirmarCarrito();
-    //TO-DO: Confirmar Carrito y hacer algo antes de vaciarlo! (Asociar pedido al usuario!)
+    const carritoConfirmado = confirmarCarrito();
+    agregarPedido(carritoConfirmado);
 
-    vaciarCarrito();
     actualizarCarritoBadge();
     cargarCarrito();
   });

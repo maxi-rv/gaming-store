@@ -1,3 +1,5 @@
+import { vaciarCarrito } from "../gestores/gestorCarrito.js";
+
 const cuentas_template = [
   {
     id: crypto.randomUUID(),
@@ -6,80 +8,77 @@ const cuentas_template = [
     email: "",
     tel: "",
     sesion: false,
-    rol: "Admin"
-  },{
+    rol: "Admin",
+  },
+  {
     id: crypto.randomUUID(),
     username: "ale",
     password: "ale",
     email: "",
     tel: "",
     sesion: false,
-    rol: "Usuario"
+    rol: "Usuario",
   },
 ];
 
-
 export function guardar_sesion(id) {
-    let cuentas = JSON.parse(localStorage.getItem("cuentas")) || cuentas_template;
+  let cuentas = JSON.parse(localStorage.getItem("cuentas")) || cuentas_template;
 
-    cuentas.forEach(cuenta => {
+  cuentas.forEach((cuenta) => {
+    if (cuenta.id === id) {
+      cuenta.sesion = true;
+    } else {
+      cuenta.sesion = false;
+    }
+  });
 
-        if (cuenta.id === id) {
-            cuenta.sesion = true;
-        } else {
-            cuenta.sesion = false;
-        }
-    });
-
-    localStorage.setItem("cuentas", JSON.stringify(cuentas));
+  localStorage.setItem("cuentas", JSON.stringify(cuentas));
 }
 
 export function iniciar_sesion(username) {
-    let cuentas = JSON.parse(localStorage.getItem("cuentas")) || cuentas_template;
+  let cuentas = JSON.parse(localStorage.getItem("cuentas")) || cuentas_template;
 
-    for (let i = 0; i < cuentas.length; i++) {
-
+  for (let i = 0; i < cuentas.length; i++) {
     if (cuentas[i].username === username) {
-        cuentas[i].sesion = true;
+      cuentas[i].sesion = true;
     } else {
-        cuentas[i].sesion = false;
+      cuentas[i].sesion = false;
     }
+  }
 
-}
-
-    localStorage.setItem("cuentas", JSON.stringify(cuentas));
+  localStorage.setItem("cuentas", JSON.stringify(cuentas));
 }
 
 export function cerrar_sesion() {
-    let cuentas = JSON.parse(localStorage.getItem("cuentas")) || cuentas_template;
+  let cuentas = JSON.parse(localStorage.getItem("cuentas")) || cuentas_template;
 
-    cuentas.forEach(cuenta => {
-        cuenta.sesion = false;
-    });
+  cuentas.forEach((cuenta) => {
+    vaciarCarrito();
+    cuenta.sesion = false;
+  });
 
-    localStorage.setItem("cuentas", JSON.stringify(cuentas));
+  localStorage.setItem("cuentas", JSON.stringify(cuentas));
 }
 
 export function consultar_sesion() {
-    let cuentas = JSON.parse(localStorage.getItem("cuentas")) || cuentas_template;
+  let cuentas = JSON.parse(localStorage.getItem("cuentas")) || cuentas_template;
 
-    for (const cuenta of cuentas) {
-        if (cuenta.sesion === true) {
-         return true;
-            }
-        }
-    return false;
+  for (const cuenta of cuentas) {
+    if (cuenta.sesion === true) {
+      return true;
+    }
+  }
+  return false;
 }
 
-
 export function conseguir_usuario_iniciado() {
-    let cuentas = JSON.parse(localStorage.getItem("cuentas")) || cuentas_template;
+  let cuentas = JSON.parse(localStorage.getItem("cuentas")) || cuentas_template;
 
-    const usuario = cuentas.find(cuenta => cuenta.sesion);
+  const usuario = cuentas.find((cuenta) => cuenta.sesion);
 
-    if (usuario) {
-        return usuario.id;
-    }
+  if (usuario) {
+    return usuario.id;
+  }
 
-    return null;
+  return null;
 }
