@@ -8,7 +8,7 @@ const cuentas_template = [
     email: "",
     tel: "",
     sesion: false,
-    rol: "admin",
+    rol: "Admin",
   },
   {
     id: crypto.randomUUID(),
@@ -17,7 +17,7 @@ const cuentas_template = [
     email: "",
     tel: "",
     sesion: false,
-    rol: "usuario final",
+    rol: "Usuario",
   },
 ];
 

@@ -144,8 +144,10 @@ function cargarTablaEtiquetas() {
     tdAcciones.appendChild(botonEliminar);
 
     botonEliminar.addEventListener("click", function (event) {
-      eliminarEtiqueta(etiqueta.id);
-      cargarTablaEtiquetas();
+      if (confirm("¿Estás seguro de que deseas eliminar esta etiqueta?")) {
+        eliminarEtiqueta(etiqueta.id);
+        cargarTablaEtiquetas();
+      }
     });
 
     tr.appendChild(tdNombre);

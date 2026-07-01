@@ -17,7 +17,7 @@ window.addEventListener("load", function(){
 
     document.getElementById("linkIniciarSesion").addEventListener("click", function(i){
         if (consultar_sesion() === true){
-            window.location.href = "../html/inicioSesion.html";
+            window.location.href = "../html/index.html";
              i.preventDefault();
             cerrar_sesion()
             modificar_btn_sesion()
@@ -42,9 +42,9 @@ function modificar_btn_sesion(){
 function modificar_btn_rol() {
     const rol = conseguir_rol_usuario();
 
-    if (rol === "admin") {
+    if (rol === "Admin") {
         btn_accion_admin.style.visibility = "visible";
-    } else if (rol === "usuario final") {
+    } else if (rol === "Usuario") {
         btn_accion_admin.style.visibility = "hidden";
     } else if (rol === null) {
         btn_accion_admin.style.visibility = "hidden";

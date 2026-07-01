@@ -146,8 +146,10 @@ function cargarTablaCategorias() {
     tdAcciones.appendChild(botonEliminar);
 
     botonEliminar.addEventListener("click", function (event) {
-      eliminarCategoria(categoria.id);
-      cargarTablaCategorias();
+      if (confirm("¿Estás seguro de que deseas eliminar esta categoria?")) {
+        eliminarCategoria(categoria.id);
+        cargarTablaCategorias();
+      }
     });
 
     tr.appendChild(tdNombre);

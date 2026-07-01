@@ -192,8 +192,10 @@ export function cargarTabla() {
     tdAcciones.appendChild(botonEliminar);
 
     botonEliminar.addEventListener("click", function (event) {
-      eliminarProducto(producto.id);
-      cargarTabla();
+      if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
+        eliminarProducto(producto.id);
+        cargarTabla();
+      }
     });
 
     tr.appendChild(tdNombre);
