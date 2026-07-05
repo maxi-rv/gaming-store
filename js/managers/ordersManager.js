@@ -9,17 +9,17 @@ window.addEventListener("load", function () {
   localStorage.setItem(ordersKey, JSON.stringify(orders));
 });
 
-export function addOrder(carrito) {
+export function addOrder(cart) {
   const accountID = getLoggedAccountID();
 
   if (accountID != null) {
-    const order = createOrder(accountID, carrito);
+    const order = createOrder(accountID, cart);
     orders.push(order);
     localStorage.setItem(ordersKey, JSON.stringify(orders));
   }
 }
 
-export function getOrdersByAccountID(accountID) {
+export function getOrdersByLoggedAccount() {
   const accountID = getLoggedAccountID();
 
   if (accountID != null) {

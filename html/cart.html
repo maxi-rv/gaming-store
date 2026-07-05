@@ -45,7 +45,7 @@
               height="40"
               alt="Logo" />
             <h4 class="offcanvas-title" id="offcanvasNavbarLabel">
-              Tienda Web
+              Gaming Web Store
             </h4>
             <button
               type="button"
@@ -65,7 +65,7 @@
                     src="../img/logo-yellow-pc-100.png"
                     alt="logo"
                     height="32" />
-                  <span>Tienda Web</span>
+                  <span>Gaming Web Store</span>
                 </a>
               </div>
 
@@ -74,18 +74,18 @@
                 <a
                   id="linkIniciarSesion"
                   class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="../html/index.html"
+                  href="../html/login.html"
                   role="button">
                   <i class="bi bi-door-open-fill"></i>
-                  <span id="txt_sesion">Iniciar Sesión</span>
+                  <span id="txt_sesion">Login</span>
                 </a>
                 <a
                   id="linkCarrito"
                   class="btn rounded-pill btn-warning text-nowrap my-1 position-relative"
-                  href="../html/carrito.html"
+                  href="#"
                   role="button">
                   <i class="bi bi-cart-fill"></i>
-                  <span>Carrito</span>
+                  <span>Cart</span>
                   <span
                     id="carritoBadge"
                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning-subtle">
@@ -94,10 +94,10 @@
                 <a
                   id="linkCatalogo"
                   class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="../html/catalogoProductos.html"
+                  href="/html/catalog.html"
                   role="button">
                   <i class="bi bi-bag-fill"></i>
-                  <span>Catálogo</span>
+                  <span>Catalog</span>
                 </a>
               </div>
 
@@ -112,30 +112,28 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-sm-end">
                   <li>
-                    <h5 class="dropdown-header text-warning">
-                      Acciones de Administrador
-                    </h5>
+                    <h5 class="dropdown-header text-warning">Admin Actions</h5>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../html/crear_cuenta.html"
-                      >Alta de Usuarios</a
+                    <a class="dropdown-item" href="../html/adminNewAccount.html"
+                      >New Account Registration</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../html/listadoCuentas.html"
-                      >Usuarios Registrados</a
+                    <a class="dropdown-item" href="../html/adminAccounts.html"
+                      >Accounts Register</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="../html/adminProductos.html"
-                      >Registro de Productos</a
+                    <a class="dropdown-item" href="../html/adminProducts.html"
+                      >Products Register</a
                     >
                   </li>
                   <li>
                     <a
                       class="dropdown-item"
                       href="../html/adminCategoriasEtiquetas.html"
-                      >Categorías/Etiquetas</a
+                      >Categories/Tags Register</a
                     >
                   </li>
                 </ul>
@@ -154,7 +152,7 @@
           data-bs-theme="dark">
           <div class="card-header mb-2 cardStyle border-bottom border-warning">
             <i class="bi bi-cart text-warning"></i>
-            <span>Carrito</span>
+            <span>Cart</span>
           </div>
 
           <div id="contenedorItems"></div>
@@ -173,7 +171,7 @@
             <button
               id="botonFinalizarCompra"
               class="btn btn-warning w-100 mt-3">
-              Finalizar compra
+              Confirm Order
             </button>
           </div>
         </div>
@@ -183,11 +181,10 @@
     <footer class="my-2"></footer>
 
     <script src="../js/bootstrap.bundle.js"></script>
-    <script type="module" src="../js/carrito/vistaCarrito.js"></script>
-    <script type="module" src="../js/carrito/vistaCarritoConfirmar.js"></script>
-    <script type="module" src="../js/gestores/gestor_sesion.js"></script>
-    <script type="module" src="../js/carritoBadge.js"></script>
-    <script type="module" src="../js/btn_sesion.js"></script>
-    <script type="module" src="../js/index.js"></script>
+    <script type="module" src="../js/cart/cartView.js"></script>
+    <script type="module" src="../js/cart/cartConfirmation.js"></script>
+    <script type="module" src="../js/commons/cartBadge.js"></script>
+    <script type="module" src="../js/managers/accountsManager.js"></script>
+    <script type="module" src="../js/managers/sessionManager.js"></script>
   </body>
 </html>
