@@ -1,659 +1,638 @@
-import { listadoCategorias } from "../gestores/gestorCategorias.js";
-
-import { listadoEtiquetas } from "../gestores/gestorEtiquetas.js";
-
-let productos;
-const claveProductos = "productos";
-let productosTemplate = [];
+let products;
+const productsKey = "productos";
 
 window.addEventListener("load", function () {
-  productosTemplate = [
+  const productsTemplate = [
     {
       id: crypto.randomUUID(),
-      nombre: "Laptop Gamer",
-      precio: 1500000,
+      name: "Laptop Gamer",
+      price: 1500000,
       stock: 10,
       img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Potente laptop gaming con GPU dedicada y refrigeración avanzada para sesiones intensas de juego. Ideal para títulos AAA y edición multimedia.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "MacBook Pro",
-      precio: 2500000,
+      name: "MacBook Pro",
+      price: 2500000,
       stock: 5,
       img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Potente MacBook Pro con chip M3, pantalla Retina XDR y batería de larga duración. Diseñado para profesionales creativos y desarrolladores.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Kit de Memorias 2x16GB DDR5",
-      precio: 256000,
+      name: "Kit de Memorias 2x16GB DDR5",
+      price: 256000,
       stock: 32,
       img: "../img/products/computerchip-technology-electronics-industry.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Kit de 32GB (2x16GB) de memoria RAM DDR5 a 5200MHz. Ideal para mejorar el rendimiento en multitarea y aplicaciones exigentes.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Kit de Memorias 2x32GB DDR5",
-      precio: 512000,
+      name: "Kit de Memorias 2x32GB DDR5",
+      price: 512000,
       stock: 16,
       img: "../img/products/computerchip-technology-electronics-industry.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Kit de 64GB (2x32GB) de memoria RAM DDR5 a 6000MHz. Diseñado para estaciones de trabajo, servidores y gaming de alta gama.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "SSD NVMe 1TB PCIe 4.0",
-      precio: 102400,
+      name: "SSD NVMe 1TB PCIe 4.0",
+      price: 102400,
       stock: 32,
       img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Unidad SSD NVMe de 1TB con velocidades de lectura de 7000MB/s. Perfecto para sistemas operativos, juegos y aplicaciones pesadas.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "SSD NVMe 512GB PCIe 3.0",
-      precio: 205600,
+      name: "SSD NVMe 512GB PCIe 3.0",
+      price: 205600,
       stock: 64,
       img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Unidad SSD NVMe de 512GB con excelente relación costo-beneficio. Ideal para actualizar laptops y equipos de oficina.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Disco Duro 2TB 7200RPM",
-      precio: 128000,
+      name: "Disco Duro 2TB 7200RPM",
+      price: 128000,
       stock: 8,
       img: "../img/products/close-up-hdd-device-studio-top-view.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Disco duro mecánico de 2TB con velocidad 7200RPM. Capacidad masiva para almacenar archivos multimedia y backups.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Disco Duro 5TB 5400RPM",
-      precio: 205600,
+      name: "Disco Duro 5TB 5400RPM",
+      price: 205600,
       stock: 4,
       img: "../img/products/close-up-hdd-device-studio-top-view.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Disco duro mecánico de 5TB con amplia capacidad. Perfecto para servidores domésticos, sistemas NAS y almacenamiento de respaldo.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Procesador AMD Ryzen 7 7800X3D",
-      precio: 750000,
+      name: "Procesador AMD Ryzen 7 7800X3D",
+      price: 750000,
       stock: 8,
       img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Procesador AMD Ryzen 7 con tecnología 3D V-Cache. Ofrece el mejor rendimiento para gaming y aplicaciones de productividad.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Procesador Intel Core i7-14700K",
-      precio: 950000,
+      name: "Procesador Intel Core i7-14700K",
+      price: 950000,
       stock: 7,
       img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Procesador Intel Core i7 de 14ª generación con 20 núcleos. Ideal para gaming, creación de contenido y multitarea avanzada.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Tarjeta Gráfica AMD Radeon RX 7900 XTX",
-      precio: 1002400,
+      name: "Tarjeta Gráfica AMD Radeon RX 7900 XTX",
+      price: 1002400,
       stock: 3,
       img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "GPU AMD Radeon RX 7900 XTX con 24GB de VRAM. Ofrece rendimiento 4K sin concesiones para los juegos más exigentes.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Tarjeta Gráfica Intel Arc A770",
-      precio: 1012800,
+      name: "Tarjeta Gráfica Intel Arc A770",
+      price: 1012800,
       stock: 3,
       img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "GPU Intel Arc A770 con 16GB de VRAM y soporte para ray tracing. Excelente para creadores de contenido y gaming en 1440p.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Tarjeta Gráfica NVIDIA RTX 4080 SUPER",
-      precio: 1051200,
+      name: "Tarjeta Gráfica NVIDIA RTX 4080 SUPER",
+      price: 1051200,
       stock: 3,
       img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "GPU NVIDIA RTX 4080 SUPER con 16GB de GDDR6X. Cuenta con tecnología DLSS 3 y trazado de rayos para experiencias inmersivas.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: 'Monitor 4K 32" IPS',
-      precio: 850000,
+      name: 'Monitor 4K 32" IPS',
+      price: 850000,
       stock: 12,
       img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Monitor 4K UHD de 32 pulgadas con panel IPS y 99% sRGB. Perfecto para diseño gráfico, edición de video y productividad.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Monitor Gamer 165Hz",
-      precio: 620000,
+      name: "Monitor Gamer 165Hz",
+      price: 620000,
       stock: 8,
       img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Monitor gaming de 27 pulgadas con tasa de refresco de 165Hz y 1ms de respuesta. Ideal para juegos competitivos y acción rápida.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Teclado Mecánico RGB",
-      precio: 180000,
+      name: "Teclado Mecánico RGB",
+      price: 180000,
       stock: 25,
       img: "../img/products/wireless-mouse-keyboard.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Teclado mecánico con switches táctiles y retroiluminación RGB personalizable. Ideal para gaming y escritura prolongada.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Mouse Gaming Inalámbrico",
-      precio: 95000,
+      name: "Mouse Gaming Inalámbrico",
+      price: 95000,
       stock: 40,
       img: "../img/products/wireless-mouse-keyboard.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Mouse gaming inalámbrico con sensor de 16000 DPI y batería de 70 horas. Ligero y preciso para movimientos rápidos.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Auriculares Gaming 7.1",
-      precio: 320000,
+      name: "Auriculares Gaming 7.1",
+      price: 320000,
       stock: 18,
       img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Auriculares gaming con sonido envolvente 7.1, micrófono desmontable y cancelación de ruido. Ideal para inmersión total.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Placa Base ATX Z790",
-      precio: 450000,
+      name: "Placa Base ATX Z790",
+      price: 450000,
       stock: 9,
       img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Placa base ATX con socket LGA1700, soporte DDR5, PCIe 5.0 y conectividad WiFi 6E. Perfecta para builds de alto rendimiento.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Placa Base AM5 B650",
-      precio: 380000,
+      name: "Placa Base AM5 B650",
+      price: 380000,
       stock: 12,
       img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Placa base AM5 con socket para procesadores AMD Ryzen 7000. Soporte DDR5, PCIe 5.0 y conectividad avanzada.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Procesador AMD Ryzen 5 7600X",
-      precio: 450000,
+      name: "Procesador AMD Ryzen 5 7600X",
+      price: 450000,
       stock: 15,
       img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Procesador AMD Ryzen 5 de 6 núcleos y 12 hilos. Ideal para gaming en 1080p y productividad con excelente relación costo-rendimiento.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Procesador Intel Core i5-14600K",
-      precio: 520000,
+      name: "Procesador Intel Core i5-14600K",
+      price: 520000,
       stock: 10,
       img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Procesador Intel Core i5 de 14 núcleos y 20 hilos. Perfecto para gaming y creación de contenido sin comprometer el presupuesto.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Memoria RAM DDR4 2x8GB 3200MHz",
-      precio: 128000,
+      name: "Memoria RAM DDR4 2x8GB 3200MHz",
+      price: 128000,
       stock: 45,
       img: "../img/products/computerchip-technology-electronics-industry.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Kit de 16GB (2x8GB) de memoria RAM DDR4 a 3200MHz. Ideal para builds económicos y actualizaciones de equipos existentes.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Tarjeta Gráfica NVIDIA RTX 4060",
-      precio: 620000,
+      name: "Tarjeta Gráfica NVIDIA RTX 4060",
+      price: 620000,
       stock: 8,
       img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "GPU NVIDIA RTX 4060 con 8GB de GDDR6. Ofrece rendimiento para gaming en 1080p y 1440p con tecnología DLSS 3.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Tarjeta Gráfica AMD Radeon RX 7600",
-      precio: 480000,
+      name: "Tarjeta Gráfica AMD Radeon RX 7600",
+      price: 480000,
       stock: 12,
       img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "GPU AMD Radeon RX 7600 con 8GB de VRAM. Excelente para gaming en 1080p con alto rendimiento en juegos modernos.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: 'SSD SATA 1TB 2.5"',
-      precio: 89000,
+      name: 'SSD SATA 1TB 2.5"',
+      price: 89000,
       stock: 30,
       img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Unidad SSD SATA de 1TB en formato 2.5 pulgadas. Perfecto para actualizar laptops y equipos de escritorio con buen rendimiento.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "SSD NVMe 2TB PCIe 4.0",
-      precio: 205000,
+      name: "SSD NVMe 2TB PCIe 4.0",
+      price: 205000,
       stock: 20,
       img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Unidad SSD NVMe de 2TB con velocidades extremas. Ideal para gamers y creadores de contenido que necesitan gran capacidad.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Disco Duro 1TB 7200RPM",
-      precio: 72000,
+      name: "Disco Duro 1TB 7200RPM",
+      price: 72000,
       stock: 25,
       img: "../img/products/close-up-hdd-device-studio-top-view.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Disco duro mecánico de 1TB a 7200RPM. Solución económica para almacenamiento masivo de archivos y documentos.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: 'Monitor UltraWide 34"',
-      precio: 950000,
+      name: 'Monitor UltraWide 34"',
+      price: 950000,
       stock: 6,
       img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Monitor ultrawide de 34 pulgadas con resolución 3440x1440. Perfecto para productividad, edición de video y gaming inmersivo.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Monitor 1080p 144Hz",
-      precio: 380000,
+      name: "Monitor 1080p 144Hz",
+      price: 380000,
       stock: 20,
       img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Monitor gaming de 24 pulgadas con resolución 1080p y tasa de refresco de 144Hz. Ideal para juegos competitivos.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: 'Monitor 4K 28" LED',
-      precio: 720000,
+      name: 'Monitor 4K 28" LED',
+      price: 720000,
       stock: 10,
       img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Monitor 4K UHD de 28 pulgadas con panel LED. Excelente para diseño, edición y entretenimiento con gran definición.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: 'Notebook Ultrabook 14"',
-      precio: 1800000,
+      name: 'Notebook Ultrabook 14"',
+      price: 1800000,
       stock: 7,
       img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Ultrabook ligera de 14 pulgadas con procesador Intel Core i7. Perfecta para movilidad, oficina y productividad diaria.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Notebook 2 en 1 Táctil",
-      precio: 1650000,
+      name: "Notebook 2 en 1 Táctil",
+      price: 1650000,
       stock: 5,
       img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Notebook convertible 2 en 1 con pantalla táctil de 15.6 pulgadas. Ideal para creativos, estudiantes y profesionales versátiles.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Teclado Inalámbrico Slim",
-      precio: 85000,
+      name: "Teclado Inalámbrico Slim",
+      price: 85000,
       stock: 35,
       img: "../img/products/wireless-mouse-keyboard.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Teclado slim inalámbrico con diseño minimalista y batería de larga duración. Perfecto para oficina y home office.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Mouse Vertical Ergonómico",
-      precio: 75000,
+      name: "Mouse Vertical Ergonómico",
+      price: 75000,
       stock: 28,
       img: "../img/products/wireless-mouse-keyboard.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Mouse vertical ergonómico diseñado para prevenir lesiones por esfuerzo repetitivo. Ideal para largas jornadas de trabajo.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Auriculares Inalámbricos ANC",
-      precio: 280000,
+      name: "Auriculares Inalámbricos ANC",
+      price: 280000,
       stock: 15,
       img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Auriculares inalámbricos con cancelación activa de ruido. Perfectos para viajes, oficina y disfrutar de música sin interferencias.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Joystick Inalámbrico Pro",
-      precio: 160000,
+      name: "Joystick Inalámbrico Pro",
+      price: 160000,
       stock: 12,
       img: "../img/products/igor-karimov-M1nZU61xTK4-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Joystick inalámbrico profesional con batería recargable. Compatible con PC, consolas y juegos en la nube.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Placa Base B760M",
-      precio: 320000,
+      name: "Placa Base B760M",
+      price: 320000,
       stock: 14,
       img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Placa base Micro-ATX con socket LGA1700. Compatible con procesadores Intel de 12ª, 13ª y 14ª generación con DDR4.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Placa Base A620M",
-      precio: 280000,
+      name: "Placa Base A620M",
+      price: 280000,
       stock: 18,
       img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Placa base Micro-ATX AM5 para procesadores AMD Ryzen 7000. Ideal para builds económicos con soporte DDR5.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Monitor Gamer 240Hz",
-      precio: 890000,
+      name: "Monitor Gamer 240Hz",
+      price: 890000,
       stock: 5,
       img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Monitor gaming de 25 pulgadas con tasa de refresco de 240Hz y tecnología G-Sync. Ideal para esports y juegos competitivos.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Teclado 60% Mecánico",
-      precio: 150000,
+      name: "Teclado 60% Mecánico",
+      price: 150000,
       stock: 20,
       img: "../img/products/wireless-mouse-keyboard.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Teclado mecánico formato 60% con switches lineales. Compacto y portátil, perfecto para gaming y espacios reducidos.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Mouse Pad RGB XL",
-      precio: 45000,
+      name: "Mouse Pad RGB XL",
+      price: 45000,
       stock: 50,
       img: "../img/products/wireless-mouse-keyboard.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Mouse pad de gran tamaño con iluminación RGB periférica. Superficie optimizada para precisión en juegos y trabajo.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Laptop Gamer (Outlet)",
-      precio: 1200000,
+      name: "Laptop Gamer (Outlet)",
+      price: 1200000,
       stock: 0,
       img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion:
+      category: null,
+      tags: [],
+      description:
         "Laptop gaming de exhibición o reacondicionada. Funciona perfectamente.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Kit de Memorias 2x16GB DDR5 (Outlet)",
-      precio: 200000,
+      name: "Kit de Memorias 2x16GB DDR5 (Outlet)",
+      price: 200000,
       stock: 0,
       img: "../img/products/computerchip-technology-electronics-industry.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion: "Kit de 32GB DDR5 de segunda mano o reacondicionado.",
+      category: null,
+      tags: [],
+      description: "Kit de 32GB DDR5 de segunda mano o reacondicionado.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "SSD NVMe 1TB PCIe 4.0 (Outlet)",
-      precio: 80000,
+      name: "SSD NVMe 1TB PCIe 4.0 (Outlet)",
+      price: 80000,
       stock: 0,
       img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion: "Unidad SSD NVMe 1TB reacondicionada.",
+      category: null,
+      tags: [],
+      description: "Unidad SSD NVMe 1TB reacondicionada.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Procesador AMD Ryzen 7 7800X3D (Outlet)",
-      precio: 600000,
+      name: "Procesador AMD Ryzen 7 7800X3D (Outlet)",
+      price: 600000,
       stock: 0,
       img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion: "Procesador AMD Ryzen 7 de exhibición.",
+      category: null,
+      tags: [],
+      description: "Procesador AMD Ryzen 7 de exhibición.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Tarjeta Gráfica NVIDIA RTX 4080 SUPER (Outlet)",
-      precio: 900000,
+      name: "Tarjeta Gráfica NVIDIA RTX 4080 SUPER (Outlet)",
+      price: 900000,
       stock: 0,
       img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion: "GPU RTX 4080 SUPER reacondicionada.",
+      category: null,
+      tags: [],
+      description: "GPU RTX 4080 SUPER reacondicionada.",
     },
     {
       id: crypto.randomUUID(),
-      nombre: 'Monitor 4K 32" IPS (Outlet)',
-      precio: 700000,
+      name: 'Monitor 4K 32" IPS (Outlet)',
+      price: 700000,
       stock: 0,
       img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion: "Monitor 4K de 32 pulgadas de exhibición",
+      category: null,
+      tags: [],
+      description: "Monitor 4K de 32 pulgadas de exhibición",
     },
     {
       id: crypto.randomUUID(),
-      nombre: "Teclado Mecánico RGB (Outlet)",
-      precio: 140000,
+      name: "Teclado Mecánico RGB (Outlet)",
+      price: 140000,
       stock: 0,
       img: "../img/products/wireless-mouse-keyboard.jpg",
-      categoria: null,
-      etiquetas: [],
-      descripcion: "Teclado mecánico RGB reacondicionado.",
+      category: null,
+      tags: [],
+      description: "Teclado mecánico RGB reacondicionado.",
     },
   ];
-  productos =
-    JSON.parse(localStorage.getItem(claveProductos)) || productosTemplate;
-  localStorage.setItem(claveProductos, JSON.stringify(productos));
+  products = JSON.parse(localStorage.getItem(productsKey)) || productsTemplate;
+  localStorage.setItem(productsKey, JSON.stringify(products));
 });
 
-export function agregarProducto(
-  nombre,
-  precio,
+export function addProduct(
+  name,
+  price,
   stock,
   img,
-  categoria,
-  etiquetas,
-  descripcion,
+  category,
+  tags,
+  description,
 ) {
-  let producto = crearProducto(
-    nombre,
-    precio,
+  let product = createProduct(
+    name,
+    price,
     stock,
     img,
-    categoria,
-    etiquetas,
-    descripcion,
+    category,
+    tags,
+    description,
   );
-  productos.push(producto);
-  localStorage.setItem(claveProductos, JSON.stringify(productos));
+  products.push(product);
+  localStorage.setItem(productsKey, JSON.stringify(products));
 }
 
-export function editarProducto(
+export function editProduct(
   id,
-  nombre,
-  precio,
+  name,
+  price,
   stock,
   img,
-  categoria,
-  etiquetas,
-  descripcion,
+  category,
+  tags,
+  description,
 ) {
-  const index = productos.findIndex((cat) => cat.id === id);
+  const index = products.findIndex((cat) => cat.id === id);
   if (index !== -1) {
-    productos[index].nombre = nombre;
-    productos[index].precio = precio;
-    productos[index].stock = stock;
-    productos[index].img = img;
-    productos[index].categoria = categoria;
-    productos[index].etiquetas = etiquetas;
-    productos[index].descripcion = descripcion;
-    localStorage.setItem(claveProductos, JSON.stringify(productos));
+    products[index].name = name;
+    products[index].price = price;
+    products[index].stock = stock;
+    products[index].img = img;
+    products[index].category = category;
+    products[index].tags = tags;
+    products[index].description = description;
+    localStorage.setItem(productsKey, JSON.stringify(products));
   }
 }
 
-export function eliminarProducto(id) {
-  productos = productos.filter((prodEncontrado) => prodEncontrado.id !== id);
-
-  localStorage.setItem(claveProductos, JSON.stringify(productos));
+export function deleteProduct(id) {
+  products = products.filter((product) => product.id !== id);
+  localStorage.setItem(productsKey, JSON.stringify(products));
 }
 
-export function listadoProductos() {
-  return productos;
+export function allProducts() {
+  return products;
 }
 
-export function filtrarProductos(idCategoria, idEtiquetas, conStock) {
-  let productosFiltrados = productos;
+export function filterProductsBy(category, tags, withStock) {
+  let filteredProducts = products;
 
-  if (idCategoria != "" && idCategoria != null) {
-    productosFiltrados = productosFiltrados.filter(
-      (prod) => prod.categoria === idCategoria,
+  if (category != "" && category != null) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.category === category,
     );
   }
 
-  if (
-    idEtiquetas != null &&
-    Array.isArray(idEtiquetas) &&
-    idEtiquetas.length > 0
-  ) {
-    productosFiltrados = productosFiltrados.filter((prod) =>
-      idEtiquetas.every(
-        (eti) => prod.etiquetas && prod.etiquetas.includes(eti),
-      ),
+  if (tags != null && Array.isArray(tags) && tags.length > 0) {
+    filteredProducts = filteredProducts.filter((product) =>
+      tags.every((tag) => product.tags && product.tags.includes(tag)),
     );
   }
 
-  if (conStock === true) {
-    productosFiltrados = productosFiltrados.filter(
-      (prod) => prod.stock != null && prod.stock > 0,
+  if (withStock === true) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.stock != null && product.stock > 0,
     );
   }
 
-  return productosFiltrados;
+  return filteredProducts;
 }
 
-export function conseguirProducto(id) {
-  return productos.find((prod) => prod.id === id) || null;
+export function getProduct(id) {
+  return products.find((product) => product.id === id) || null;
 }
 
-function crearProducto(
-  nombre,
-  precio,
-  stock,
-  img,
-  categoria,
-  etiquetas,
-  descripcion,
-) {
-  let producto = {
+function createProduct(name, price, stock, img, category, tags, description) {
+  let product = {
     id: crypto.randomUUID(),
-    nombre: nombre,
-    precio: precio,
+    name: name,
+    price: price,
     stock: stock,
     img: img,
-    categoria: categoria,
-    etiquetas: etiquetas,
-    descripcion: descripcion,
+    category: category,
+    tags: tags,
+    description: description,
   };
-  return producto;
+  return product;
 }

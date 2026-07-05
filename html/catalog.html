@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tienda Web: Catalogo Productos</title>
+    <title>Gaming Web Store: Catalog</title>
     <link
       rel="shortcut icon"
       href="../img/favicon-yellow-pc-96.png"
@@ -45,7 +45,7 @@
               height="40"
               alt="Logo" />
             <h4 class="offcanvas-title" id="offcanvasNavbarLabel">
-              Tienda Web
+              Gaming Web Store
             </h4>
             <button
               type="button"
@@ -65,7 +65,7 @@
                     src="../img/logo-yellow-pc-100.png"
                     alt="logo"
                     height="32" />
-                  <span>Tienda Web</span>
+                  <span>Gaming Web Store</span>
                 </a>
               </div>
 
@@ -74,10 +74,10 @@
                 <a
                   id="linkIniciarSesion"
                   class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="../html/index.html"
+                  href="../html/login.html"
                   role="button">
                   <i class="bi bi-door-open-fill"></i>
-                  <span id="txt_sesion">Iniciar Sesión</span>
+                  <span id="txt_sesion">Login</span>
                 </a>
                 <a
                   id="linkCarrito"
@@ -85,7 +85,7 @@
                   href="../html/carrito.html"
                   role="button">
                   <i class="bi bi-cart-fill"></i>
-                  <span>Carrito</span>
+                  <span>Cart</span>
                   <span
                     id="carritoBadge"
                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning-subtle">
@@ -97,7 +97,7 @@
                   href="#"
                   role="button">
                   <i class="bi bi-bag-fill"></i>
-                  <span>Catálogo</span>
+                  <span>Catalog</span>
                 </a>
               </div>
 
@@ -112,30 +112,28 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-sm-end">
                   <li>
-                    <h5 class="dropdown-header text-warning">
-                      Acciones de Administrador
-                    </h5>
+                    <h5 class="dropdown-header text-warning">Admin Actions</h5>
                   </li>
                   <li>
                     <a class="dropdown-item" href="../html/crear_cuenta.html"
-                      >Alta de Usuarios</a
+                      >User Registration</a
                     >
                   </li>
                   <li>
                     <a class="dropdown-item" href="../html/listadoCuentas.html"
-                      >Usuarios Registrados</a
+                      >Users Register</a
                     >
                   </li>
                   <li>
                     <a class="dropdown-item" href="../html/adminProductos.html"
-                      >Registro de Productos</a
+                      >Products Register</a
                     >
                   </li>
                   <li>
                     <a
                       class="dropdown-item"
                       href="../html/adminCategoriasEtiquetas.html"
-                      >Categorías/Etiquetas</a
+                      >Categories/Tags Register</a
                     >
                   </li>
                 </ul>
@@ -162,7 +160,7 @@
                 class="form-select bg-black text-warning rounded-pill border-warning-subtle"
                 id="select_categorias"
                 required>
-                <option selected disabled value="">Categorias</option>
+                <option selected disabled value="">Categories</option>
               </select>
             </div>
 
@@ -176,7 +174,7 @@
                   aria-expanded="false"
                   aria-controls="collapseSeleccionarEtiquetas">
                   <i class="bi bi-tags text-warning"></i>
-                  <span>Seleccionar Etiquetas</span>
+                  <span>Tags</span>
                 </button>
               </div>
             </div>
@@ -188,7 +186,7 @@
                 id="conStock"
                 autocomplete="off" />
               <label class="btn btn-outline-warning rounded-pill" for="conStock"
-                >Con Stock</label
+                >With Stock</label
               >
             </div>
 
@@ -197,7 +195,7 @@
                 id="botonAplicarFiltros"
                 class="btn btn-warning rounded-pill text-nowrap"
                 type="submit">
-                Aplicar Filtros
+                Apply Filters
               </button>
             </div>
 
@@ -206,7 +204,7 @@
                 id="botonLimpiarFiltros"
                 class="btn btn-outline-warning rounded-pill text-nowrap"
                 type="button">
-                Limpiar Filtros
+                Reset Filters
               </button>
             </div>
           </form>
@@ -244,15 +242,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.15.15/validator.min.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>
-    <script
-      type="module"
-      src="../js/catalogoProductos/vistaCatalogoProductos.js"></script>
-    <script
-      type="module"
-      src="../js/catalogoProductos/vistaCatalogoFiltros.js"></script>
-    <script type="module" src="../js/carritoBadge.js"></script>
-    <script type="module" src="../js/gestores/gestor_sesion.js"></script>
-    <script type="module" src="../js/btn_sesion.js"></script>
-    <script type="module" src="../js/index.js"></script>
+    <script type="module" src="../js/catalog/catalogView.js"></script>
+    <script type="module" src="../js/catalog/catalogFilters.js"></script>
+    <script type="module" src="../js/commons/cartBadge.js"></script>
+    <script type="module" src="../js/managers/accountsManager.js"></script>
+    <script type="module" src="../js/managers/sessionManager.js"></script>
   </body>
 </html>

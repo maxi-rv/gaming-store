@@ -1,6 +1,6 @@
 const toastContainer = document.getElementById("toastContainer");
 
-export function mostrarToast() {
+export function showToast() {
   const MAX_TOASTS = 3;
 
   while (toastContainer.children.length >= MAX_TOASTS) {
