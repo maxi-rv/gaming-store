@@ -130,7 +130,7 @@
                   <li>
                     <a
                       class="dropdown-item"
-                      href="../html/adminCategoriasEtiquetas.html"
+                      href="../html/adminCategoriesTags.html"
                       >Categories/Tags Register</a
                     >
                   </li>
@@ -158,7 +158,7 @@
               aria-expanded="false"
               aria-controls="collapseCrearProducto">
               <i class="bi bi-bag-plus text-warning"></i>
-              <span>Catalogar nuevo Producto</span>
+              <span>Register New Product</span>
             </button>
           </div>
         </div>
@@ -171,7 +171,7 @@
           data-bs-theme="dark">
           <div class="card-header cardStyle border-bottom border-warning">
             <i class="bi bi-bag-plus text-warning"></i>
-            <span>Alta de Producto</span>
+            <span>New Product Registration</span>
           </div>
           <div class="card-body cardStyle">
             <form id="formAltaProducto">
@@ -185,8 +185,8 @@
                   type="text"
                   id="input_nombre_producto"
                   class="form-control rounded-end-pill text-white border-warning-subtle"
-                  placeholder="Nombre del producto"
-                  aria-label="Nombre del producto"
+                  placeholder="Name"
+                  aria-label="Name"
                   aria-describedby="basic-addon-name-product" />
                 <div class="invalid-feedback" id="error_nombre_producto"></div>
               </div>
@@ -201,8 +201,8 @@
                   type="number"
                   id="input_precio"
                   class="form-control rounded-end-pill text-white border-warning-subtle"
-                  placeholder="Precio"
-                  aria-label="Precio"
+                  placeholder="Price"
+                  aria-label="Price"
                   aria-describedby="basic-addon-precio" />
                 <div class="invalid-feedback" id="error_precio_producto"></div>
               </div>
@@ -217,7 +217,7 @@
                   type="number"
                   id="input_stock"
                   class="form-control rounded-end-pill text-white border-warning-subtle"
-                  placeholder="Cantidad de stock"
+                  placeholder="Stock"
                   aria-label="stock"
                   aria-describedby="basic-addon-stock" />
                 <div class="invalid-feedback" id="error_stock_producto"></div>
@@ -233,49 +233,49 @@
                   id="select_imagen"
                   class="form-select rounded-end-pill text-white border-warning-subtle">
                   <option value="Seleccionar_img" disabled selected hidden>
-                    Seleccionar Imagen
-                  </option>
-                  <option
-                    value="../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg">
-                    Auriculares
+                    Select Image
                   </option>
                   <option
                     value="../img/products/anthony-roberts-CiNJwZaDXI4-unsplash.jpg">
-                    Gabinete
+                    Computer Case
                   </option>
                   <option
                     value="../img/products/igor-karimov-M1nZU61xTK4-unsplash.jpg">
                     Gamepads
                   </option>
                   <option
+                    value="../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg">
+                    Graphics Card
+                  </option>
+                  <option
                     value="../img/products/close-up-hdd-device-studio-top-view.jpg">
                     Hard Disk Drive
+                  </option>
+                  <option
+                    value="../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg">
+                    Headphones
                   </option>
                   <option
                     value="../img/products/laptop-computer-isolated-on-white-background.jpg">
                     Laptop
                   </option>
                   <option
-                    value="../img/products/computerchip-technology-electronics-industry.jpg">
-                    Memoria Ram
-                  </option>
-                  <option
                     value="../img/products/smart-microchip-background-motherboard-closeup-technology.jpg">
-                    Microprocesador
+                    Microprocessor
                   </option>
                   <option
                     value="../img/products/computer-curvy-monitor-digital-device.jpg">
                     Monitor
                   </option>
-                  <option value="../img/products/wireless-mouse-keyboard.jpg">
-                    Perifericos
-                  </option>
                   <option value="../img/products/remy-KzvvPlAnZF4-unsplash.jpg">
-                    Placa Madre
+                    Motherboard
+                  </option>
+                  <option value="../img/products/wireless-mouse-keyboard.jpg">
+                    Peripherals
                   </option>
                   <option
-                    value="../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg">
-                    Placa de Video
+                    value="../img/products/computerchip-technology-electronics-industry.jpg">
+                    RAM Memory
                   </option>
                   <option
                     value="../img/products/high-angle-external-hard-drive-laptop.jpg">
@@ -299,7 +299,7 @@
                     disabled
                     selected
                     hidden>
-                    Seleccionar Categoria
+                    Select Category
                   </option>
                 </select>
                 <div
@@ -317,7 +317,7 @@
                   aria-expanded="false"
                   aria-controls="collapseSeleccionarEtiquetaEnCreacionProducto">
                   <i class="bi bi-tags text-warning"></i>
-                  <span>Seleccionar Etiquetas</span>
+                  <span>Select Tags</span>
                 </button>
               </div>
 
@@ -342,8 +342,8 @@
                   class="form-control text-white border-warning-subtle"
                   id="input_descripcion"
                   rows="3"
-                  placeholder="Descripcion"
-                  aria-label="Descripcion"
+                  placeholder="Description"
+                  aria-label="Description"
                   aria-describedby="basic-addon-description"></textarea>
                 <div
                   class="invalid-feedback"
@@ -355,7 +355,7 @@
                   id="buttonEdicionProducto"
                   class="btn btn-outline-warning"
                   type="submit">
-                  Guardar producto
+                  Register New Product
                 </button>
               </div>
             </form>
@@ -376,7 +376,7 @@
             <div class="modal-header border-bottom border-warning">
               <i class="bi bi-bag-plus text-warning fs-5 me-2"></i>
               <h1 class="modal-title fs-5" id="modalEdicionProductoLabel">
-                Editar Categoria
+                Modify Product
               </h1>
               <button
                 type="button"
@@ -397,8 +397,8 @@
                     type="text"
                     id="input_nombre_edicion_producto"
                     class="form-control rounded-end-pill text-white border-warning-subtle"
-                    placeholder="Nombre del producto"
-                    aria-label="Nombre del producto"
+                    placeholder="Name"
+                    aria-label="Name"
                     aria-describedby="basic-addon-name-product" />
                   <div
                     class="invalid-feedback"
@@ -415,8 +415,8 @@
                     type="number"
                     id="input_precio_edicion_producto"
                     class="form-control rounded-end-pill text-white border-warning-subtle"
-                    placeholder="Precio"
-                    aria-label="Precio"
+                    placeholder="Price"
+                    aria-label="Price"
                     aria-describedby="basic-addon-precio" />
                   <div
                     class="invalid-feedback"
@@ -433,8 +433,8 @@
                     type="number"
                     id="input_stock_edicion_producto"
                     class="form-control rounded-end-pill text-white border-warning-subtle"
-                    placeholder="Cantidad de stock"
-                    aria-label="stock"
+                    placeholder="Stock"
+                    aria-label="Stock"
                     aria-describedby="basic-addon-stock" />
                   <div
                     class="invalid-feedback"
@@ -451,50 +451,50 @@
                     id="select_imagen_edicion_producto"
                     class="form-select rounded-end-pill text-white border-warning-subtle">
                     <option value="Seleccionar" disabled selected hidden>
-                      Seleccionar Imagen
-                    </option>
-                    <option
-                      value="../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg">
-                      Auriculares
+                      Select Image
                     </option>
                     <option
                       value="../img/products/anthony-roberts-CiNJwZaDXI4-unsplash.jpg">
-                      Gabinete
+                      Computer Case
                     </option>
                     <option
                       value="../img/products/igor-karimov-M1nZU61xTK4-unsplash.jpg">
                       Gamepads
                     </option>
                     <option
+                      value="../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg">
+                      Graphics Card
+                    </option>
+                    <option
                       value="../img/products/close-up-hdd-device-studio-top-view.jpg">
                       Hard Disk Drive
+                    </option>
+                    <option
+                      value="../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg">
+                      Headphones
                     </option>
                     <option
                       value="../img/products/laptop-computer-isolated-on-white-background.jpg">
                       Laptop
                     </option>
                     <option
-                      value="../img/products/computerchip-technology-electronics-industry.jpg">
-                      Memoria Ram
-                    </option>
-                    <option
                       value="../img/products/smart-microchip-background-motherboard-closeup-technology.jpg">
-                      Microprocesador
+                      Microprocessor
                     </option>
                     <option
                       value="../img/products/computer-curvy-monitor-digital-device.jpg">
                       Monitor
                     </option>
-                    <option value="../img/products/wireless-mouse-keyboard.jpg">
-                      Perifericos
-                    </option>
                     <option
                       value="../img/products/remy-KzvvPlAnZF4-unsplash.jpg">
-                      Placa Madre
+                      Motherboard
+                    </option>
+                    <option value="../img/products/wireless-mouse-keyboard.jpg">
+                      Peripherals
                     </option>
                     <option
-                      value="../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg">
-                      Placa de Video
+                      value="../img/products/computerchip-technology-electronics-industry.jpg">
+                      RAM Memory
                     </option>
                     <option
                       value="../img/products/high-angle-external-hard-drive-laptop.jpg">
@@ -516,7 +516,7 @@
                     id="select_categoria_edicion_producto"
                     class="form-select rounded-end-pill text-white border-warning-subtle">
                     <option value="Seleccionar" disabled selected hidden>
-                      Seleccionar Categoria
+                      Select Category
                     </option>
                   </select>
                   <div
@@ -534,7 +534,7 @@
                     aria-expanded="false"
                     aria-controls="collapseSeleccionarEtiquetaEnEdicionProducto">
                     <i class="bi bi-tags text-warning"></i>
-                    <span>Seleccionar Etiquetas</span>
+                    <span>Select Tags</span>
                   </button>
                 </div>
 
@@ -559,8 +559,8 @@
                     class="form-control text-white border-warning-subtle"
                     id="input_descripcion_edicion_producto"
                     rows="3"
-                    placeholder="Descripcion"
-                    aria-label="Descripcion"
+                    placeholder="Description"
+                    aria-label="Description"
                     aria-describedby="basic-addon-description"></textarea>
                   <div
                     class="invalid-feedback"
@@ -572,7 +572,7 @@
                     id="buttonEdicionProducto"
                     class="btn btn-outline-warning"
                     type="submit">
-                    Guardar producto
+                    Save Product
                   </button>
                 </div>
               </form>
@@ -587,21 +587,21 @@
         data-bs-theme="dark">
         <div class="card-header cardStyle border-bottom border-warning">
           <i class="bi bi-bookmark text-warning"></i>
-          <span>Productos Catalogados </span>
+          <span>Products Catalog </span>
         </div>
         <div class="card-body cardStyle">
           <div class="table-responsive" data-bs-theme="dark">
             <table class="table table-striped table-hover text-center">
               <thead class="border-bottom border-warning">
                 <tr>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Precio</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price</th>
                   <th scope="col">Stock</th>
-                  <th scope="col">Imagen</th>
-                  <th scope="col">Categoria</th>
-                  <th scope="col">Etiquetas</th>
-                  <th scope="col">Descripcion</th>
-                  <th scope="col">Acciones</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Tags</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody
@@ -617,16 +617,9 @@
 
     <script src="../js/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.15.15/validator.min.js"></script>
-    <script
-      type="module"
-      src="../js/adminProductos/vistaAdminProductosCreacion.js"></script>
-    <script
-      type="module"
-      src="../js/adminProductos/vistaAdminProductosTabla.js"></script>
-    <script type="module" src="../js/gestores/gestor_sesion.js"></script>
-    <script type="module" src="../js/carritoBadge.js"></script>
-    <script type="module" src="../js/btn_sesion.js"></script>
-    <script type="module" src="../js/index.js"></script>
-    <script type="module" src="../js/redireccionado_usuario.js"></script>
+
+    <script type="module" src="/js/commons/sessionButton.js"></script>
+    <script type="module" src="../js/commons/cartBadge.js"></script>
+    <script type="module" src="../js/commons/redirectUser.js"></script>
   </body>
 </html>

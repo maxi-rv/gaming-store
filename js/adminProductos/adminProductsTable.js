@@ -10,10 +10,7 @@ import {
   conseguirProducto,
 } from "../gestores/gestorProductos.js";
 
-import {
-  datos_validos,
-  limpiar_estados,
-} from "../adminProductos/validacionProductos.js";
+import { validateData, clearValidation } from "./productsValidation.js";
 
 import { conseguirCategoria } from "../gestores/gestorCategorias.js";
 import { conseguirEtiqueta } from "../gestores/gestorEtiquetas.js";
@@ -97,9 +94,9 @@ function inicializar() {
   formEdicionProducto.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    limpiar_estados();
+    clearValidation();
 
-    let validacionFormulario = datos_validos(
+    let validacionFormulario = validateData(
       input_nombre_edicion_producto,
       error_nombre_edicion_producto,
       input_precio_edicion_producto,
@@ -127,7 +124,7 @@ function inicializar() {
       );
       formEdicionProducto.reset();
       buttonEdicionProducto.removeAttribute("data-identificador");
-      limpiar_estados();
+      clearValidation();
       cargarTabla();
     }
   });

@@ -1,16 +1,13 @@
-import {
-  cargar_categorias,
-  cargar_etiquetas,
-} from "../adminProductos/importar_etiquetas_producto.js";
+import { loadCategories, loadTags } from "../commons/loaderCategoryTags.js";
 
-import { agregarProducto } from "../gestores/gestorProductos.js";
+import { addProduct } from "../managers/productsManager.js";
 
-import { cargarTabla } from "../adminProductos/vistaAdminProductosTabla.js";
+import { cargarTabla } from "../adminAccounts/adminAccountsTable.js";
 
 import {
-  datos_validos,
-  limpiar_estados,
-} from "../adminProductos/validacionProductos.js";
+  validateData,
+  clearValidation,
+} from "../adminProductos/productsValidation.js";
 
 const formAltaProducto = document.getElementById("formAltaProducto");
 const name_producto = document.getElementById("input_nombre_producto");
@@ -44,9 +41,9 @@ function inicializar() {
   formAltaProducto.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    limpiar_estados();
+    clearValidation();
 
-    let validacionFormulario = datos_validos(
+    let validacionFormulario = validateData(
       name_producto,
       error_nombre_producto,
       precio_producto,
@@ -73,7 +70,7 @@ function inicializar() {
       );
       alert("Producto Registrado Correctamente.");
       formAltaProducto.reset();
-      limpiar_estados();
+      clearValidation();
       cargarTabla();
     }
   });

@@ -1,15 +1,16 @@
 import { validate, clearFormValidation } from "./loginValidation.js";
 
-import {
-  isLoggedIn,
-  saveSessionByUsername,
-} from "../managers/sessionManager.js";
+import { isLoggedIn, loginAccount } from "../managers/sessionManager.js";
 
 const form = document.getElementById("formulario_inicio_sesion");
 const usernameInput = document.getElementById("inputUsername");
 const passwordInput = document.getElementById("inputPassword");
 
 window.addEventListener("load", function () {
+  if (isLoggedIn()) {
+    window.location.href = "/html/catalog.html";
+  }
+
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -17,14 +18,11 @@ window.addEventListener("load", function () {
 
     if (validate()) {
       const username = usernameInput.value;
-      saveSessionByUsername(username.value);
-      window.location.href = "/html/catalog.html";
+      const password = passwordInput.value;
+      loginAccount(username, password);
       form.reset();
       clearFormValidation();
+      window.location.href = "/html/catalog.html";
     }
   });
-
-  if (isLoggedIn()) {
-    window.location.href = "/html/catalog.html";
-  }
 });

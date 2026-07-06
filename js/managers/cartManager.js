@@ -10,6 +10,7 @@ window.addEventListener("load", function () {
 });
 
 export function addToCart(productID, quantity) {
+  updateCart();
   let cartItem = getCartItemByProductID(productID);
 
   if (cartItem != null) {
@@ -22,9 +23,10 @@ export function addToCart(productID, quantity) {
 }
 
 function addByQuantityToCart(cartItemID, quantity) {
+  updateCart();
   const index = cart.findIndex((cartItem) => cartItem.id === cartItemID);
 
-  const newQuantity = cart[index].quantity + Number(quantity);
+  const newQuantity = Number(cart[index].quantity) + Number(quantity);
   const maxStock = cart[index].product.stock;
 
   if (index !== -1 && newQuantity <= maxStock) {
@@ -39,12 +41,13 @@ function addByQuantityToCart(cartItemID, quantity) {
 }
 
 export function editQuantity(cartItemID, quantity) {
+  updateCart();
   const index = cart.findIndex((cartItem) => cartItem.id === cartItemID);
 
   const maxStock = cart[index].product.stock;
 
   if (index !== -1 && quantity <= maxStock) {
-    cart[index].quantity = quantity;
+    cart[index].quantity = Number(quantity);
     cart[index].subtotal = cart[index].quantity * cart[index].product.price;
     localStorage.setItem(cartKey, JSON.stringify(cart));
   } else if (index !== -1) {
@@ -65,6 +68,7 @@ export function getCartItem(cartItemID) {
 }
 
 export function getCart() {
+  updateCart();
   return cart;
 }
 
@@ -98,7 +102,6 @@ function updateCart() {
   for (let index = 0; index < cart.length; index++) {
     let product = getProduct(cart[index].id);
     if (product != null) {
-      cart[index].product.id = product.id;
       cart[index].product.name = product.name;
       cart[index].product.price = product.price;
       cart[index].product.stock = product.stock;

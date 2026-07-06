@@ -26,12 +26,12 @@ export function loadCatalog(products) {
 
     const card = document.createElement("div");
     card.className = "card shadow border-0 m-1 ";
-    card.style = "min-height: 550px;";
     containerDiv.appendChild(card);
 
     const image = document.createElement("img");
     image.src = products[index].img;
     image.classList.add("card-img-top");
+    image.style = "height: 12rem;";
     card.appendChild(image);
 
     const cardBody = document.createElement("div");
@@ -40,13 +40,16 @@ export function loadCatalog(products) {
 
     const title = document.createElement("h4");
     title.innerHTML = products[index].name;
-    title.classList.add("card-title");
+    title.className = "card-title";
+    title.style = "height: 5rem;";
     cardBody.appendChild(title);
 
+    /*
     const description = document.createElement("p");
     description.innerHTML = products[index].description;
-    description.classList.add("card-text");
+    description.className = "card-text";
     cardBody.appendChild(description);
+    */
 
     const price = document.createElement("h3");
     price.className = "justify-content-center mb-3 text-warning-emphasis";

@@ -122,7 +122,7 @@ export function editCategory(id, name, description) {
   }
 }
 
-export function deleteCateogyr(id) {
+export function deleteCategory(id) {
   categories = categories.filter((tag) => tag.id !== id);
 
   localStorage.setItem(categoriesKey, JSON.stringify(categories));

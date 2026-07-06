@@ -5,28 +5,6 @@ window.addEventListener("load", function () {
   const productsTemplate = [
     {
       id: crypto.randomUUID(),
-      name: "Laptop Gamer",
-      price: 1500000,
-      stock: 10,
-      img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-      category: null,
-      tags: [],
-      description:
-        "Potente laptop gaming con GPU dedicada y refrigeración avanzada para sesiones intensas de juego. Ideal para títulos AAA y edición multimedia.",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "MacBook Pro",
-      price: 2500000,
-      stock: 5,
-      img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-      category: null,
-      tags: [],
-      description:
-        "Potente MacBook Pro con chip M3, pantalla Retina XDR y batería de larga duración. Diseñado para profesionales creativos y desarrolladores.",
-    },
-    {
-      id: crypto.randomUUID(),
       name: "Kit de Memorias 2x16GB DDR5",
       price: 256000,
       stock: 32,

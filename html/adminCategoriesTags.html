@@ -157,7 +157,7 @@
               aria-expanded="false"
               aria-controls="collapseCrearCategoria">
               <i class="bi bi-bookmark-plus text-warning"></i>
-              <span>Crear Categoria</span>
+              <span>Create New Category</span>
             </button>
             <button
               class="btn rounded-pill btn-outline-warning text-nowrap"
@@ -167,7 +167,7 @@
               aria-expanded="false"
               aria-controls="collapseCrearEtiqueta">
               <i class="bi bi-tag text-warning"></i>
-              <span>Crear Etiqueta</span>
+              <span>Create New Tag</span>
             </button>
           </div>
         </div>
@@ -182,7 +182,7 @@
             data-bs-theme="dark">
             <div class="card-header cardStyle border-bottom border-warning">
               <i class="bi bi-bookmark-plus text-warning"></i>
-              <span>Crear nueva Categoria</span>
+              <span>Create New Category</span>
             </div>
 
             <div class="card-body cardStyle" data-bs-theme="dark">
@@ -228,7 +228,7 @@
                     id="buttonCrearCategoria"
                     class="btn btn-warning rounded-5"
                     type="submit">
-                    Crear Categoria
+                    Register Category
                   </button>
                 </div>
               </form>
@@ -243,7 +243,7 @@
             data-bs-theme="dark">
             <div class="card-header cardStyle border-bottom border-warning">
               <i class="bi bi-tag text-warning"></i>
-              <span>Crear nueva Etiqueta</span>
+              <span>Create New Tag</span>
             </div>
             <div class="card-body cardStyle">
               <form id="formCrearEtiqueta" class="needs-validation" novalidate>
@@ -290,7 +290,7 @@
                     id="buttonCrearEtiqueta"
                     class="btn btn-warning rounded-5"
                     type="submit">
-                    Crear Etiqueta
+                    Register Tag
                   </button>
                 </div>
               </form>
@@ -311,7 +311,7 @@
             <div class="modal-header border-bottom border-warning">
               <i class="bi bi-bookmark text-warning fs-5 me-2"></i>
               <h1 class="modal-title fs-5" id="modalEdicionCategoriaLabel">
-                Editar Categoria
+                Modify Category
               </h1>
               <button
                 type="button"
@@ -368,7 +368,7 @@
                     id="buttonEdicionCategoria"
                     class="btn btn-warning rounded-5"
                     type="submit">
-                    Guardar Categoria
+                    Save Category
                   </button>
                 </div>
               </form>
@@ -389,7 +389,7 @@
             <div class="modal-header border-bottom border-warning">
               <i class="bi bi-tag text-warning fs-5 me-2"></i>
               <h1 class="modal-title fs-5" id="modalEdicionEtiquetaLabel">
-                Editar Etiqueta
+                Modify Tag
               </h1>
               <button
                 type="button"
@@ -446,7 +446,7 @@
                     id="buttonEdicionEtiqueta"
                     class="btn btn-warning rounded-5"
                     type="submit">
-                    Guardar Etiqueta
+                    Save Tag
                   </button>
                 </div>
               </form>
@@ -461,16 +461,16 @@
         data-bs-theme="dark">
         <div class="card-header cardStyle border-bottom border-warning">
           <i class="bi bi-bookmark text-warning"></i>
-          <span>Categorias Registradas </span>
+          <span>Registered Categories</span>
         </div>
         <div class="card-body cardStyle">
           <div class="table-responsive" data-bs-theme="dark">
             <table class="table table-striped table-hover text-center">
               <thead class="border-bottom border-warning">
                 <tr>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Descripcion</th>
-                  <th scope="col">Acciones</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody id="tbodyCategorias" class="align-text-bottom"></tbody>
@@ -485,16 +485,16 @@
         data-bs-theme="dark">
         <div class="card-header cardStyle border-bottom border-warning">
           <i class="bi bi-tags text-warning"></i>
-          <span>Etiquetas Registradas </span>
+          <span>Registered Tags </span>
         </div>
         <div class="card-body cardStyle">
           <div class="table-responsive" data-bs-theme="dark">
             <table class="table table-striped table-hover text-center">
               <thead class="border-bottom border-warning">
                 <tr>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Descripcion</th>
-                  <th scope="col">Acciones</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody id="tbodyEtiquetas" class="align-text-bottom"></tbody>
@@ -506,18 +506,16 @@
 
     <footer class="my-2"></footer>
 
-    <script
-      type="module"
-      src="../js/adminCategoriasEtiquetas/vistaCategorias.js"></script>
-    <script type="module" src="../js/index.js"></script>
-    <script
-      type="module"
-      src="../js/adminCategoriasEtiquetas/vistaEtiquetas.js"></script>
     <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>
-    <script type="module" src="../js/gestores/gestor_sesion.js"></script>
-    <script type="module" src="../js/carritoBadge.js"></script>
-    <script type="module" src="../js/btn_sesion.js"></script>
-    <script type="module" src="../js/redireccionado_usuario.js"></script>
+    <script
+      type="module"
+      src="../js/adminCategoriesTags/adminCategoriesView.js"></script>
+    <script
+      type="module"
+      src="../js/adminCategoriesTags/adminTagsView.js"></script>
+    <script type="module" src="../js/commons/sessionButton.js"></script>
+    <script type="module" src="../js/commons/cartBadge.js"></script>
+    <script type="module" src="../js/commons/redirectUser.js"></script>
   </body>
 </html>

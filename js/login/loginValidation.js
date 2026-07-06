@@ -16,11 +16,11 @@ export function clearFormValidation() {
 export function validate() {
   const username = usernameInput.value;
   const password = passwordInput.value;
-  const state = getAccountByUsername(username).state;
+  const account = getAccountByUsername(username);
 
   let validation = true;
 
-  if (!state) {
+  if (account != null && !account.state) {
     mostrar_error(
       usernameInput,
       "error_inicio_username",

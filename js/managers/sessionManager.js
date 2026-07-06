@@ -14,11 +14,11 @@ window.addEventListener("load", function () {
   localStorage.setItem(sessionKey, JSON.stringify(loggedAccountID));
 });
 
-export function saveSessionByUsername(username) {
+export function loginAccount(username, password) {
   const account = getAccountByUsername(username);
 
-  if (account != null && account.state) {
-    loggedAccountID = account;
+  if (account != null && account.state && account.password == password) {
+    loggedAccountID = account.id;
     localStorage.setItem(sessionKey, JSON.stringify(loggedAccountID));
   }
 }
