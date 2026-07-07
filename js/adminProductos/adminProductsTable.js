@@ -1,19 +1,22 @@
 import {
-  cargar_categorias,
-  cargar_etiquetas_seleccionadas,
-} from "../adminProductos/importar_etiquetas_producto.js";
+  loadCategories,
+  loadSelectedTags,
+} from "../commons/loaderCategoryTags.js";
 
 import {
-  listadoProductos,
-  editarProducto,
-  eliminarProducto,
-  conseguirProducto,
-} from "../gestores/gestorProductos.js";
+  allProducts,
+  editProduct,
+  deleteProduct,
+  getProduct,
+} from "../managers/productsManager.js";
 
-import { validateData, clearValidation } from "./productsValidation.js";
+import {
+  validateData,
+  clearValidation,
+} from "../adminProductos/productsValidation.js";
 
-import { conseguirCategoria } from "../gestores/gestorCategorias.js";
-import { conseguirEtiqueta } from "../gestores/gestorEtiquetas.js";
+import { getCategory } from "../managers/categoriesManager.js";
+import { getTag } from "../managers/tagsManager.js";
 
 // Modal
 const modalEdicionProducto = document.getElementById("modalEdicionProducto");
@@ -67,26 +70,23 @@ const error_descripcion_edicion_producto = document.getElementById(
 
 window.addEventListener("load", function () {
   inicializar();
-  cargarTabla();
-  cargar_categorias(select_categoria_edicion_producto);
+  loadTable();
+  loadCategories(select_categoria_edicion_producto);
 });
 
 function inicializar() {
   modalEdicionProducto.addEventListener("shown.bs.modal", function (event) {
     const boton = event.relatedTarget;
     const id = boton.getAttribute("data-identificador");
-    const producto = conseguirProducto(id);
+    const producto = getProduct(id);
 
-    input_nombre_edicion_producto.value = producto.nombre;
-    input_precio_edicion_producto.value = producto.precio;
+    input_nombre_edicion_producto.value = producto.name;
+    input_precio_edicion_producto.value = producto.price;
     input_stock_edicion_producto.value = producto.stock;
     select_imagen_edicion_producto.value = producto.img;
-    select_categoria_edicion_producto.value = producto.categoria;
-    cargar_etiquetas_seleccionadas(
-      contenedor_de_etiquetas_edicion_producto,
-      producto.etiquetas,
-    );
-    input_descripcion_edicion_producto.value = producto.descripcion;
+    select_categoria_edicion_producto.value = producto.category;
+    loadSelectedTags(contenedor_de_etiquetas_edicion_producto, producto.tags);
+    input_descripcion_edicion_producto.value = producto.description;
 
     buttonEdicionProducto.setAttribute("data-identificador", id);
   });
@@ -112,20 +112,20 @@ function inicializar() {
     );
 
     if (validacionFormulario) {
-      editarProducto(
+      editProduct(
         buttonEdicionProducto.getAttribute("data-identificador"),
         input_nombre_edicion_producto.value,
         Number(input_precio_edicion_producto.value),
         Number(input_stock_edicion_producto.value),
         select_imagen_edicion_producto.value,
         select_categoria_edicion_producto.value,
-        obtener_etiquetas(contenedor_de_etiquetas_edicion_producto),
+        getTags(contenedor_de_etiquetas_edicion_producto),
         input_descripcion_edicion_producto.value.trim(),
       );
       formEdicionProducto.reset();
       buttonEdicionProducto.removeAttribute("data-identificador");
       clearValidation();
-      cargarTabla();
+      loadTable();
     }
   });
 }
@@ -133,8 +133,8 @@ function inicializar() {
 /*
   Elimina y vuelve a generar la tabla completa.
 */
-export function cargarTabla() {
-  let productos = listadoProductos();
+export function loadTable() {
+  let productos = allProducts();
   tbodyProductos.innerHTML = "";
 
   for (let i = 0; i < productos.length; i++) {
@@ -143,10 +143,10 @@ export function cargarTabla() {
     const tr = document.createElement("tr");
 
     const tdNombre = document.createElement("td");
-    tdNombre.textContent = producto.nombre;
+    tdNombre.textContent = producto.name;
 
     const tdPrecio = document.createElement("td");
-    tdPrecio.textContent = producto.precio;
+    tdPrecio.textContent = producto.price;
 
     const tdStock = document.createElement("td");
     tdStock.textContent = producto.stock;
@@ -158,19 +158,19 @@ export function cargarTabla() {
     tdImagen.appendChild(img);
 
     const tdCategoria = document.createElement("td");
-    let categoriaEncontrada = conseguirCategoria(producto.categoria);
-    if (categoriaEncontrada) {
-      tdCategoria.textContent = categoriaEncontrada.nombre;
+    let category = getCategory(producto.category);
+    if (category) {
+      tdCategoria.textContent = category.name;
     }
 
     const tdEtiquetas = document.createElement("td");
-    let etiquetas = producto.etiquetas;
+    let tags = producto.tags;
 
-    for (let index = 0; index < etiquetas.length; index++) {
-      let etiquetaEncontrada = conseguirEtiqueta(etiquetas[index]);
+    for (let index = 0; index < tags.length; index++) {
+      let etiquetaEncontrada = conseguirEtiqueta(tags[index]);
       if (etiquetaEncontrada) {
-        let nombreEtiqueta = etiquetaEncontrada.nombre;
-        if (index + 1 == etiquetas.length) {
+        let nombreEtiqueta = etiquetaEncontrada.name;
+        if (index + 1 == tags.length) {
           tdEtiquetas.textContent += nombreEtiqueta;
         } else {
           tdEtiquetas.textContent += nombreEtiqueta + ", ";
@@ -179,19 +179,19 @@ export function cargarTabla() {
     }
 
     const tdDescripcion = document.createElement("td");
-    tdDescripcion.textContent = producto.descripcion;
+    tdDescripcion.textContent = producto.description;
 
     const tdAcciones = document.createElement("td");
-    let botonEdicion = crearBotonEdicion("modalEdicionProducto", producto.id);
-    let botonEliminar = crearBotonEliminar();
+    let botonEdicion = createEditionButton("modalEdicionProducto", producto.id);
+    let botonEliminar = createDeleteButton();
 
     tdAcciones.appendChild(botonEdicion);
     tdAcciones.appendChild(botonEliminar);
 
     botonEliminar.addEventListener("click", function (event) {
       if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
-        eliminarProducto(producto.id);
-        cargarTabla();
+        deleteProduct(producto.id);
+        loadTable();
       }
     });
 
@@ -208,7 +208,7 @@ export function cargarTabla() {
   }
 }
 
-function crearBotonEdicion(idModal, idProducto) {
+function createEditionButton(idModal, idProducto) {
   const boton = document.createElement("button");
 
   boton.type = "button";
@@ -221,7 +221,7 @@ function crearBotonEdicion(idModal, idProducto) {
   i.className = "bi bi-pencil-square";
 
   let span = document.createElement("span");
-  span.innerHTML = "Editar";
+  span.innerHTML = "Modify";
 
   boton.appendChild(i);
   boton.appendChild(span);
@@ -229,7 +229,7 @@ function crearBotonEdicion(idModal, idProducto) {
   return boton;
 }
 
-function crearBotonEliminar() {
+function createDeleteButton() {
   const boton = document.createElement("button");
 
   boton.type = "button";
@@ -243,7 +243,7 @@ function crearBotonEliminar() {
   return boton;
 }
 
-function obtener_etiquetas() {
+function getTags() {
   const checkboxes = contenedor_de_etiquetas_edicion_producto.querySelectorAll(
     '#formEdicionProducto input[type="checkbox"]',
   );

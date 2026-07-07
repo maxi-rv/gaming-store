@@ -2,7 +2,7 @@ import { loadCategories, loadTags } from "../commons/loaderCategoryTags.js";
 
 import { addProduct } from "../managers/productsManager.js";
 
-import { cargarTabla } from "../adminAccounts/adminAccountsTable.js";
+import { loadTable } from "../adminProductos/adminProductsTable.js";
 
 import {
   validateData,
@@ -32,12 +32,12 @@ const error_descripcion_producto = document.getElementById(
 );
 
 window.addEventListener("load", function () {
-  inicializar();
-  cargar_etiquetas(contenedor_de_etiquetas);
-  cargar_categorias(categoria_producto);
+  initialize();
+  loadTags(contenedor_de_etiquetas);
+  loadCategories(categoria_producto);
 });
 
-function inicializar() {
+function initialize() {
   formAltaProducto.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -59,37 +59,37 @@ function inicializar() {
     );
 
     if (validacionFormulario) {
-      agregarProducto(
+      addProduct(
         name_producto.value,
         Number(precio_producto.value),
         Number(stock_producto.value),
         imagen_producto.value,
         categoria_producto.value,
-        obtener_etiquetas(contenedor_de_etiquetas),
+        getTags(contenedor_de_etiquetas),
         descripcion_producto.value.trim(),
       );
       alert("Producto Registrado Correctamente.");
       formAltaProducto.reset();
       clearValidation();
-      cargarTabla();
+      loadTable();
     }
   });
 }
 
-function obtener_etiquetas() {
+function getTags() {
   const checkboxes = contenedor_de_etiquetas.querySelectorAll(
     '#formAltaProducto input[type="checkbox"]',
   );
 
   console.log(checkboxes);
 
-  const etiquetas = [];
+  const tags = [];
 
   checkboxes.forEach((checkbox) => {
     if (checkbox.checked) {
-      etiquetas.push(checkbox.getAttribute("data-identificador"));
+      tags.push(checkbox.getAttribute("data-identificador"));
     }
   });
-  console.log(etiquetas);
-  return etiquetas;
+  console.log(tags);
+  return tags;
 }
