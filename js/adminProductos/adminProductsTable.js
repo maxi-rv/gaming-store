@@ -19,111 +19,95 @@ import { getCategory } from "../managers/categoriesManager.js";
 import { getTag } from "../managers/tagsManager.js";
 
 // Modal
-const modalEdicionProducto = document.getElementById("modalEdicionProducto");
+const editionModal = document.getElementById("modalEdicionProducto");
 
 // Tabla tBody
-const tbodyProductos = document.getElementById("tbodyProductos");
+const tBody = document.getElementById("tbodyProductos");
 
 // Constantes Form Edicion Producto
-const formEdicionProducto = document.getElementById("formEdicionProducto");
-const input_nombre_edicion_producto = document.getElementById(
-  "input_nombre_edicion_producto",
-);
-const input_precio_edicion_producto = document.getElementById(
-  "input_precio_edicion_producto",
-);
-const input_stock_edicion_producto = document.getElementById(
-  "input_stock_edicion_producto",
-);
-const select_imagen_edicion_producto = document.getElementById(
-  "select_imagen_edicion_producto",
-);
-const select_categoria_edicion_producto = document.getElementById(
+const form = document.getElementById("formEdicionProducto");
+const nameInput = document.getElementById("input_nombre_edicion_producto");
+const priceInput = document.getElementById("input_precio_edicion_producto");
+const stockInput = document.getElementById("input_stock_edicion_producto");
+const imageSelect = document.getElementById("select_imagen_edicion_producto");
+const categorySelect = document.getElementById(
   "select_categoria_edicion_producto",
 );
-const contenedor_de_etiquetas_edicion_producto = document.getElementById(
+const tagContainer = document.getElementById(
   "contenedor_de_etiquetas_edicion_producto",
 );
-const input_descripcion_edicion_producto = document.getElementById(
+const descriptionInput = document.getElementById(
   "input_descripcion_edicion_producto",
 );
-const buttonEdicionProducto = document.getElementById("buttonEdicionProducto");
+const formButton = document.getElementById("buttonEdicionProducto");
 
-const error_nombre_edicion_producto = document.getElementById(
-  "error_nombre_edicion_producto",
-);
-const error_precio_edicion_producto = document.getElementById(
-  "error_precio_edicion_producto",
-);
-const error_stock_edicion_producto = document.getElementById(
-  "error_stock_edicion_producto",
-);
-const error_img_edicion_producto = document.getElementById(
-  "error_img_edicion_producto",
-);
-const error_categoria_edicion_producto = document.getElementById(
+const nameFeeback = document.getElementById("error_nombre_edicion_producto");
+const priceFeedback = document.getElementById("error_precio_edicion_producto");
+const stockFeedback = document.getElementById("error_stock_edicion_producto");
+const imageFeedback = document.getElementById("error_img_edicion_producto");
+const categoryFeedback = document.getElementById(
   "error_categoria_edicion_producto",
 );
-const error_descripcion_edicion_producto = document.getElementById(
+const descriptionFeedback = document.getElementById(
   "error_descripcion_edicion_producto",
 );
 
 window.addEventListener("load", function () {
   inicializar();
   loadTable();
-  loadCategories(select_categoria_edicion_producto);
+  loadCategories(categorySelect);
 });
 
 function inicializar() {
-  modalEdicionProducto.addEventListener("shown.bs.modal", function (event) {
+  editionModal.addEventListener("shown.bs.modal", function (event) {
     const boton = event.relatedTarget;
     const id = boton.getAttribute("data-identificador");
     const producto = getProduct(id);
 
-    input_nombre_edicion_producto.value = producto.name;
-    input_precio_edicion_producto.value = producto.price;
-    input_stock_edicion_producto.value = producto.stock;
-    select_imagen_edicion_producto.value = producto.img;
-    select_categoria_edicion_producto.value = producto.category;
-    loadSelectedTags(contenedor_de_etiquetas_edicion_producto, producto.tags);
-    input_descripcion_edicion_producto.value = producto.description;
+    nameInput.value = producto.name;
+    priceInput.value = producto.price;
+    stockInput.value = producto.stock;
+    imageSelect.value = producto.img;
+    categorySelect.value = producto.category;
+    loadSelectedTags(tagContainer, producto.tags);
+    descriptionInput.value = producto.description;
 
-    buttonEdicionProducto.setAttribute("data-identificador", id);
+    formButton.setAttribute("data-identificador", id);
   });
 
-  formEdicionProducto.addEventListener("submit", function (event) {
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     clearValidation();
 
     let validacionFormulario = validateData(
-      input_nombre_edicion_producto,
-      error_nombre_edicion_producto,
-      input_precio_edicion_producto,
-      error_precio_edicion_producto,
-      input_stock_edicion_producto,
-      error_stock_edicion_producto,
-      select_imagen_edicion_producto,
-      error_img_edicion_producto,
-      select_categoria_edicion_producto,
-      error_categoria_edicion_producto,
-      input_descripcion_edicion_producto,
-      error_descripcion_edicion_producto,
+      nameInput,
+      nameFeeback,
+      priceInput,
+      priceFeedback,
+      stockInput,
+      stockFeedback,
+      imageSelect,
+      imageFeedback,
+      categorySelect,
+      categoryFeedback,
+      descriptionInput,
+      descriptionFeedback,
     );
 
     if (validacionFormulario) {
       editProduct(
-        buttonEdicionProducto.getAttribute("data-identificador"),
-        input_nombre_edicion_producto.value,
-        Number(input_precio_edicion_producto.value),
-        Number(input_stock_edicion_producto.value),
-        select_imagen_edicion_producto.value,
-        select_categoria_edicion_producto.value,
-        getTags(contenedor_de_etiquetas_edicion_producto),
-        input_descripcion_edicion_producto.value.trim(),
+        formButton.getAttribute("data-identificador"),
+        nameInput.value,
+        Number(priceInput.value),
+        Number(stockInput.value),
+        imageSelect.value,
+        categorySelect.value,
+        getTags(tagContainer),
+        descriptionInput.value.trim(),
       );
-      formEdicionProducto.reset();
-      buttonEdicionProducto.removeAttribute("data-identificador");
+      form.reset();
+      formButton.removeAttribute("data-identificador");
       clearValidation();
       loadTable();
     }
@@ -134,36 +118,36 @@ function inicializar() {
   Elimina y vuelve a generar la tabla completa.
 */
 export function loadTable() {
-  let productos = allProducts();
-  tbodyProductos.innerHTML = "";
+  let products = allProducts();
+  tBody.innerHTML = "";
 
-  for (let i = 0; i < productos.length; i++) {
-    const producto = productos[i];
+  for (let i = 0; i < products.length; i++) {
+    const producto = products[i];
 
     const tr = document.createElement("tr");
 
-    const tdNombre = document.createElement("td");
-    tdNombre.textContent = producto.name;
+    const tdName = document.createElement("td");
+    tdName.textContent = producto.name;
 
-    const tdPrecio = document.createElement("td");
-    tdPrecio.textContent = producto.price;
+    const tdPrice = document.createElement("td");
+    tdPrice.textContent = producto.price;
 
     const tdStock = document.createElement("td");
     tdStock.textContent = producto.stock;
 
-    const tdImagen = document.createElement("td");
+    const tdImage = document.createElement("td");
     const img = document.createElement("img");
     img.src = producto.img;
     img.style = "width: 150px";
-    tdImagen.appendChild(img);
+    tdImage.appendChild(img);
 
-    const tdCategoria = document.createElement("td");
+    const tdCategory = document.createElement("td");
     let category = getCategory(producto.category);
     if (category) {
-      tdCategoria.textContent = category.name;
+      tdCategory.textContent = category.name;
     }
 
-    const tdEtiquetas = document.createElement("td");
+    const tdTags = document.createElement("td");
     let tags = producto.tags;
 
     for (let index = 0; index < tags.length; index++) {
@@ -171,51 +155,51 @@ export function loadTable() {
       if (etiquetaEncontrada) {
         let nombreEtiqueta = etiquetaEncontrada.name;
         if (index + 1 == tags.length) {
-          tdEtiquetas.textContent += nombreEtiqueta;
+          tdTags.textContent += nombreEtiqueta;
         } else {
-          tdEtiquetas.textContent += nombreEtiqueta + ", ";
+          tdTags.textContent += nombreEtiqueta + ", ";
         }
       }
     }
 
-    const tdDescripcion = document.createElement("td");
-    tdDescripcion.textContent = producto.description;
+    const tdDescription = document.createElement("td");
+    tdDescription.textContent = producto.description;
 
-    const tdAcciones = document.createElement("td");
-    let botonEdicion = createEditionButton("modalEdicionProducto", producto.id);
-    let botonEliminar = createDeleteButton();
+    const tdActions = document.createElement("td");
+    let modifyButton = createEditionButton("modalEdicionProducto", producto.id);
+    let deleteButton = createDeleteButton();
 
-    tdAcciones.appendChild(botonEdicion);
-    tdAcciones.appendChild(botonEliminar);
+    tdActions.appendChild(modifyButton);
+    tdActions.appendChild(deleteButton);
 
-    botonEliminar.addEventListener("click", function (event) {
-      if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
+    deleteButton.addEventListener("click", function (event) {
+      if (confirm("Are you sure you want to DELETE this Product?")) {
         deleteProduct(producto.id);
         loadTable();
       }
     });
 
-    tr.appendChild(tdNombre);
-    tr.appendChild(tdPrecio);
+    tr.appendChild(tdName);
+    tr.appendChild(tdPrice);
     tr.appendChild(tdStock);
-    tr.appendChild(tdImagen);
-    tr.appendChild(tdCategoria);
-    tr.appendChild(tdEtiquetas);
-    tr.appendChild(tdDescripcion);
-    tr.appendChild(tdAcciones);
+    tr.appendChild(tdImage);
+    tr.appendChild(tdCategory);
+    tr.appendChild(tdTags);
+    tr.appendChild(tdDescription);
+    tr.appendChild(tdActions);
 
-    tbodyProductos.appendChild(tr);
+    tBody.appendChild(tr);
   }
 }
 
 function createEditionButton(idModal, idProducto) {
-  const boton = document.createElement("button");
+  const button = document.createElement("button");
 
-  boton.type = "button";
-  boton.className = "btn btn-outline-warning m-1 text-nowrap";
-  boton.setAttribute("data-bs-toggle", "modal");
-  boton.setAttribute("data-bs-target", "#" + idModal);
-  boton.setAttribute("data-identificador", idProducto);
+  button.type = "button";
+  button.className = "btn btn-outline-warning m-1 text-nowrap";
+  button.setAttribute("data-bs-toggle", "modal");
+  button.setAttribute("data-bs-target", "#" + idModal);
+  button.setAttribute("data-identificador", idProducto);
 
   let i = document.createElement("i");
   i.className = "bi bi-pencil-square";
@@ -223,39 +207,39 @@ function createEditionButton(idModal, idProducto) {
   let span = document.createElement("span");
   span.innerHTML = "Modify";
 
-  boton.appendChild(i);
-  boton.appendChild(span);
+  button.appendChild(i);
+  button.appendChild(span);
 
-  return boton;
+  return button;
 }
 
 function createDeleteButton() {
-  const boton = document.createElement("button");
+  const button = document.createElement("button");
 
-  boton.type = "button";
-  boton.className = "btn btn-outline-danger m-1";
+  button.type = "button";
+  button.className = "btn btn-outline-danger m-1";
 
   let i = document.createElement("i");
   i.className = "bi bi-trash";
 
-  boton.appendChild(i);
+  button.appendChild(i);
 
-  return boton;
+  return button;
 }
 
 function getTags() {
-  const checkboxes = contenedor_de_etiquetas_edicion_producto.querySelectorAll(
+  const checkboxes = tagContainer.querySelectorAll(
     '#formEdicionProducto input[type="checkbox"]',
   );
   console.log(checkboxes);
 
-  const etiquetas = [];
+  const tags = [];
 
   checkboxes.forEach((checkbox) => {
     if (checkbox.checked) {
-      etiquetas.push(checkbox.getAttribute("data-identificador"));
+      tags.push(checkbox.getAttribute("data-identificador"));
     }
   });
-  console.log(etiquetas);
-  return etiquetas;
+  console.log(tags);
+  return tags;
 }

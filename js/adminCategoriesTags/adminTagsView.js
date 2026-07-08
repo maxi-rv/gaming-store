@@ -133,7 +133,7 @@ function loadTable() {
     tdActions.appendChild(deleteButton);
 
     deleteButton.addEventListener("click", function (event) {
-      if (confirm("¿Estás seguro de que deseas eliminar esta etiqueta?")) {
+      if (confirm("Are you sure you want to DELETE this Tag?")) {
         deleteTag(tag.id);
         loadTable();
       }

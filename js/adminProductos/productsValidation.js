@@ -15,11 +15,7 @@ export function validateData(
   let validation = true;
 
   if (validator.isEmpty(name_producto.value.trim())) {
-    showMessage(
-      name_producto,
-      error_nombre_producto,
-      "El nombre del producto es obligatorio",
-    );
+    showMessage(name_producto, error_nombre_producto, "Name cannot be empty");
     validation = false;
   }
 
@@ -30,7 +26,7 @@ export function validateData(
     showMessage(
       precio_producto,
       error_precio_producto,
-      "Ingrese un precio válido",
+      "Input a price value equal or greater than 0",
     );
     validation = false;
   }
@@ -42,13 +38,13 @@ export function validateData(
     showMessage(
       stock_producto,
       error_stock_producto,
-      "Ingrese un stock válido",
+      "Input a stock value equal or greater than 0",
     );
     validation = false;
   }
 
   if (imagen_producto.value === "Seleccionar_img") {
-    showMessage(imagen_producto, error_img_producto, "Seleccione una imagen");
+    showMessage(imagen_producto, error_img_producto, "Select an Image");
     validation = false;
   }
 
@@ -56,7 +52,7 @@ export function validateData(
     showMessage(
       categoria_producto,
       error_categoria_producto,
-      "Seleccione una categoría",
+      "Select a Category",
     );
     validation = false;
   }
@@ -64,7 +60,7 @@ export function validateData(
     showMessage(
       descripcion_producto,
       error_descripcion_producto,
-      "La descripción es obligatoria",
+      "Description cannot be empty",
     );
     validation = false;
   }

@@ -43,10 +43,10 @@ function validateName(nameInput, invalidFeedback) {
 
   if (validator.isEmpty(nameInput.value.trim())) {
     validation = false;
-    message = "Debe indicar un nombre";
+    message = "Name cannot be empty";
   } else if (!validator.isLength(nameInput.value.trim(), { min: 3 })) {
     validation = false;
-    message = "Debe ingresar al menos 3 caracteres";
+    message = "Name must be at least 3 characters";
   }
 
   showMessage(nameInput, validation, invalidFeedback, message);
@@ -59,7 +59,7 @@ function validateDescription(descriptionInput, invalidFeedback) {
 
   if (validator.isEmpty(descriptionInput.value.trim())) {
     validation = false;
-    message = "La descripcion no puede estar vacia.";
+    message = "Name cannot be empty";
   }
 
   showMessage(descriptionInput, validation, invalidFeedback, message);

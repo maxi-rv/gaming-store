@@ -53,7 +53,7 @@ function loadTable() {
     deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
 
     deleteButton.addEventListener("click", function () {
-      if (confirm("¿Estás seguro de que deseas eliminar esta cuenta?")) {
+      if (confirm("Are you sure you want to DELETE this Account?")) {
         deleteAccount(accounts[i].id);
         loadTable();
       }

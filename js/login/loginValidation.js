@@ -24,7 +24,7 @@ export function validate() {
     mostrar_error(
       usernameInput,
       "error_inicio_username",
-      "La cuenta se encuentra inhabilitada",
+      "The account is currently disabled",
     );
     validation = false;
   }
@@ -32,17 +32,13 @@ export function validate() {
   const response = checkAccountLogin(username, password);
 
   if (response === -1) {
-    mostrar_error(
-      usernameInput,
-      "error_inicio_username",
-      "El nombre de usuario es incorrecto",
-    );
+    mostrar_error(usernameInput, "error_inicio_username", "Username not found");
     validation = false;
   } else if (response === -2) {
     mostrar_error(
       passwordInput,
       "error_inicio_password",
-      "La contraseña es incorrecta",
+      "Username or Password mismatch",
     );
     validation = false;
   }
