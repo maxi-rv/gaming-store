@@ -1,28 +1,11 @@
+import { getAccountsMocked } from "../managers/mockData.js";
+
 let accounts = [];
 const accountsKey = "cuentas";
 
 window.addEventListener("load", function () {
-  const accountsTemplate = [
-    {
-      id: crypto.randomUUID(),
-      username: "admin",
-      password: "admin",
-      email: "-",
-      tel: "-",
-      state: true,
-      role: "Admin",
-    },
-    {
-      id: crypto.randomUUID(),
-      username: "user",
-      password: "user",
-      email: "-",
-      tel: "-",
-      state: true,
-      role: "Usuario",
-    },
-  ];
-  accounts = JSON.parse(localStorage.getItem(accountsKey)) || accountsTemplate;
+  accounts =
+    JSON.parse(localStorage.getItem(accountsKey)) || getAccountsMocked();
   localStorage.setItem(accountsKey, JSON.stringify(accounts));
 });
 

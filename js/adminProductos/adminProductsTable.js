@@ -122,51 +122,51 @@ export function loadTable() {
   tBody.innerHTML = "";
 
   for (let i = 0; i < products.length; i++) {
-    const producto = products[i];
+    const product = products[i];
 
     const tr = document.createElement("tr");
 
     const tdName = document.createElement("td");
-    tdName.textContent = producto.name;
+    tdName.textContent = product.name;
 
     const tdPrice = document.createElement("td");
-    tdPrice.textContent = producto.price;
+    tdPrice.textContent = "$" + product.price;
 
     const tdStock = document.createElement("td");
-    tdStock.textContent = producto.stock;
+    tdStock.textContent = product.stock;
 
     const tdImage = document.createElement("td");
     const img = document.createElement("img");
-    img.src = producto.img;
+    img.src = product.img;
     img.style = "width: 150px";
     tdImage.appendChild(img);
 
     const tdCategory = document.createElement("td");
-    let category = getCategory(producto.category);
+    let category = getCategory(product.category);
     if (category) {
       tdCategory.textContent = category.name;
     }
 
     const tdTags = document.createElement("td");
-    let tags = producto.tags;
+    let tags = product.tags;
 
     for (let index = 0; index < tags.length; index++) {
-      let etiquetaEncontrada = conseguirEtiqueta(tags[index]);
-      if (etiquetaEncontrada) {
-        let nombreEtiqueta = etiquetaEncontrada.name;
+      let tagFound = getTag(tags[index]);
+      if (tagFound) {
+        let tagName = tagFound.name;
         if (index + 1 == tags.length) {
-          tdTags.textContent += nombreEtiqueta;
+          tdTags.textContent += tagName;
         } else {
-          tdTags.textContent += nombreEtiqueta + ", ";
+          tdTags.textContent += tagName + ", ";
         }
       }
     }
 
     const tdDescription = document.createElement("td");
-    tdDescription.textContent = producto.description;
+    tdDescription.textContent = product.description;
 
     const tdActions = document.createElement("td");
-    let modifyButton = createEditionButton("modalEdicionProducto", producto.id);
+    let modifyButton = createEditionButton("modalEdicionProducto", product.id);
     let deleteButton = createDeleteButton();
 
     tdActions.appendChild(modifyButton);
@@ -174,7 +174,7 @@ export function loadTable() {
 
     deleteButton.addEventListener("click", function (event) {
       if (confirm("Are you sure you want to DELETE this Product?")) {
-        deleteProduct(producto.id);
+        deleteProduct(product.id);
         loadTable();
       }
     });
