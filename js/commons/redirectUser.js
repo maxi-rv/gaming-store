@@ -6,8 +6,8 @@ window.addEventListener("load", function () {
   const account = getAccountByID(getLoggedAccountID());
 
   if (!isLoggedIn()) {
-    window.location.href = "../html/login.html";
+    window.location.href = "login.html";
   } else if (isLoggedIn() && account.role !== "Admin") {
-    window.location.href = "../html/catalog.html";
+    window.location.href = "catalog.html";
   }
 });
