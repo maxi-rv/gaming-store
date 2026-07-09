@@ -1,10 +1,10 @@
-import { getTagsTemplate } from "../managers/mockData.js";
+import { getTagsMocked } from "../managers/mockData.js";
 
 let tags = [];
 const tagsKey = "etiquetas";
 
 window.addEventListener("load", function () {
-  tags = JSON.parse(localStorage.getItem(tagsKey)) || getTagsTemplate();
+  tags = JSON.parse(localStorage.getItem(tagsKey)) || getTagsMocked();
   localStorage.setItem(tagsKey, JSON.stringify(tags));
 });
 
