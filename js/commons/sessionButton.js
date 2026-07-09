@@ -24,7 +24,7 @@ window.addEventListener("load", function () {
         clearSession();
         modifySessionButton();
         modifyAdminButton();
-        window.location.href = "../html/login.html";
+        window.location.href = "html/login.html";
       }
     });
 });
