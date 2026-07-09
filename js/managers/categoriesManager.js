@@ -1,11 +1,11 @@
-import { getCategoriesTemplate } from "../managers/mockData.js";
+import { getCategoriesMocked } from "../managers/mockData.js";
 
 let categories;
 const categoriesKey = "categorias";
 
 window.addEventListener("load", function () {
   categories =
-    JSON.parse(localStorage.getItem(categoriesKey)) || getCategoriesTemplate();
+    JSON.parse(localStorage.getItem(categoriesKey)) || getCategoriesMocked();
   localStorage.setItem(categoriesKey, JSON.stringify(categories));
 });
 

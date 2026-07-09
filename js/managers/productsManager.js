@@ -1,4 +1,6 @@
 import { getProductsMocked } from "../managers/mockData.js";
+import { allCategories } from "../managers/categoriesManager.js";
+import { allTags } from "../managers/tagsManager.js";
 
 let products;
 const productsKey = "productos";
