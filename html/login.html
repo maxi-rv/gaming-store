@@ -17,9 +17,7 @@
   <body class="bodyStyle">
     <!-- Barra de navegacion responsive, se convierte en un offcanvas navBar al
     reducirse el tamaño de la venta. -->
-    <nav
-      class="navbar navbar-expand-md bg-black fixed-top"
-      data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md bg-black" data-bs-theme="dark">
       <div class="container-fluid px-2 px-md-3">
         <button
           class="navbar-toggler border-warning-subtle text-warning"
@@ -76,8 +74,8 @@
       </div>
     </nav>
 
-    <main class="my-2">
-      <div class="card mx-auto w-50 border-0 shadow-lg" data-bs-theme="dark">
+    <main class="my-3">
+      <div class="card mx-auto w-75 border-0 shadow-lg" data-bs-theme="dark">
         <div class="card-header cardStyle border-bottom border-warning">
           <i class="bi bi-door-open text-warning"></i>
           <span>Login</span>
@@ -118,12 +116,64 @@
               <div class="invalid-feedback" id="error_inicio_password"></div>
             </div>
 
-            <div class="d-grid my-4 w-75 mx-auto">
+            <div class="d-grid my-4 w-50 mx-auto">
               <button class="btn btn-outline-warning" type="submit" id="">
                 Login
               </button>
             </div>
           </form>
+        </div>
+      </div>
+
+      <div
+        class="card mx-auto w-50 border-0 shadow-lg my-3"
+        data-bs-theme="dark">
+        <div class="card-header cardStyle border-bottom border-warning">
+          <i class="bi bi-door-open text-warning"></i>
+          <span>Demo Credentials</span>
+        </div>
+        <div class="card-body cardStyle">
+          <div class="text-center">
+            <p>
+              This website uses a <strong>mocked backend service</strong> for
+              testing purposes.
+            </p>
+            <p>
+              Feel free to make use of the following accounts to test the site.
+            </p>
+          </div>
+
+          <hr class="border-warning" />
+
+          <div class="row">
+            <div class="col-6">
+              <p class="mb-1 fw-semibold">
+                <span class="text-warning">◆</span> Regular User Account
+              </p>
+              <p class="mb-0 ms-3">
+                Username:
+                <span class="text-warning fw-bold">user</span> &nbsp;|&nbsp;
+                Password: <span class="text-warning fw-bold">user</span>
+              </p>
+              <small class="text-secondary ms-3"
+                >Explore the site with standard permissions.</small
+              >
+            </div>
+
+            <div class="col-6">
+              <p class="mb-1 fw-semibold">
+                <span class="text-warning">◆</span> Administrator Account
+              </p>
+              <p class="mb-0 ms-3">
+                Username:
+                <span class="text-warning fw-bold">admin</span> &nbsp;|&nbsp;
+                Password: <span class="text-warning fw-bold">admin</span>
+              </p>
+              <small class="text-secondary ms-3"
+                >View and manage catalog, categories, and tags.</small
+              >
+            </div>
+          </div>
         </div>
       </div>
     </main>

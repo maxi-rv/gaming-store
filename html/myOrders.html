@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gaming Web Store: Cart</title>
+    <title>Gaming Web Store: My Orders</title>
     <link
       rel="shortcut icon"
       href="../img/favicon-yellow-pc-96.png"
@@ -81,15 +81,15 @@
                 </a>
                 <a
                   id="linkMyOrders"
-                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="myOrders.html"
+                  class="btn rounded-pill btn-warning text-nowrap my-1"
+                  href="#"
                   role="button">
                   <i class="bi bi-box2-fill"></i>
                   <span>My Orders</span>
                 </a>
                 <a
                   id="linkCarrito"
-                  class="btn rounded-pill btn-warning text-nowrap my-1 position-relative"
+                  class="btn rounded-pill btn-outline-warning text-nowrap my-1 position-relative"
                   href="cart.html"
                   role="button">
                   <i class="bi bi-cart-fill"></i>
@@ -152,39 +152,14 @@
       </div>
     </nav>
 
-    <main class="my-2">
-      <!-- Listado del Carrito -->
-      <section>
-        <div
-          class="card mx-auto col-12 col-sm-11 col-md-10 col-lg-8 col-xl-6 border-0 shadow-lg"
-          data-bs-theme="dark">
-          <div class="card-header mb-2 cardStyle border-bottom border-warning">
-            <i class="bi bi-cart text-warning"></i>
-            <span>Cart</span>
-          </div>
-
-          <div id="contenedorItems"></div>
-        </div>
-      </section>
-
-      <!-- Total del Carrito -->
-      <div class="col-12 col-sm-11 col-md-10 col-lg-6 pt-3 mx-auto">
-        <div class="card border-0 shadow-lg sticky-top" data-bs-theme="dark">
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <h4>Total:</h4>
-              <h3 id="total" class="text-warning"></h3>
-            </div>
-
-            <button
-              id="botonFinalizarCompra"
-              class="btn btn-warning w-100 mt-3">
-              Confirm Order
-            </button>
-          </div>
-        </div>
-      </div>
+    <main class="my-5">
+      <section id="contenedorPedidos" class="container"></section>
     </main>
+
+    <!-- Contenedor de Toasts -->
+    <div
+      id="toastContainer"
+      class="toast-container position-fixed p-5 bottom-0 end-0"></div>
 
     <!-- Footer -->
     <footer class="bg-black text-light py-4 mt-auto" data-bs-theme="dark">
@@ -282,9 +257,9 @@
       </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.15.15/validator.min.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>
-    <script type="module" src="../js/cart/cartView.js"></script>
-    <script type="module" src="../js/cart/cartConfirmation.js"></script>
+    <script type="module" src="../js/myOrders/myOrders.js"></script>
     <script type="module" src="../js/commons/sessionButton.js"></script>
     <script type="module" src="../js/commons/cartBadge.js"></script>
   </body>
