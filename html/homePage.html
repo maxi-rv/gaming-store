@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tienda Web: Inicio de Sesion</title>
+    <title>Gaming Web Store: Home</title>
     <link
       rel="shortcut icon"
       href="../img/favicon-yellow-pc-96.png"
@@ -74,7 +74,7 @@
                 <a
                   id="linkIniciarSesion"
                   class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="../html/login.html"
+                  href="login.html"
                   role="button">
                   <i class="bi bi-door-open-fill"></i>
                   <span id="txt_sesion">Login</span>
@@ -90,7 +90,7 @@
                 <a
                   id="linkCarrito"
                   class="btn rounded-pill btn-outline-warning text-nowrap my-1 position-relative"
-                  href="../html/cart.html"
+                  href="cart.html"
                   role="button">
                   <i class="bi bi-cart-fill"></i>
                   <span>Cart</span>
@@ -102,7 +102,7 @@
                 <a
                   id="linkCatalogo"
                   class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="/html/catalog.html"
+                  href="catalog.html"
                   role="button">
                   <i class="bi bi-bag-fill"></i>
                   <span>Catalog</span>
@@ -128,7 +128,9 @@
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">Accounts Register</a>
+                    <a class="dropdown-item" href="../html/adminAccounts.html"
+                      >Accounts Register</a
+                    >
                   </li>
                   <li>
                     <a class="dropdown-item" href="../html/adminProducts.html"
@@ -150,132 +152,31 @@
       </div>
     </nav>
 
-    <main class="my-2">
-      <!-- Ventana Modal de Edicion de Usuario -->
-      <div
-        class="modal fade"
-        id="modalEdicionUsuario"
-        tabindex="-1"
-        aria-labelledby="modalEdicionUsuarioLabel"
-        aria-hidden="true"
-        data-bs-theme="dark">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header border-bottom border-warning">
-              <i class="bi bi-bookmark text-warning fs-5 me-2"></i>
-              <h1 class="modal-title fs-5" id="modalEdicionUsuarioLabel">
-                Modify Account
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-              <form class="formEdicionUsuario">
-                <div class="input-group my-2 w-75 pb-2 mx-auto">
-                  <span
-                    class="input-group-text rounded-start-pill text-warning border-warning-subtle"
-                    id="basic-addon-username">
-                    <i class="bi bi-person"></i>
-                  </span>
-
-                  <input
-                    type="text"
-                    id="input_register_username"
-                    class="form-control rounded-end-pill text-white border-warning-subtle"
-                    placeholder="Nombre de usuario"
-                    aria-label="Nombre de usuario"
-                    aria-describedby="basic-addon-username" />
-                </div>
-
-                <div class="input-group my-2 w-75 pb-2 mx-auto">
-                  <span
-                    class="input-group-text rounded-start-pill text-warning border-warning-subtle"
-                    id="basic-addon-email">
-                    <i class="bi bi-envelope"></i>
-                  </span>
-
-                  <input
-                    type="email"
-                    id="input_register_email"
-                    class="form-control rounded-end-pill text-white border-warning-subtle"
-                    placeholder="Email"
-                    aria-label="Email"
-                    aria-describedby="basic-addon-email" />
-                </div>
-
-                <div class="input-group my-2 w-75 pb-2 mx-auto">
-                  <span
-                    class="input-group-text rounded-start-pill text-warning border-warning-subtle"
-                    id="basic-addon-telephone">
-                    <i class="bi bi-telephone"></i>
-                  </span>
-
-                  <input
-                    type="tel"
-                    id="input_register_telefono"
-                    class="form-control rounded-end-pill text-white border-warning-subtle"
-                    placeholder="Telefono"
-                    aria-label="Telefono"
-                    aria-describedby="basic-addon-telephone" />
-                </div>
-
-                <div class="input-group my-2 w-75 pb-2 mx-auto">
-                  <span
-                    class="input-group-text rounded-start-pill text-warning border-warning-subtle"
-                    id="basic-addon-password">
-                    <i class="bi bi-lock-fill"></i>
-                  </span>
-                  <input
-                    type="password"
-                    id="input_register_Password"
-                    class="form-control rounded-end-pill text-white border-warning-subtle"
-                    placeholder="Contraseña"
-                    aria-label="Contraseña"
-                    aria-describedby="basic-addon-password" />
-                </div>
-
-                <div class="d-grid my-4 w-75 mx-auto">
-                  <button
-                    class="btn btn-outline-warning rounded-5"
-                    type="submit">
-                    Save Account
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+    <!-- Catalogo -->
+    <main class="my-5">
+      <div class="container text-center " data-bs-theme="dark">
+        <div class="my-4">
+          <h1>Your Next Adventure Awaits.</h1>
+          <h4>Discover thousands of titles at unbeatable prices.</h4>
         </div>
-      </div>
-
-      <!-- Tabla de Usuarios -->
-      <div class="card mx-auto w-75 border-0 shadow-lg" data-bs-theme="dark">
-        <div class="card-header cardStyle border-bottom border-warning">
-          <i class="bi bi-people text-warning"></i>
-          <span>Registered Accounts</span>
+        <div
+          id="cardContainerA"
+          class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-5 justify-content-center mx-5 mx-sm-0"></div>
+        <div class="my-4">
+          <h1>Play More, Pay Less.</h1>
+          <h4>Instant delivery. Massive library.</h4>
         </div>
-        <div class="card-body cardStyle">
-          <div class="table-responsive">
-            <table class="table table-hover table-striped text-center">
-              <thead>
-                <tr>
-                  <th scope="col">Username</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Telephone</th>
-                  <th scope="col">State</th>
-                  <th scope="col">Role</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="table_body"></tbody>
-            </table>
-          </div>
-        </div>
+        <div
+          id="cardContainerB"
+          class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-5 justify-content-center mx-5 mx-sm-0"></div>
+        <div>
       </div>
     </main>
+
+    <!-- Contenedor de Toasts -->
+    <div
+      id="toastContainer"
+      class="toast-container position-fixed p-5 bottom-0 end-0"></div>
 
     <!-- Footer -->
     <footer class="bg-black text-light py-4 mt-auto" data-bs-theme="dark">
@@ -291,8 +192,8 @@
               <span class="h5 mb-0 text-warning">Gaming Web Store</span>
             </div>
             <p class="text-secondary small">
-              Your ultimate destination for gaming. Discover thousands of titles
-              at unbeatable prices. Instant delivery.
+              Your ultimate destination for gaming. Discover thousands
+              of titles at unbeatable prices. Instant delivery.
             </p>
           </div>
 
@@ -303,32 +204,16 @@
             </h6>
             <ul class="list-unstyled small">
               <li class="mb-2">
-                <a
-                  href="homePage.html"
-                  class="text-secondary text-decoration-none hover-text-warning"
-                  >Home</a
-                >
+                <a href="homePage.html" class="text-secondary text-decoration-none hover-text-warning">Home</a>
               </li>
               <li class="mb-2">
-                <a
-                  href="catalog.html"
-                  class="text-secondary text-decoration-none hover-text-warning"
-                  >Catalog</a
-                >
+                <a href="catalog.html" class="text-secondary text-decoration-none hover-text-warning">Catalog</a>
               </li>
               <li class="mb-2">
-                <a
-                  href="cart.html"
-                  class="text-secondary text-decoration-none hover-text-warning"
-                  >Cart</a
-                >
+                <a href="cart.html" class="text-secondary text-decoration-none hover-text-warning">Cart</a>
               </li>
               <li class="mb-2">
-                <a
-                  href="#"
-                  class="text-secondary text-decoration-none hover-text-warning"
-                  >My Orders</a
-                >
+                <a href="#" class="text-secondary text-decoration-none hover-text-warning">My Orders</a>
               </li>
             </ul>
           </div>
@@ -365,21 +250,21 @@
         <hr class="border-secondary my-4" />
 
         <!-- Bottom Bar -->
-        <div
-          class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
-          <span> &copy; 2026 Gaming Web Store. All rights reserved. </span>
-          <span> Created by Maximiliano Riquelme Vera. </span>
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
+          <span>
+            &copy; 2026 Gaming Web Store. All rights reserved.
+          </span>
+          <span>
+              Created by Maximiliano Riquelme Vera.
+          </span>
         </div>
       </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.15.15/validator.min.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>
-    <script
-      type="module"
-      src="../js/adminAccounts/adminAccountsTable.js"></script>
+    <script type="module" src="../js/homePage/homePage.js"></script>
     <script type="module" src="../js/commons/sessionButton.js"></script>
     <script type="module" src="../js/commons/cartBadge.js"></script>
-    <script type="module" src="../js/commons/redirectUser.js"></script>
   </body>
 </html>

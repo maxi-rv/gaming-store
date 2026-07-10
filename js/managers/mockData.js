@@ -456,514 +456,1386 @@ const tags = [
 const products = [
   {
     id: crypto.randomUUID(),
-    name: "Kit de Memorias 2x16GB DDR5",
-    price: 256000,
-    stock: 32,
-    img: "../img/products/computerchip-technology-electronics-industry.jpg",
-    category: 11, // Memory RAM
-    tags: [14], // DDR 5
-    description:
-      "Kit de 32GB (2x16GB) de memoria RAM DDR5 a 5200MHz. Ideal para mejorar el rendimiento en multitarea y aplicaciones exigentes.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Kit de Memorias 2x32GB DDR5",
-    price: 512000,
-    stock: 16,
-    img: "../img/products/computerchip-technology-electronics-industry.jpg",
-    category: 11, // Memory RAM
-    tags: [14], // DDR 5
-    description:
-      "Kit de 64GB (2x32GB) de memoria RAM DDR5 a 6000MHz. Diseñado para estaciones de trabajo, servidores y gaming de alta gama.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "SSD NVMe 1TB PCIe 4.0",
-    price: 102400,
-    stock: 32,
-    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
-    category: 8, // Hard Drives & SSDs
-    tags: [45, 50], // PCIe 4.0, SSD M.2 NVMe
-    description:
-      "Unidad SSD NVMe de 1TB con velocidades de lectura de 7000MB/s. Perfecto para sistemas operativos, juegos y aplicaciones pesadas.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "SSD NVMe 512GB PCIe 3.0",
-    price: 205600,
-    stock: 64,
-    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
-    category: 8, // Hard Drives & SSDs
-    tags: [50], // SSD M.2 NVMe
-    description:
-      "Unidad SSD NVMe de 512GB con excelente relación costo-beneficio. Ideal para actualizar laptops y equipos de oficina.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Disco Duro 2TB 7200RPM",
-    price: 128000,
-    stock: 8,
-    img: "../img/products/close-up-hdd-device-studio-top-view.jpg",
-    category: 8, // Hard Drives & SSDs
-    tags: [21], // HDD
-    description:
-      "Disco duro mecánico de 2TB con velocidad 7200RPM. Capacidad masiva para almacenar archivos multimedia y backups.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Disco Duro 5TB 5400RPM",
-    price: 205600,
-    stock: 4,
-    img: "../img/products/close-up-hdd-device-studio-top-view.jpg",
-    category: 8, // Hard Drives & SSDs
-    tags: [21], // HDD
-    description:
-      "Disco duro mecánico de 5TB con amplia capacidad. Perfecto para servidores domésticos, sistemas NAS y almacenamiento de respaldo.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Procesador AMD Ryzen 7 7800X3D",
-    price: 750000,
-    stock: 8,
-    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
-    category: 4, // CPU Processors
-    tags: [6, 7, 43], // AMD, AM5, Overclockable
-    description:
-      "Procesador AMD Ryzen 7 con tecnología 3D V-Cache. Ofrece el mejor rendimiento para gaming y aplicaciones de productividad.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Procesador Intel Core i7-14700K",
-    price: 950000,
-    stock: 7,
-    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
-    category: 4, // CPU Processors
-    tags: [26, 31, 43], // Intel, LGA 1700, Overclockable
-    description:
-      "Procesador Intel Core i7 de 14ª generación con 20 núcleos. Ideal para gaming, creación de contenido y multitarea avanzada.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Tarjeta Gráfica AMD Radeon RX 7900 XTX",
-    price: 1002400,
-    stock: 3,
-    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-    category: 7, // Graphics Cards
-    tags: [6, 17, 52], // AMD, FreeSync, Ray Tracing
-    description:
-      "GPU AMD Radeon RX 7900 XTX con 24GB de VRAM. Ofrece rendimiento 4K sin concesiones para los juegos más exigentes.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Tarjeta Gráfica Intel Arc A770",
-    price: 1012800,
-    stock: 3,
-    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-    category: 7, // Graphics Cards
-    tags: [26, 52], // Intel, Ray Tracing
-    description:
-      "GPU Intel Arc A770 con 16GB de VRAM y soporte para ray tracing. Excelente para creadores de contenido y gaming en 1440p.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Tarjeta Gráfica NVIDIA RTX 4080 SUPER",
-    price: 1051200,
-    stock: 3,
-    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-    category: 7, // Graphics Cards
-    tags: [18, 42, 52], // G-Sync, Nvidia, Ray Tracing
-    description:
-      "GPU NVIDIA RTX 4080 SUPER con 16GB de GDDR6X. Cuenta con tecnología DLSS 3 y trazado de rayos para experiencias inmersivas.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: 'Monitor 4K 32" IPS',
-    price: 850000,
-    stock: 12,
-    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-    category: 12, // Monitors
-    tags: [3, 22, 28], // 4K, HDR, IPS
-    description:
-      "Monitor 4K UHD de 32 pulgadas con panel IPS y 99% sRGB. Perfecto para diseño gráfico, edición de video y productividad.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Monitor Gamer 165Hz",
-    price: 620000,
-    stock: 8,
-    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-    category: 12, // Monitors
-    tags: [0, 17, 28], // 144Hz, FreeSync, IPS
-    description:
-      "Monitor gaming de 27 pulgadas con tasa de refresco de 165Hz y 1ms de respuesta. Ideal para juegos competitivos y acción rápida.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Teclado Mecánico RGB",
-    price: 180000,
-    stock: 25,
-    img: "../img/products/wireless-mouse-keyboard.jpg",
-    category: 9, // Keyboards & Mice
-    tags: [29, 49], // Keyboard, RGB
-    description:
-      "Teclado mecánico con switches táctiles y retroiluminación RGB personalizable. Ideal para gaming y escritura prolongada.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Mouse Gaming Inalámbrico",
-    price: 95000,
-    stock: 40,
-    img: "../img/products/wireless-mouse-keyboard.jpg",
-    category: 9, // Keyboards & Mice
-    tags: [41, 64], // Mouse, Wireless
-    description:
-      "Mouse gaming inalámbrico con sensor de 16000 DPI y batería de 70 horas. Ligero y preciso para movimientos rápidos.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Auriculares Gaming 7.1",
-    price: 320000,
-    stock: 18,
-    img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
-    category: 0, // Audio & Speakers
-    tags: [23, 53], // Headsets, Surround Sound
-    description:
-      "Auriculares gaming con sonido envolvente 7.1, micrófono desmontable y cancelación de ruido. Ideal para inmersión total.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Placa Base ATX Z790",
-    price: 450000,
-    stock: 9,
-    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
-    category: 13, // Motherboards
-    tags: [9, 31, 63], // ATX, LGA 1700, Wi-Fi 6E / Wi-Fi 7
-    description:
-      "Placa base ATX con socket LGA1700, soporte DDR5, PCIe 5.0 y conectividad WiFi 6E. Perfecta para builds de alto rendimiento.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Placa Base AM5 B650",
-    price: 380000,
-    stock: 12,
-    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
-    category: 13, // Motherboards
-    tags: [7, 37], // AM5, Micro-ATX
-    description:
-      "Placa base AM5 con socket para procesadores AMD Ryzen 7000. Soporte DDR5, PCIe 5.0 y conectividad avanzada.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Procesador AMD Ryzen 5 7600X",
-    price: 450000,
-    stock: 15,
-    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
-    category: 4, // CPU Processors
-    tags: [6, 7, 43], // AMD, AM5, Overclockable
-    description:
-      "Procesador AMD Ryzen 5 de 6 núcleos y 12 hilos. Ideal para gaming en 1080p y productividad con excelente relación costo-rendimiento.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Procesador Intel Core i5-14600K",
-    price: 520000,
-    stock: 10,
-    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
-    category: 4, // CPU Processors
-    tags: [26, 31, 43], // Intel, LGA 1700, Overclockable
-    description:
-      "Procesador Intel Core i5 de 14 núcleos y 20 hilos. Perfecto para gaming y creación de contenido sin comprometer el presupuesto.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Memoria RAM DDR4 2x8GB 3200MHz",
-    price: 128000,
-    stock: 45,
-    img: "../img/products/computerchip-technology-electronics-industry.jpg",
-    category: 11, // Memory RAM
-    tags: [13], // DDR 4
-    description:
-      "Kit de 16GB (2x8GB) de memoria RAM DDR4 a 3200MHz. Ideal para builds económicos y actualizaciones de equipos existentes.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Tarjeta Gráfica NVIDIA RTX 4060",
-    price: 620000,
-    stock: 8,
-    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-    category: 7, // Graphics Cards
-    tags: [18, 42, 52], // G-Sync, Nvidia, Ray Tracing
-    description:
-      "GPU NVIDIA RTX 4060 con 8GB de GDDR6. Ofrece rendimiento para gaming en 1080p y 1440p con tecnología DLSS 3.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Tarjeta Gráfica AMD Radeon RX 7600",
-    price: 480000,
-    stock: 12,
-    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-    category: 7, // Graphics Cards
-    tags: [6, 17], // AMD, FreeSync
-    description:
-      "GPU AMD Radeon RX 7600 con 8GB de VRAM. Excelente para gaming en 1080p con alto rendimiento en juegos modernos.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: 'SSD SATA 1TB 2.5"',
-    price: 89000,
-    stock: 30,
-    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
-    category: 8, // Hard Drives & SSDs
-    tags: [51], // SSD SATA
-    description:
-      "Unidad SSD SATA de 1TB en formato 2.5 pulgadas. Perfecto para actualizar laptops y equipos de escritorio con buen rendimiento.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "SSD NVMe 2TB PCIe 4.0",
-    price: 205000,
-    stock: 20,
-    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
-    category: 8, // Hard Drives & SSDs
-    tags: [45, 50], // PCIe 4.0, SSD M.2 NVMe
-    description:
-      "Unidad SSD NVMe de 2TB con velocidades extremas. Ideal para gamers y creadores de contenido que necesitan gran capacidad.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Disco Duro 1TB 7200RPM",
-    price: 72000,
-    stock: 25,
-    img: "../img/products/close-up-hdd-device-studio-top-view.jpg",
-    category: 8, // Hard Drives & SSDs
-    tags: [21], // HDD
-    description:
-      "Disco duro mecánico de 1TB a 7200RPM. Solución económica para almacenamiento masivo de archivos y documentos.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: 'Monitor UltraWide 34"',
-    price: 950000,
+    name: "2-in-1 Laptop with Intel",
+    price: 1600000,
     stock: 6,
-    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-    category: 12, // Monitors
-    tags: [12, 22], // Curved, HDR
+    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
+    category: 10,
+    tags: [2, 26, 55],
     description:
-      "Monitor ultrawide de 34 pulgadas con resolución 3440x1440. Perfecto para productividad, edición de video y gaming inmersivo.",
+      "Convertible 2-in-1 laptop with 15.6-inch touchscreen, Intel Core i7 processor.",
   },
   {
     id: crypto.randomUUID(),
-    name: "Monitor 1080p 144Hz",
-    price: 380000,
+    name: "2.1 Bluetooth Speakers",
+    price: 150000,
     stock: 20,
-    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-    category: 12, // Monitors
-    tags: [0, 28], // 144Hz, IPS
+    img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
+    category: 0,
+    tags: [11, 64],
     description:
-      "Monitor gaming de 24 pulgadas con resolución 1080p y tasa de refresco de 144Hz. Ideal para juegos competitivos.",
+      "2.1 speakers with Bluetooth connectivity and auxiliary cable. 50W RMS power.",
   },
   {
     id: crypto.randomUUID(),
-    name: 'Monitor 4K 28" LED',
+    name: '4K Monitor 28" LED',
     price: 720000,
     stock: 10,
     img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-    category: 12, // Monitors
-    tags: [3], // 4K
+    category: 12,
+    tags: [3],
     description:
-      "Monitor 4K UHD de 28 pulgadas con panel LED. Excelente para diseño, edición y entretenimiento con gran definición.",
+      "28-inch 4K UHD LED monitor. Excellent for design, editing, and entertainment with great definition.",
   },
   {
     id: crypto.randomUUID(),
-    name: 'Notebook Ultrabook 14"',
-    price: 1800000,
-    stock: 7,
-    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-    category: 10, // Laptops
-    tags: [26], // Intel
-    description:
-      "Ultrabook ligera de 14 pulgadas con procesador Intel Core i7. Perfecta para movilidad, oficina y productividad diaria.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Notebook 2 en 1 Táctil",
-    price: 1650000,
-    stock: 5,
-    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-    category: 10, // Laptops
-    tags: [2, 55], // 2-in-1, Touchscreen
-    description:
-      "Notebook convertible 2 en 1 con pantalla táctil de 15.6 pulgadas. Ideal para creativos, estudiantes y profesionales versátiles.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Teclado Inalámbrico Slim",
-    price: 85000,
-    stock: 35,
-    img: "../img/products/wireless-mouse-keyboard.jpg",
-    category: 9, // Keyboards & Mice
-    tags: [29, 64], // Keyboard, Wireless
-    description:
-      "Teclado slim inalámbrico con diseño minimalista y batería de larga duración. Perfecto para oficina y home office.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Mouse Vertical Ergonómico",
-    price: 75000,
-    stock: 28,
-    img: "../img/products/wireless-mouse-keyboard.jpg",
-    category: 9, // Keyboards & Mice
-    tags: [41, 64], // Mouse, Wireless
-    description:
-      "Mouse vertical ergonómico diseñado para prevenir lesiones por esfuerzo repetitivo. Ideal para largas jornadas de trabajo.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Auriculares Inalámbricos ANC",
-    price: 280000,
-    stock: 15,
-    img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
-    category: 0, // Audio & Speakers
-    tags: [64], // Wireless
-    description:
-      "Auriculares inalámbricos con cancelación activa de ruido. Perfectos para viajes, oficina y disfrutar de música sin interferencias.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Joystick Inalámbrico Pro",
-    price: 160000,
+    name: '4K Monitor 32" IPS',
+    price: 850000,
     stock: 12,
-    img: "../img/products/igor-karimov-M1nZU61xTK4-unsplash.jpg",
-    category: 6, // Gaming Gear
-    tags: [19, 64], // Gamepad, Wireless
-    description:
-      "Joystick inalámbrico profesional con batería recargable. Compatible con PC, consolas y juegos en la nube.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Placa Base B760M",
-    price: 320000,
-    stock: 14,
-    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
-    category: 13, // Motherboards
-    tags: [31, 37], // LGA 1700, Micro-ATX
-    description:
-      "Placa base Micro-ATX con socket LGA1700. Compatible con procesadores Intel de 12ª, 13ª y 14ª generación con DDR4.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Placa Base A620M",
-    price: 280000,
-    stock: 18,
-    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
-    category: 13, // Motherboards
-    tags: [7, 37], // AM5, Micro-ATX
-    description:
-      "Placa base Micro-ATX AM5 para procesadores AMD Ryzen 7000. Ideal para builds económicos con soporte DDR5.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Monitor Gamer 240Hz",
-    price: 890000,
-    stock: 5,
     img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-    category: 12, // Monitors
-    tags: [1, 18], // 240Hz, G-Sync
+    category: 12,
+    tags: [3, 22, 28],
     description:
-      "Monitor gaming de 25 pulgadas con tasa de refresco de 240Hz y tecnología G-Sync. Ideal para esports y juegos competitivos.",
+      "32-inch 4K UHD monitor with IPS panel and 99% sRGB. Perfect for graphic design, video editing, and productivity.",
   },
   {
     id: crypto.randomUUID(),
-    name: "Teclado 60% Mecánico",
-    price: 150000,
-    stock: 20,
-    img: "../img/products/wireless-mouse-keyboard.jpg",
-    category: 9, // Keyboards & Mice
-    tags: [29, 49], // Keyboard, RGB
-    description:
-      "Teclado mecánico formato 60% con switches lineales. Compacto y portátil, perfecto para gaming y espacios reducidos.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Mouse Pad RGB XL",
-    price: 45000,
-    stock: 50,
-    img: "../img/products/wireless-mouse-keyboard.jpg",
-    category: 9, // Keyboards & Mice
-    tags: [49], // RGB
-    description:
-      "Mouse pad de gran tamaño con iluminación RGB periférica. Superficie optimizada para precisión en juegos y trabajo.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Laptop Gamer (Outlet)",
-    price: 1200000,
-    stock: 0,
-    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
-    category: 10, // Laptops
-    tags: [48], // Refurbished
-    description:
-      "Laptop gaming de exhibición o reacondicionada. Funciona perfectamente.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Kit de Memorias 2x16GB DDR5 (Outlet)",
-    price: 200000,
-    stock: 0,
-    img: "../img/products/computerchip-technology-electronics-industry.jpg",
-    category: 11, // Memory RAM
-    tags: [14, 48], // DDR 5, Refurbished
-    description: "Kit de 32GB DDR5 de segunda mano o reacondicionado.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "SSD NVMe 1TB PCIe 4.0 (Outlet)",
-    price: 80000,
-    stock: 0,
-    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
-    category: 8, // Hard Drives & SSDs
-    tags: [45, 48, 50], // PCIe 4.0, Refurbished, SSD M.2 NVMe
-    description: "Unidad SSD NVMe 1TB reacondicionada.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Procesador AMD Ryzen 7 7800X3D (Outlet)",
-    price: 600000,
-    stock: 0,
-    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
-    category: 4, // CPU Processors
-    tags: [6, 7, 43, 48], // AMD, AM5, Overclockable, Refurbished
-    description: "Procesador AMD Ryzen 7 de exhibición.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: "Tarjeta Gráfica NVIDIA RTX 4080 SUPER (Outlet)",
-    price: 900000,
-    stock: 0,
-    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
-    category: 7, // Graphics Cards
-    tags: [18, 42, 48, 52], // G-Sync, Nvidia, Refurbished, Ray Tracing
-    description: "GPU RTX 4080 SUPER reacondicionada.",
-  },
-  {
-    id: crypto.randomUUID(),
-    name: 'Monitor 4K 32" IPS (Outlet)',
+    name: '4K Monitor 32" IPS (Outlet)',
     price: 700000,
     stock: 0,
     img: "../img/products/computer-curvy-monitor-digital-device.jpg",
-    category: 12, // Monitors
-    tags: [3, 28, 48], // 4K, IPS, Refurbished
-    description: "Monitor 4K de 32 pulgadas de exhibición",
+    category: 12,
+    tags: [3, 28, 47],
+    description: "Display model 32-inch 4K monitor.",
   },
   {
     id: crypto.randomUUID(),
-    name: "Teclado Mecánico RGB (Outlet)",
+    name: "4K Webcam",
+    price: 250000,
+    stock: 15,
+    img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
+    category: 18,
+    tags: [3],
+    description:
+      "4K webcam with built-in microphone, autofocus, and light correction, ideal for streaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "60% Mechanical Keyboard",
+    price: 150000,
+    stock: 20,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [29, 48],
+    description:
+      "60% form factor mechanical keyboard with linear switches. Compact and portable, perfect for gaming and small spaces.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "7-in-1 USB-C Hub",
+    price: 80000,
+    stock: 30,
+    img: "../img/products/25273342_plugs_02.jpg",
+    category: 1,
+    tags: [56],
+    description:
+      "USB-C hub with 7 ports: HDMI, USB 3.0, SD, microSD, Ethernet, and PD charging.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "8-Port Gigabit Switch",
+    price: 120000,
+    stock: 20,
+    img: "../img/products/jakub-zerdzicki-Wx6zqk5eUng-unsplash.jpg",
+    category: 14,
+    tags: [],
+    description:
+      "8-port Gigabit Ethernet switch, plug-and-play, ideal for small networks.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "A620M Motherboard",
+    price: 280000,
+    stock: 18,
+    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
+    category: 13,
+    tags: [7, 37],
+    description:
+      "Micro-ATX AM5 motherboard for AMD Ryzen 7000 processors. Ideal for budget builds with DDR5 support.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "A520 Micro-ATX Motherboard",
+    price: 250000,
+    stock: 15,
+    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
+    category: 13,
+    tags: [37],
+    description:
+      "Micro-ATX motherboard with AM4 socket, compatible with AMD Ryzen processors (except 7000 series).",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "AMD Radeon RX 7600 Graphics Card",
+    price: 480000,
+    stock: 12,
+    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+    category: 7,
+    tags: [6, 17],
+    description:
+      "AMD Radeon RX 7600 GPU with 8GB VRAM. Excellent for 1080p gaming with high performance in modern games.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "AMD Radeon RX 7800 XT Graphics Card",
+    price: 850000,
+    stock: 6,
+    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+    category: 7,
+    tags: [6, 17, 46],
+    description:
+      "AMD Radeon RX 7800 XT GPU with 16GB VRAM, ideal for 1440p and ray tracing.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "AMD Radeon RX 7900 XTX Graphics Card",
+    price: 1002400,
+    stock: 3,
+    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+    category: 7,
+    tags: [6, 17, 46],
+    description:
+      "AMD Radeon RX 7900 XTX GPU with 24GB VRAM. Delivers uncompromised 4K performance for the most demanding games.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "AMD Ryzen 5 5600X Processor",
+    price: 350000,
+    stock: 20,
+    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+    category: 4,
+    tags: [6, 43],
+    description:
+      "AMD Ryzen 5 processor with 6 cores and 12 threads, ideal for gaming and productivity.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "AMD Ryzen 5 7600X Processor",
+    price: 450000,
+    stock: 15,
+    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+    category: 4,
+    tags: [6, 7, 43],
+    description:
+      "AMD Ryzen 5 processor with 6 cores and 12 threads. Ideal for 1080p gaming and productivity with excellent cost-performance ratio.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "AMD Ryzen 7 7800X3D Processor",
+    price: 750000,
+    stock: 8,
+    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+    category: 4,
+    tags: [6, 7, 43],
+    description:
+      "AMD Ryzen 7 processor with 3D V-Cache technology. Offers the best performance for gaming and productivity applications.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "AMD Ryzen 7 7800X3D Processor (Outlet)",
+    price: 600000,
+    stock: 0,
+    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+    category: 4,
+    tags: [6, 7, 43, 47],
+    description: "Display model AMD Ryzen 7 processor.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "AMD Ryzen 9 7950X Processor",
+    price: 1200000,
+    stock: 5,
+    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+    category: 4,
+    tags: [6, 7, 43],
+    description:
+      "AMD Ryzen 9 processor with 16 cores and 32 threads, ideal for workstations and extreme gaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "AM5 B650 Motherboard",
+    price: 380000,
+    stock: 12,
+    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
+    category: 13,
+    tags: [7, 37],
+    description:
+      "AM5 motherboard with socket for AMD Ryzen 7000 processors. DDR5 support, PCIe 5.0, and advanced connectivity.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "ANC Wireless Headphones",
+    price: 280000,
+    stock: 15,
+    img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
+    category: 0,
+    tags: [64],
+    description:
+      "Wireless headphones with active noise cancellation. Perfect for travel, office, and enjoying music without interference.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "ATX RGB Case",
+    price: 250000,
+    stock: 10,
+    img: "../img/products/anthony-roberts-fMbiAi0rbkA-unsplash.jpg",
+    category: 2,
+    tags: [9, 48],
+    description:
+      "ATX case with tempered glass panel and RGB fans, excellent airflow.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "ATX X670 Motherboard",
+    price: 500000,
+    stock: 7,
+    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
+    category: 13,
+    tags: [9, 7],
+    description:
+      "ATX motherboard with AM5 socket, X670 chipset for overclocking and multiple PCIe 5.0.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "ATX Z690 Motherboard",
+    price: 420000,
+    stock: 10,
+    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
+    category: 13,
+    tags: [9, 31],
+    description:
+      "ATX motherboard with LGA1700 socket, compatible with Intel 12th and 13th generation, DDR4.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "ATX Z790 Motherboard",
+    price: 450000,
+    stock: 9,
+    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
+    category: 13,
+    tags: [9, 31, 62],
+    description:
+      "ATX motherboard with LGA1700 socket, DDR5 support, PCIe 5.0, and WiFi 6E connectivity. Perfect for high-performance builds.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "B760M Motherboard",
+    price: 320000,
+    stock: 14,
+    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
+    category: 13,
+    tags: [31, 37],
+    description:
+      "Micro-ATX motherboard with LGA1700 socket. Compatible with 12th, 13th, and 14th generation Intel processors with DDR4.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "B760 Mini-ITX Motherboard",
+    price: 380000,
+    stock: 8,
+    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
+    category: 13,
+    tags: [31, 38],
+    description:
+      "Mini-ITX motherboard with LGA1700, DDR5 support, and PCIe 5.0, ideal for compact builds.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Bluetooth 2.1 Speakers",
+    price: 150000,
+    stock: 20,
+    img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
+    category: 0,
+    tags: [11, 64],
+    description:
+      "2.1 speakers with Bluetooth connectivity and auxiliary cable. 50W RMS power.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "B760M Motherboard",
+    price: 320000,
+    stock: 14,
+    img: "../img/products/remy-KzvvPlAnZF4-unsplash.jpg",
+    category: 13,
+    tags: [31, 37],
+    description:
+      "Micro-ATX motherboard with LGA1700 socket. Compatible with 12th, 13th, and 14th generation Intel processors with DDR4.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Capacitive 2-in-1 Notebook",
+    price: 1650000,
+    stock: 5,
+    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
+    category: 10,
+    tags: [2, 55],
+    description:
+      "Convertible 2-in-1 notebook with 15.6-inch touchscreen. Ideal for creatives, students, and versatile professionals.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Charging Dock for Controllers",
+    price: 60000,
+    stock: 15,
+    img: "../img/products/25273342_plugs_02.jpg",
+    category: 6,
+    tags: [],
+    description:
+      "Charging dock for two wireless controllers, with LED battery indicators.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Condenser Microphone",
+    price: 180000,
+    stock: 12,
+    img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
+    category: 18,
+    tags: [],
+    description:
+      "USB condenser microphone with cardioid pattern, ideal for streaming and podcasts.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Controller Charging Base",
+    price: 60000,
+    stock: 15,
+    img: "../img/products/25273342_plugs_02.jpg",
+    category: 6,
+    tags: [],
+    description:
+      "Charging base for two wireless controllers, with LED battery indicators.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Curved UltraWide Monitor",
+    price: 1100000,
+    stock: 8,
+    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
+    category: 12,
+    tags: [12, 22],
+    description:
+      "34-inch curved ultrawide monitor, 3440x1440 resolution, and HDR, ideal for total immersion.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "DDR4 2x8GB 3200MHz RAM Kit",
+    price: 128000,
+    stock: 45,
+    img: "../img/products/computerchip-technology-electronics-industry.jpg",
+    category: 11,
+    tags: [13],
+    description:
+      "16GB (2x8GB) DDR4 RAM kit at 3200MHz. Ideal for budget builds and upgrades to existing systems.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "DDR4 8GB RAM",
+    price: 60000,
+    stock: 40,
+    img: "../img/products/computerchip-technology-electronics-industry.jpg",
+    category: 11,
+    tags: [13],
+    description:
+      "8GB DDR4 RAM module at 2666MHz, ideal for economical upgrades.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "DDR5 16GB RAM",
+    price: 90000,
+    stock: 30,
+    img: "../img/products/computerchip-technology-electronics-industry.jpg",
+    category: 11,
+    tags: [14],
+    description:
+      "16GB DDR5 RAM module at 4800MHz, for next-generation systems.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "DDR5 2x16GB RAM Kit",
+    price: 256000,
+    stock: 32,
+    img: "../img/products/computerchip-technology-electronics-industry.jpg",
+    category: 11,
+    tags: [14],
+    description:
+      "32GB (2x16GB) DDR5 RAM kit at 5200MHz. Ideal for improving multitasking and demanding application performance.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "DDR5 2x16GB RAM Kit (Outlet)",
+    price: 200000,
+    stock: 0,
+    img: "../img/products/computerchip-technology-electronics-industry.jpg",
+    category: 11,
+    tags: [14, 47],
+    description: "Second-hand or refurbished 32GB DDR5 kit.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "DDR5 2x32GB RAM Kit",
+    price: 512000,
+    stock: 16,
+    img: "../img/products/computerchip-technology-electronics-industry.jpg",
+    category: 11,
+    tags: [14],
+    description:
+      "64GB (2x32GB) DDR5 RAM kit at 6000MHz. Designed for workstations, servers, and high-end gaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "DDR5 2x8GB RAM Kit",
+    price: 160000,
+    stock: 25,
+    img: "../img/products/computerchip-technology-electronics-industry.jpg",
+    category: 11,
+    tags: [14],
+    description:
+      "16GB (2x8GB) DDR5 RAM kit at 4800MHz. Ideal for modern builds.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Document Scanner",
+    price: 150000,
+    stock: 12,
+    img: "../img/products/joonas-sild-QbOnQQebbjU-unsplash.jpg",
+    category: 16,
+    tags: [],
+    description: "Document scanner with automatic feeder, 1200 dpi resolution.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Ergonomic Gaming Chair",
+    price: 450000,
+    stock: 6,
+    img: "../img/products/2149746568.jpg",
+    category: 5,
+    tags: [],
+    description:
+      "Ergonomic gaming chair with lumbar support, height adjustment, and recline.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Ergonomic Vertical Mouse",
+    price: 75000,
+    stock: 28,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [40, 64],
+    description:
+      "Ergonomic vertical mouse designed to prevent repetitive strain injuries. Ideal for long work sessions.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "External 4TB Hard Drive",
+    price: 250000,
+    stock: 15,
+    img: "../img/products/close-up-hdd-device-studio-top-view.jpg",
+    category: 8,
+    tags: [15, 21],
+    description:
+      "External 4TB hard drive with USB 3.0 connection, ideal for backups and portable storage.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Full HD 1080p 144Hz Monitor",
+    price: 380000,
+    stock: 20,
+    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
+    category: 12,
+    tags: [0, 28],
+    description:
+      "24-inch gaming monitor with 1080p resolution and 144Hz refresh rate. Ideal for competitive gaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Full HD 1080p 75Hz Monitor",
+    price: 300000,
+    stock: 20,
+    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
+    category: 12,
+    tags: [],
+    description:
+      "24-inch 1080p monitor with 75Hz, ideal for office and daily use.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Gaming 7.1 Headset",
+    price: 320000,
+    stock: 18,
+    img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
+    category: 0,
+    tags: [23, 52],
+    description:
+      "Gaming headset with 7.1 surround sound, detachable microphone, and noise cancellation. Ideal for total immersion.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Gaming Desktop",
+    price: 600000,
+    stock: 4,
+    img: "../img/products/2149829155.jpg",
+    category: 5,
+    tags: [],
+    description:
+      "Gaming desk with ergonomic design, monitor support, and cable management.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Gaming Laptop (Outlet)",
+    price: 1200000,
+    stock: 0,
+    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
+    category: 10,
+    tags: [47],
+    description: "Display model or refurbished gaming laptop. Works perfectly.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Gaming Laptop RTX 4060",
+    price: 1800000,
+    stock: 5,
+    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
+    category: 10,
+    tags: [26, 41],
+    description:
+      "Gaming laptop with RTX 4060, Intel Core i7, 16GB DDR5, and 1TB SSD.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Gaming Monitor 165Hz",
+    price: 620000,
+    stock: 8,
+    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
+    category: 12,
+    tags: [0, 17, 28],
+    description:
+      "27-inch gaming monitor with 165Hz refresh rate and 1ms response time. Ideal for competitive gaming and fast action.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Gaming Monitor 240Hz",
+    price: 890000,
+    stock: 5,
+    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
+    category: 12,
+    tags: [1, 18],
+    description:
+      "25-inch gaming monitor with 240Hz refresh rate and G-Sync technology. Ideal for esports and competitive gaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Gaming Router WiFi 6",
+    price: 350000,
+    stock: 10,
+    img: "../img/products/jakub-zerdzicki-Wx6zqk5eUng-unsplash.jpg",
+    category: 14,
+    tags: [20, 61],
+    description:
+      "Gaming router with WiFi 6, advanced QoS, and 2.5G Ethernet ports.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Gaming Wireless Headset",
+    price: 280000,
+    stock: 15,
+    img: "../img/products/c-d-x-dBwadhWa-lI-unsplash.jpg",
+    category: 0,
+    tags: [23, 64],
+    description:
+      "Wireless gaming headset with retractable microphone and 30-hour battery.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Green Screen Portable",
+    price: 120000,
+    stock: 8,
+    img: "../img/products/stanley-li-sW6qUDc0uQY-unsplash.jpg",
+    category: 18,
+    tags: [],
+    description:
+      "Foldable chroma key green screen with stand, ideal for streaming and video conferencing.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "HDMI 2.1 2m Cable",
+    price: 25000,
+    stock: 100,
+    img: "../img/products/25273342_plugs_02.jpg",
+    category: 1,
+    tags: [],
+    description: "2-meter HDMI 2.1 cable, compatible with 8K and 4K at 120Hz.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "HDMI Capture Card",
+    price: 200000,
+    stock: 10,
+    img: "../img/products/stanley-li-sW6qUDc0uQY-unsplash.jpg",
+    category: 18,
+    tags: [56],
+    description:
+      "USB-C HDMI capture card, 1080p recording at 60fps, for streaming and gaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "High Conductivity Thermal Paste",
+    price: 15000,
+    stock: 100,
+    img: "../img/products/andrey-matveev-WFnpoy8hsiY-unsplash.jpg",
+    category: 3,
+    tags: [],
+    description:
+      "High conductivity thermal paste for improving heat transfer between CPU and heatsink.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Intel Arc A750 Graphics Card",
+    price: 400000,
+    stock: 12,
+    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+    category: 7,
+    tags: [26],
+    description:
+      "Intel Arc A750 GPU with 8GB VRAM, excellent for 1080p gaming and content creation.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Intel Arc A770 Graphics Card",
+    price: 1012800,
+    stock: 3,
+    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+    category: 7,
+    tags: [26, 46],
+    description:
+      "Intel Arc A770 GPU with 16GB VRAM and ray tracing support. Excellent for content creators and 1440p gaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Intel Core i3-14100F Processor",
+    price: 250000,
+    stock: 30,
+    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+    category: 4,
+    tags: [26, 31],
+    description:
+      "14th generation Intel Core i3 processor, 4 cores, ideal for budget builds.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Intel Core i5-14600K Processor",
+    price: 520000,
+    stock: 10,
+    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+    category: 4,
+    tags: [26, 31, 43],
+    description:
+      "Intel Core i5 processor with 14 cores and 20 threads. Perfect for gaming and content creation without breaking the budget.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Intel Core i7-14700K Processor",
+    price: 950000,
+    stock: 7,
+    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+    category: 4,
+    tags: [26, 31, 43],
+    description:
+      "14th generation Intel Core i7 processor with 20 cores. Ideal for gaming, content creation, and advanced multitasking.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Intel Core i9-14900K Processor",
+    price: 1300000,
+    stock: 4,
+    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+    category: 4,
+    tags: [26, 31, 43],
+    description:
+      "14th generation Intel Core i9 processor, 24 cores and 32 threads, maximum performance.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Laptop for Programming",
+    price: 1200000,
+    stock: 10,
+    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
+    category: 10,
+    tags: [32],
+    description:
+      "Laptop with Linux pre-installed, ideal for programming and development.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Laser Monochrome Printer",
+    price: 200000,
+    stock: 8,
+    img: "../img/products/joonas-sild-QbOnQQebbjU-unsplash.jpg",
+    category: 16,
+    tags: [30],
+    description: "High-speed monochrome laser printer, ideal for offices.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Linux Ubuntu Preinstalled",
+    price: 50000,
+    stock: 20,
+    img: "../img/products/lukas-blazek-mcSDtbWXUZU-unsplash.jpg",
+    category: 17,
+    tags: [32],
+    description:
+      "Linux Ubuntu license with technical support and updates for one year.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Liquid Cooling 240mm",
+    price: 350000,
+    stock: 15,
+    img: "../img/products/smart-microchip-background-motherboard-closeup-technology.jpg",
+    category: 3,
+    tags: [33],
+    description:
+      "240mm AIO liquid cooling system with RGB, for high-performance CPUs.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Logitech G29 Racing Wheel",
+    price: 400000,
+    stock: 8,
+    img: "../img/products/igor-karimov-M1nZU61xTK4-unsplash.jpg",
+    category: 6,
+    tags: [19],
+    description:
+      "Logitech G29 racing wheel with pedals, force feedback, compatible with PC and PS4/PS5.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Mechanical Keyboard RGB",
+    price: 180000,
+    stock: 25,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [29, 48],
+    description:
+      "Mechanical keyboard with tactile switches and customizable RGB backlighting. Ideal for gaming and extended typing.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Mechanical Keyboard RGB (Outlet)",
     price: 140000,
     stock: 0,
     img: "../img/products/wireless-mouse-keyboard.jpg",
-    category: 9, // Keyboards & Mice
-    tags: [29, 48, 49], // Keyboard, Refurbished, RGB
-    description: "Teclado mecánico RGB reacondicionado.",
+    category: 9,
+    tags: [29, 47, 48],
+    description: "Refurbished RGB mechanical keyboard.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Mechanical Wireless Keyboard",
+    price: 220000,
+    stock: 18,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [29, 64],
+    description:
+      "Wireless mechanical keyboard with tactile switches and RGB, 40-hour battery.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Mesh WiFi 3 Units",
+    price: 450000,
+    stock: 8,
+    img: "../img/products/jakub-zerdzicki-Wx6zqk5eUng-unsplash.jpg",
+    category: 14,
+    tags: [36],
+    description:
+      "3-unit Mesh WiFi system for complete coverage in large homes.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Micro-ATX Case",
+    price: 200000,
+    stock: 12,
+    img: "../img/products/anthony-roberts-fMbiAi0rbkA-unsplash.jpg",
+    category: 2,
+    tags: [37],
+    description:
+      "Compact Micro-ATX case with minimalist design, ideal for small spaces.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Microsoft 365 Subscription",
+    price: 100000,
+    stock: 100,
+    img: "../img/products/lukas-blazek-mcSDtbWXUZU-unsplash.jpg",
+    category: 17,
+    tags: [63],
+    description:
+      "Annual Microsoft 365 Personal subscription, includes Office and 1TB OneDrive.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Mini-ITX Case",
+    price: 180000,
+    stock: 8,
+    img: "../img/products/anthony-roberts-fMbiAi0rbkA-unsplash.jpg",
+    category: 2,
+    tags: [38],
+    description:
+      "Ultra-compact Mini-ITX case, perfect for small and portable builds.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Modular 1000W Power Supply",
+    price: 380000,
+    stock: 8,
+    img: "../img/products/andrey-matveev-3pkXVlGK194-unsplash.jpg",
+    category: 15,
+    tags: [4, 39],
+    description:
+      "1000W modular power supply with 80 Plus Gold certification, fully detachable cables.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Multi-function Wireless Printer",
+    price: 300000,
+    stock: 10,
+    img: "../img/products/joonas-sild-QbOnQQebbjU-unsplash.jpg",
+    category: 16,
+    tags: [5, 64],
+    description:
+      "Multi-function printer with WiFi, scanner, and copier, compatible with mobile devices.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Numeric Keypad",
+    price: 35000,
+    stock: 40,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [29],
+    description: "USB numeric keypad, ideal for data entry and spreadsheets.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "NVIDIA RTX 4060 Graphics Card",
+    price: 620000,
+    stock: 8,
+    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+    category: 7,
+    tags: [18, 41, 46],
+    description:
+      "NVIDIA RTX 4060 GPU with 8GB GDDR6. Delivers performance for 1080p and 1440p gaming with DLSS 3 technology.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "NVIDIA RTX 4070 Ti SUPER Graphics Card",
+    price: 1200000,
+    stock: 5,
+    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+    category: 7,
+    tags: [18, 41, 46],
+    description:
+      "NVIDIA RTX 4070 Ti SUPER GPU with 16GB GDDR6X, ideal for 4K and ray tracing.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "NVIDIA RTX 4080 SUPER Graphics Card",
+    price: 1051200,
+    stock: 3,
+    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+    category: 7,
+    tags: [18, 41, 46],
+    description:
+      "NVIDIA RTX 4080 SUPER GPU with 16GB GDDR6X. Features DLSS 3 technology and ray tracing for immersive experiences.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "NVIDIA RTX 4080 SUPER Graphics Card (Outlet)",
+    price: 900000,
+    stock: 0,
+    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+    category: 7,
+    tags: [18, 41, 47, 46],
+    description: "Refurbished RTX 4080 SUPER GPU.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "NVIDIA RTX 4090 Graphics Card",
+    price: 2000000,
+    stock: 2,
+    img: "../img/products/thomas-foster-vWgoeEYdtIY-unsplash.jpg",
+    category: 7,
+    tags: [18, 41, 46],
+    description:
+      "NVIDIA RTX 4090 GPU with 24GB GDDR6X, the top-tier for 4K gaming and professional creation.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "NVMe PCIe 4.0 1TB SSD",
+    price: 102400,
+    stock: 32,
+    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
+    category: 8,
+    tags: [45, 50],
+    description:
+      "1TB NVMe SSD with 7000MB/s read speeds. Perfect for operating systems, games, and demanding applications.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "NVMe PCIe 4.0 1TB SSD (Outlet)",
+    price: 80000,
+    stock: 0,
+    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
+    category: 8,
+    tags: [45, 47, 50],
+    description: "Refurbished 1TB NVMe SSD.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "NVMe PCIe 4.0 2TB SSD",
+    price: 205000,
+    stock: 20,
+    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
+    category: 8,
+    tags: [45, 50],
+    description:
+      "2TB NVMe SSD with extreme speeds. Ideal for gamers and content creators needing large capacity.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "NVMe PCIe 4.0 4TB SSD",
+    price: 450000,
+    stock: 10,
+    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
+    category: 8,
+    tags: [44, 50],
+    description:
+      "4TB NVMe SSD with PCIe 4.0, 7000MB/s read speed, for massive storage.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "NVMe PCIe 3.0 512GB SSD",
+    price: 205600,
+    stock: 64,
+    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
+    category: 8,
+    tags: [50],
+    description:
+      "512GB NVMe SSD with excellent cost-benefit ratio. Ideal for upgrading laptops and office computers.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "OLED 4K Monitor",
+    price: 1500000,
+    stock: 5,
+    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
+    category: 12,
+    tags: [3, 42],
+    description:
+      "32-inch 4K OLED monitor, vivid colors, and perfect blacks, ideal for creators.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Photo Printer",
+    price: 350000,
+    stock: 6,
+    img: "../img/products/joonas-sild-QbOnQQebbjU-unsplash.jpg",
+    category: 16,
+    tags: [24],
+    description: "6-color inkjet photo printer, professional quality.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Portable 1TB USB-C SSD",
+    price: 180000,
+    stock: 25,
+    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
+    category: 8,
+    tags: [45, 56],
+    description:
+      "Portable 1TB SSD with USB-C connection, 1000MB/s read speeds.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Power Supply 1000W Modular",
+    price: 380000,
+    stock: 8,
+    img: "../img/products/andrey-matveev-3pkXVlGK194-unsplash.jpg",
+    category: 15,
+    tags: [4, 39],
+    description:
+      "1000W modular power supply with 80 Plus Gold certification, fully detachable cables.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Power Supply 650W",
+    price: 150000,
+    stock: 20,
+    img: "../img/products/andrey-matveev-3pkXVlGK194-unsplash.jpg",
+    category: 15,
+    tags: [4],
+    description:
+      "650W power supply with 80 Plus Bronze certification, ideal for mid-range builds.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Power Supply 750W ATX 3.0",
+    price: 220000,
+    stock: 15,
+    img: "../img/products/andrey-matveev-3pkXVlGK194-unsplash.jpg",
+    category: 15,
+    tags: [10, 39],
+    description:
+      "750W ATX 3.0 power supply with 12VHPWR connector, semi-modular, and efficient.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Power Supply 850W 80 Plus Gold",
+    price: 280000,
+    stock: 12,
+    img: "../img/products/andrey-matveev-3pkXVlGK194-unsplash.jpg",
+    category: 15,
+    tags: [4, 39],
+    description:
+      "850W modular power supply with 80 Plus Gold certification, flat cables for better airflow.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Premium Antivirus",
+    price: 60000,
+    stock: 30,
+    img: "../img/products/lukas-blazek-mcSDtbWXUZU-unsplash.jpg",
+    category: 17,
+    tags: [],
+    description:
+      "Annual antivirus subscription with real-time protection and firewall.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Programming Laptop",
+    price: 1200000,
+    stock: 10,
+    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
+    category: 10,
+    tags: [32],
+    description:
+      "Laptop with Linux pre-installed, ideal for programming and development.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "QHD 1440p 165Hz Monitor",
+    price: 700000,
+    stock: 12,
+    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
+    category: 12,
+    tags: [0, 28],
+    description:
+      "27-inch 1440p monitor with 165Hz and IPS panel, perfect for gaming and productivity.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "RAM Kit 2x16GB DDR4",
+    price: 130000,
+    stock: 20,
+    img: "../img/products/computerchip-technology-electronics-industry.jpg",
+    category: 11,
+    tags: [13],
+    description:
+      "32GB (2x16GB) DDR4 RAM kit at 3200MHz. Ideal for upgrading existing systems.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "RGB 120mm Fan",
+    price: 45000,
+    stock: 50,
+    img: "../img/products/andrey-matveev-oNoiw6FcrL8-unsplash.jpg",
+    category: 3,
+    tags: [48],
+    description: "120mm fan with RGB lighting and PWM control, low noise.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "RGB Mechanical Keyboard",
+    price: 180000,
+    stock: 25,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [29, 48],
+    description:
+      "Mechanical keyboard with tactile switches and customizable RGB backlighting. Ideal for gaming and extended typing.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: 'SATA 1TB 2.5" SSD',
+    price: 89000,
+    stock: 30,
+    img: "../img/products/2149417027.jpg",
+    category: 8,
+    tags: [51],
+    description:
+      "1TB SATA SSD in 2.5-inch form factor. Perfect for upgrading laptops and desktop computers with solid performance.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "SD Card 512GB",
+    price: 60000,
+    stock: 100,
+    img: "../img/products/high-angle-external-hard-drive-laptop.jpg",
+    category: 8,
+    tags: [16],
+    description:
+      "512GB microSD card, Class 10, ideal for cameras and mobile devices.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Slim Wireless Keyboard",
+    price: 85000,
+    stock: 35,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [29, 64],
+    description:
+      "Slim wireless keyboard with minimalist design and long battery life. Perfect for office and home office.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Steering Wheel Stand",
+    price: 150000,
+    stock: 10,
+    img: "../img/products/2149746568.jpg",
+    category: 5,
+    tags: [],
+    description:
+      "Adjustable stand for sim racing wheels, compatible with most models.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Ultra-light AMD Laptop",
+    price: 1400000,
+    stock: 8,
+    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
+    category: 10,
+    tags: [6],
+    description:
+      "Ultra-light laptop with AMD Ryzen 7 processor, 16GB RAM, and 512GB SSD.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: 'Ultra-wide 34" Monitor',
+    price: 950000,
+    stock: 6,
+    img: "../img/products/computer-curvy-monitor-digital-device.jpg",
+    category: 12,
+    tags: [12, 22],
+    description:
+      "34-inch ultrawide monitor with 3440x1440 resolution. Perfect for productivity, video editing, and immersive gaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: 'Ultrabook 14" Notebook',
+    price: 1800000,
+    stock: 7,
+    img: "../img/products/laptop-computer-isolated-on-white-background.jpg",
+    category: 10,
+    tags: [26],
+    description:
+      "Lightweight 14-inch Ultrabook with Intel Core i7 processor. Perfect for mobility, office, and daily productivity.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "USB-C to HDMI Adapter",
+    price: 35000,
+    stock: 50,
+    img: "../img/products/25273342_plugs_02.jpg",
+    category: 1,
+    tags: [56],
+    description:
+      "USB-C to HDMI adapter for connecting monitors or projectors to USB-C devices.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "USB-C Hub 7-in-1",
+    price: 80000,
+    stock: 30,
+    img: "../img/products/25273342_plugs_02.jpg",
+    category: 1,
+    tags: [56],
+    description:
+      "USB-C hub with 7 ports: HDMI, USB 3.0, SD, microSD, Ethernet, and PD charging.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Wired Gaming Mouse",
+    price: 80000,
+    stock: 30,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [40],
+    description: "Wired gaming mouse, 16000 DPI sensor, and durable switches.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Wireless Combo Keyboard and Mouse",
+    price: 150000,
+    stock: 20,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [29, 40, 64],
+    description:
+      "Wireless keyboard and mouse combo with USB receiver, compact and quiet design.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Wireless Gaming Mouse",
+    price: 95000,
+    stock: 40,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [40, 64],
+    description:
+      "Wireless gaming mouse with 16000 DPI sensor and 70-hour battery. Lightweight and precise for fast movements.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Wireless Joystick Pro",
+    price: 160000,
+    stock: 12,
+    img: "../img/products/igor-karimov-M1nZU61xTK4-unsplash.jpg",
+    category: 6,
+    tags: [19, 64],
+    description:
+      "Professional wireless joystick with rechargeable battery. Compatible with PC, consoles, and cloud gaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Wireless Keyboard and Mouse Combo",
+    price: 150000,
+    stock: 20,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [29, 40, 64],
+    description:
+      "Wireless keyboard and mouse combo with USB receiver, compact and quiet design.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Wireless Mechanical Keyboard",
+    price: 220000,
+    stock: 18,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [29, 64],
+    description:
+      "Wireless mechanical keyboard with tactile switches and RGB, 40-hour battery.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Wireless Slim Keyboard",
+    price: 85000,
+    stock: 35,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [29, 64],
+    description:
+      "Slim wireless keyboard with minimalist design and long battery life. Perfect for office and home office.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Wireless Multi-function Printer",
+    price: 300000,
+    stock: 10,
+    img: "../img/products/joonas-sild-QbOnQQebbjU-unsplash.jpg",
+    category: 16,
+    tags: [5, 64],
+    description:
+      "Multi-function printer with WiFi, scanner, and copier, compatible with mobile devices.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Wireless Xbox Controller",
+    price: 180000,
+    stock: 20,
+    img: "../img/products/igor-karimov-M1nZU61xTK4-unsplash.jpg",
+    category: 6,
+    tags: [19, 64],
+    description:
+      "Wireless Xbox controller compatible with PC, consoles, and cloud gaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "WiFi 6 USB Adapter",
+    price: 80000,
+    stock: 30,
+    img: "../img/products/25273342_plugs_02.jpg",
+    category: 14,
+    tags: [61, 56],
+    description:
+      "USB adapter with WiFi 6 for improving wireless connectivity on desktop computers.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "WiFi 6 Gaming Router",
+    price: 350000,
+    stock: 10,
+    img: "../img/products/jakub-zerdzicki-Wx6zqk5eUng-unsplash.jpg",
+    category: 14,
+    tags: [20, 61],
+    description:
+      "Gaming router with WiFi 6, advanced QoS, and 2.5G Ethernet ports.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "WiFi 6 USB Adapter",
+    price: 80000,
+    stock: 30,
+    img: "../img/products/25273342_plugs_02.jpg",
+    category: 14,
+    tags: [61, 56],
+    description:
+      "USB adapter with WiFi 6 for improving wireless connectivity on desktop computers.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Windows 11 Pro",
+    price: 200000,
+    stock: 50,
+    img: "../img/products/lukas-blazek-mcSDtbWXUZU-unsplash.jpg",
+    category: 17,
+    tags: [63],
+    description:
+      "Original Windows 11 Pro license, includes administration and security tools.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Xbox Wireless Controller",
+    price: 180000,
+    stock: 20,
+    img: "../img/products/igor-karimov-M1nZU61xTK4-unsplash.jpg",
+    category: 6,
+    tags: [19, 64],
+    description:
+      "Wireless Xbox controller compatible with PC, consoles, and cloud gaming.",
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "XL RGB Mouse Pad",
+    price: 45000,
+    stock: 50,
+    img: "../img/products/wireless-mouse-keyboard.jpg",
+    category: 9,
+    tags: [48],
+    description:
+      "Large mouse pad with peripheral RGB lighting. Optimized surface for precision in gaming and work.",
   },
 ];
 
