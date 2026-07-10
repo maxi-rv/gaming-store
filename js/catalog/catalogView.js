@@ -21,7 +21,7 @@ export function loadCatalog(products) {
 
   for (let index = 0; index < products.length; index++) {
     const containerDiv = document.createElement("div");
-    containerDiv.classList.add("col");
+    containerDiv.className = "col p-2 p-md-3";
 
     catalog.appendChild(containerDiv);
 

@@ -12,9 +12,9 @@ const cardContainerB = document.getElementById("cardContainerB");
 
 // Inicialmente carga completamente todo el listado de productos.
 window.addEventListener("load", function () {
-  const products = getRandomElements(allProducts(), 8);
-  loadCards(products.slice(0, 4), cardContainerA);
-  loadCards(products.slice(4, 8), cardContainerB);
+  const products = getRandomElements(allProducts(), 16);
+  loadCards(products.slice(0, 8), cardContainerA);
+  loadCards(products.slice(8, 16), cardContainerB);
 });
 
 function getRandomElements(array, n) {
@@ -39,7 +39,7 @@ function loadCards(products, cardContainer) {
 
   for (let index = 0; index < products.length; index++) {
     const containerDiv = document.createElement("div");
-    containerDiv.classList.add("col");
+    containerDiv.className = "col p-2 p-md-3";
 
     cardContainer.appendChild(containerDiv);
 
