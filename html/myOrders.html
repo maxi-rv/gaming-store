@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gaming Web Store: Home</title>
-    <link
-      rel="shortcut icon"
-      href="../img/favicon-yellow-pc-96.png"
-      type="image/x-icon" />
+    <title>Gaming Web Store: My Orders</title>
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <link rel="stylesheet" href="../css/customStyles.css" />
     <link
@@ -81,8 +77,8 @@
                 </a>
                 <a
                   id="linkMyOrders"
-                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="myOrders.html"
+                  class="btn rounded-pill btn-warning text-nowrap my-1"
+                  href="#"
                   role="button">
                   <i class="bi bi-box2-fill"></i>
                   <span>My Orders</span>
@@ -152,25 +148,8 @@
       </div>
     </nav>
 
-    <!-- Catalogo -->
     <main class="my-5">
-      <div class="container text-center " data-bs-theme="dark">
-        <div class="my-4">
-          <h1>Your Next Adventure Awaits.</h1>
-          <h4>Discover thousands of titles at unbeatable prices.</h4>
-        </div>
-        <div
-          id="cardContainerA"
-          class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-5 justify-content-center mx-5 mx-sm-0"></div>
-        <div class="my-4">
-          <h1>Play More, Pay Less.</h1>
-          <h4>Instant delivery. Massive library.</h4>
-        </div>
-        <div
-          id="cardContainerB"
-          class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-5 justify-content-center mx-5 mx-sm-0"></div>
-        <div>
-      </div>
+      <section id="contenedorPedidos" class="container"></section>
     </main>
 
     <!-- Contenedor de Toasts -->
@@ -192,8 +171,8 @@
               <span class="h5 mb-0 text-warning">Gaming Web Store</span>
             </div>
             <p class="text-secondary small">
-              Your ultimate destination for gaming. Discover thousands
-              of titles at unbeatable prices. Instant delivery.
+              Your ultimate destination for gaming. Discover thousands of titles
+              at unbeatable prices. Instant delivery.
             </p>
           </div>
 
@@ -204,16 +183,32 @@
             </h6>
             <ul class="list-unstyled small">
               <li class="mb-2">
-                <a href="homePage.html" class="text-secondary text-decoration-none hover-text-warning">Home</a>
+                <a
+                  href="homePage.html"
+                  class="text-secondary text-decoration-none hover-text-warning"
+                  >Home</a
+                >
               </li>
               <li class="mb-2">
-                <a href="catalog.html" class="text-secondary text-decoration-none hover-text-warning">Catalog</a>
+                <a
+                  href="catalog.html"
+                  class="text-secondary text-decoration-none hover-text-warning"
+                  >Catalog</a
+                >
               </li>
               <li class="mb-2">
-                <a href="cart.html" class="text-secondary text-decoration-none hover-text-warning">Cart</a>
+                <a
+                  href="cart.html"
+                  class="text-secondary text-decoration-none hover-text-warning"
+                  >Cart</a
+                >
               </li>
               <li class="mb-2">
-                <a href="myOrders.html" class="text-secondary text-decoration-none hover-text-warning">My Orders</a>
+                <a
+                  href="#"
+                  class="text-secondary text-decoration-none hover-text-warning"
+                  >My Orders</a
+                >
               </li>
             </ul>
           </div>
@@ -250,20 +245,17 @@
         <hr class="border-secondary my-4" />
 
         <!-- Bottom Bar -->
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
-          <span>
-            &copy; 2026 Gaming Web Store. All rights reserved.
-          </span>
-          <span>
-              Created by Maximiliano Riquelme Vera.
-          </span>
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
+          <span> &copy; 2026 Gaming Web Store. All rights reserved. </span>
+          <span> Created by Maximiliano Riquelme Vera. </span>
         </div>
       </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.15.15/validator.min.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>
-    <script type="module" src="../js/homePage/homePage.js"></script>
+    <script type="module" src="../js/myOrders/myOrders.js"></script>
     <script type="module" src="../js/commons/sessionButton.js"></script>
     <script type="module" src="../js/commons/cartBadge.js"></script>
   </body>

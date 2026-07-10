@@ -35,6 +35,7 @@ function createOrder(accountID, cart) {
     id: crypto.randomUUID(),
     accountID: accountID,
     cart: cart,
+    date: Date.now(),
   };
 
   return order;
