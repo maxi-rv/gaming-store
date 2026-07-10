@@ -60,7 +60,7 @@
               <div
                 class="order-md-1 me-md-auto d-flex flex-column flex-md-row flex-nowrap gap-2 w-100 w-md-auto"
                 style="min-width: 180px">
-                <a class="navbar-brand d-none d-md-inline" href="#">
+                <a class="navbar-brand d-none d-md-inline" href="homePage.html">
                   <img
                     src="../img/logo-yellow-pc-100.png"
                     alt="logo"
@@ -78,6 +78,14 @@
                   role="button">
                   <i class="bi bi-door-open-fill"></i>
                   <span id="txt_sesion">Login</span>
+                </a>
+                <a
+                  id="linkMyOrders"
+                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
+                  href="#"
+                  role="button">
+                  <i class="bi bi-box2-fill"></i>
+                  <span>My Orders</span>
                 </a>
                 <a
                   id="linkCarrito"
@@ -238,7 +246,101 @@
       id="toastContainer"
       class="toast-container position-fixed p-5 bottom-0 end-0"></div>
 
-    <footer class="my-2"></footer>
+    <!-- Footer -->
+    <footer class="bg-black text-light py-4 mt-auto" data-bs-theme="dark">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Logo and Description -->
+          <div class="col-12 col-md-5 col-lg-4">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <img
+                src="../img/logo-yellow-pc-100.png"
+                alt="Gaming Web Store"
+                height="40" />
+              <span class="h5 mb-0 text-warning">Gaming Web Store</span>
+            </div>
+            <p class="text-secondary small">
+              Your ultimate destination for gaming. Discover thousands of titles
+              at unbeatable prices. Instant delivery.
+            </p>
+          </div>
+
+          <!-- Links -->
+          <div class="col-6 col-md-3 col-lg-2 offset-lg-1">
+            <h6 class="text-warning text-uppercase small fw-bold mb-3">
+              Store
+            </h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2">
+                <a
+                  href="homePage.html"
+                  class="text-secondary text-decoration-none hover-text-warning"
+                  >Home</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="catalog.html"
+                  class="text-secondary text-decoration-none hover-text-warning"
+                  >Catalog</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="cart.html"
+                  class="text-secondary text-decoration-none hover-text-warning"
+                  >Cart</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="#"
+                  class="text-secondary text-decoration-none hover-text-warning"
+                  >My Orders</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Follow Us -->
+          <div class="col-12 col-md-4 col-lg-5">
+            <h6 class="text-warning text-uppercase small fw-bold mb-3">
+              Follow Us
+            </h6>
+            <div class="d-flex gap-3 mb-3">
+              <a href="#" class="text-secondary hover-text-warning fs-5">
+                <i class="bi bi-github"></i>
+              </a>
+              <a href="#" class="text-secondary hover-text-warning fs-5">
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a href="#" class="text-secondary hover-text-warning fs-5">
+                <i class="bi bi-twitter-x"></i>
+              </a>
+              <a href="#" class="text-secondary hover-text-warning fs-5">
+                <i class="bi bi-youtube"></i>
+              </a>
+              <a href="#" class="text-secondary hover-text-warning fs-5">
+                <i class="bi bi-reddit"></i>
+              </a>
+              <a href="#" class="text-secondary hover-text-warning fs-5">
+                <i class="bi bi-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="border-secondary my-4" />
+
+        <!-- Bottom Bar -->
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
+          <span> &copy; 2026 Gaming Web Store. All rights reserved. </span>
+          <span> Created by Maximiliano Riquelme Vera. </span>
+        </div>
+      </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.15.15/validator.min.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>

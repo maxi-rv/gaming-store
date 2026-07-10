@@ -5,6 +5,7 @@ import { addToCart } from "../managers/cartManager.js";
 import { updateCartBadge } from "../commons/cartBadge.js";
 
 import { showToast } from "../catalog/catalogToasts.js";
+import { getCategory } from "../managers/categoriesManager.js";
 
 // Tabla tBody
 const catalog = document.getElementById("cardContainer");
@@ -41,15 +42,8 @@ export function loadCatalog(products) {
     const title = document.createElement("h4");
     title.innerHTML = products[index].name;
     title.className = "card-title";
-    title.style = "height: 5rem;";
+    title.style.maxHeight = "5rem";
     cardBody.appendChild(title);
-
-    /*
-    const description = document.createElement("p");
-    description.innerHTML = products[index].description;
-    description.className = "card-text";
-    cardBody.appendChild(description);
-    */
 
     const price = document.createElement("h3");
     price.className = "justify-content-center mb-3 text-warning-emphasis";
