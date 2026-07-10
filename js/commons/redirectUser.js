@@ -8,6 +8,6 @@ window.addEventListener("load", function () {
   if (!isLoggedIn()) {
     window.location.href = "login.html";
   } else if (isLoggedIn() && account.role !== "Admin") {
-    window.location.href = "catalog.html";
+    window.location.href = "homePage.html";
   }
 });
