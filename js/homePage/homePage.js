@@ -4,8 +4,6 @@ import { addToCart } from "../managers/cartManager.js";
 
 import { updateCartBadge } from "../commons/cartBadge.js";
 
-import { showToast } from "../catalog/catalogToasts.js";
-
 // Card Containers
 const cardContainerA = document.getElementById("cardContainerA");
 const cardContainerB = document.getElementById("cardContainerB");
@@ -67,28 +65,5 @@ function loadCards(products, cardContainer) {
     price.className = "justify-content-center mb-3 text-warning-emphasis";
     price.innerHTML = "$" + products[index].price;
     cardBody.appendChild(price);
-
-    const inputRow = document.createElement("div");
-    inputRow.className = "d-flex justify-content-center";
-    cardBody.appendChild(inputRow);
-
-    const cartButton = document.createElement("button");
-    cartButton.className = "btn btn-outline-warning rounded-pill w-100";
-    cartButton.type = "button";
-    cartButton.setAttribute("data-identificador", products[index].id);
-    inputRow.appendChild(cartButton);
-
-    const iconoCarrito = document.createElement("i");
-    iconoCarrito.className = "bi bi-cart-plus fs-4";
-    cartButton.appendChild(iconoCarrito);
-
-    cartButton.addEventListener("click", function (event) {
-      const productID = cartButton.getAttribute("data-identificador");
-      const quantity = 1;
-      showToast();
-      addToCart(productID, quantity);
-      updateCartBadge();
-      window.location.href = "catalog.html";
-    });
   }
 }

@@ -27,16 +27,16 @@ export function loadCart() {
     itemsContainer.appendChild(containerDiv);
 
     const divImage = document.createElement("div");
-    divImage.className = "col-12 col-sm-4";
+    divImage.className = "col-4 col-sm-3";
     containerDiv.appendChild(divImage);
 
     const image = document.createElement("img");
-    image.className = "img-fluid rounded-3 h-100 object-fit-cover";
+    image.className = "img-fluid rounded-2 h-100 object-fit-cover";
     image.src = cart[index].product.img;
     divImage.appendChild(image);
 
     const cardBody = document.createElement("div");
-    cardBody.className = "card-body col-12 col-sm-8";
+    cardBody.className = "card-body col-8 col-sm-9";
     containerDiv.appendChild(cardBody);
 
     const cardTitle = document.createElement("h5");
@@ -51,7 +51,7 @@ export function loadCart() {
 
     const divButtons = document.createElement("div");
     divButtons.className =
-      "d-flex flex-column flex-md-row align-items-start align-items-md-center col-12 col-md-8";
+      "d-flex flex-row align-items-start align-items-center gap-1";
     cardBody.appendChild(divButtons);
 
     const deleteButton = document.createElement("button");
@@ -72,13 +72,12 @@ export function loadCart() {
     deleteButton.appendChild(deleteIcon);
 
     const subTotalID = document.createElement("div");
-    subTotalID.className =
-      "d-flex align-items-center ms-0 ms-md-3 mt-2 mt-md-0 cantidad";
+    subTotalID.className = "d-flex align-items-center ms-0 ms-md-3  cantidad";
     divButtons.appendChild(subTotalID);
 
     const quantityInput = document.createElement("input");
     quantityInput.className =
-      "form-control border-warning-subtle rounded-pill text-center flex-shrink-0 col-4 col-md-3";
+      "form-control border-warning-subtle rounded-pill text-center flex-shrink-0 col-3";
     quantityInput.type = "number";
     quantityInput.min = 1;
     quantityInput.max = Number(cart[index].product.stock);

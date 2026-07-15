@@ -72,6 +72,10 @@ export function getCart() {
   return cart;
 }
 
+export function isProductInCart(productID) {
+  return cart.some((item) => item.product.id === productID);
+}
+
 export function closeCart() {
   updateCart();
   for (let index = 0; index < cart.length; index++) {
@@ -113,7 +117,7 @@ function updateCart() {
   }
 }
 
-function getCartItemByProductID(productID) {
+export function getCartItemByProductID(productID) {
   return cart.find((cartItem) => cartItem.product.id === productID) || null;
 }
 
