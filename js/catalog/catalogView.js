@@ -12,7 +12,7 @@ import { updateCartBadge } from "../commons/cartBadge.js";
 import { getCategory } from "../managers/categoriesManager.js";
 
 // Tabla tBody
-const catalog = document.getElementById("cardContainer");
+const catalog = document.getElementById("catalog");
 
 // Inicialmente carga completamente todo el listado de productos.
 window.addEventListener("load", function () {
@@ -22,12 +22,13 @@ window.addEventListener("load", function () {
 
 function createProductCard(product) {
   const cardContainer = document.createElement("div");
-  cardContainer.className = "col p-0";
-  cardContainer.style.flex = "0 0 300px"; // Fixed card width
+  cardContainer.classList.add("container", "col", "m-0");
+  cardContainer.style.flex = "0 0 300px";
   cardContainer.style.maxWidth = "300px";
 
   const card = document.createElement("div");
-  card.className = "card shadow border-0 m-1 ";
+  card.className = "card shadow border-0 my-3 ";
+  card.style.height = "340px";
   cardContainer.appendChild(card);
 
   // Add image as top section of the card.
@@ -35,7 +36,7 @@ function createProductCard(product) {
 
   // Create card body
   const cardBody = document.createElement("div");
-  cardBody.className = "card-body";
+  cardBody.className = "card-body text-center";
   card.appendChild(cardBody);
 
   // Add title
@@ -74,9 +75,8 @@ function createProductPrice(product) {
 
 export function loadCatalog(products) {
   // Make catalog responsive with flex-wrap and centered
-  catalog.className =
-    "d-flex flex-wrap justify-content-center gap-2 mx-5 mx-sm-0";
-  catalog.style.gap = "10px";
+  catalog.className = "d-flex flex-wrap justify-content-center ";
+  //catalog.style.gap = "10px";
   catalog.innerHTML = "";
 
   for (let index = 0; index < products.length; index++) {

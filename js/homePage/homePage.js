@@ -5,14 +5,14 @@ import { addToCart } from "../managers/cartManager.js";
 import { updateCartBadge } from "../commons/cartBadge.js";
 
 // Card Containers
-const cardContainerA = document.getElementById("cardContainerA");
-const cardContainerB = document.getElementById("cardContainerB");
+const rowCardsA = document.getElementById("cardContainerA");
+const rowCardsB = document.getElementById("cardContainerB");
 
 // Inicialmente carga completamente todo el listado de productos.
 window.addEventListener("load", function () {
   const products = getRandomElements(allProducts(), 16);
-  loadCards(products.slice(0, 8), cardContainerA);
-  loadCards(products.slice(8, 16), cardContainerB);
+  loadCards(products.slice(0, 8), rowCardsA);
+  loadCards(products.slice(8, 16), rowCardsB);
 });
 
 function getRandomElements(array, n) {
@@ -32,18 +32,22 @@ function getRandomElements(array, n) {
   return result;
 }
 
-function loadCards(products, cardContainer) {
-  cardContainer.innerHTML = "";
+function loadCards(products, rowCards) {
+  rowCards.innerHTML = "";
 
   for (let index = 0; index < products.length; index++) {
-    const containerDiv = document.createElement("div");
-    containerDiv.className = "col p-2 p-md-3";
+    const cardContainer = document.createElement("div");
+    //containerDiv.className = "col p-2 p-md-3";
+    cardContainer.classList.add("container", "col", "my-3");
+    cardContainer.style.flex = "0 0 300px";
+    cardContainer.style.maxWidth = "300px";
 
-    cardContainer.appendChild(containerDiv);
+    rowCards.appendChild(cardContainer);
 
     const card = document.createElement("div");
     card.className = "card shadow border-0 m-1 ";
-    containerDiv.appendChild(card);
+    card.style.height = "340px";
+    cardContainer.appendChild(card);
 
     const image = document.createElement("img");
     image.src = products[index].img;
