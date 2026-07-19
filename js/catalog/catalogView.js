@@ -27,23 +27,30 @@ function createProductCard(product) {
   cardContainer.style.maxWidth = "300px";
 
   const card = document.createElement("div");
-  card.className = "card shadow border-0 my-3 ";
+  card.className = "card shadow border-0 my-3";
   card.style.height = "340px";
+  // Flex column ensures footer stays at bottom
+  card.style.display = "flex";
+  card.style.flexDirection = "column";
   cardContainer.appendChild(card);
 
-  // Add image as top section of the card.
+  // Image (top)
   card.appendChild(createProductImage(product));
 
-  // Create card body
+  // Card body – takes remaining space
   const cardBody = document.createElement("div");
   cardBody.className = "card-body text-center";
+  cardBody.style.flex = "1 1 auto"; // fill available space
   card.appendChild(cardBody);
 
-  // Add title
+  // Title only in body
   cardBody.appendChild(createProductTitle(product));
 
-  // Add price
-  cardBody.appendChild(createProductPrice(product));
+  // Price as footer (always at the bottom)
+  const footer = document.createElement("div");
+  footer.className = "card-footer text-center bg-transparent border-0";
+  footer.appendChild(createProductPrice(product));
+  card.appendChild(footer);
 
   return cardContainer;
 }
@@ -66,7 +73,7 @@ function createProductTitle(product) {
 
 function createProductPrice(product) {
   const price = document.createElement("h3");
-  price.className = "justify-content-center mb-3 text-warning-emphasis";
+  price.className = "justify-content-center text-warning-emphasis";
   price.innerHTML = "$" + product.price;
   return price;
 }

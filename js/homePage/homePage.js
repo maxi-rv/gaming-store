@@ -65,9 +65,14 @@ function loadCards(products, rowCards) {
     title.style.maxHeight = "5rem";
     cardBody.appendChild(title);
 
+    // Price as footer (always at the bottom)
+    const footer = document.createElement("div");
+    footer.className = "card-footer text-center bg-transparent border-0";
+    card.appendChild(footer);
+
     const price = document.createElement("h3");
     price.className = "justify-content-center mb-3 text-warning-emphasis";
     price.innerHTML = "$" + products[index].price;
-    cardBody.appendChild(price);
+    footer.appendChild(price);
   }
 }
