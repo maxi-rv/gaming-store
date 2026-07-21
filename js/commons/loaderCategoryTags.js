@@ -49,6 +49,10 @@ export function loadAllTags(tagsSelect) {
 export function loadSomeTags(tagsSelect, someTags) {
   tagsSelect.innerHTML = "";
 
+  if (someTags.length <= 0) {
+    tagsSelect.textContent = "No tags available for this category";
+  }
+
   someTags.forEach((tagID) => {
     const tag = getTag(tagID);
     const col = document.createElement("div");

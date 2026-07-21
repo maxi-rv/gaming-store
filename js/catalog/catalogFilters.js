@@ -13,6 +13,8 @@ const filtersForm = document.getElementById("formFiltros");
 const categoriesSelect = document.getElementById("select_categorias");
 const tagsContainer = document.getElementById("contenedor_de_etiquetas");
 
+const tagsButton = document.getElementById("tagsButton");
+
 const withStock = document.getElementById("conStock");
 const applyFiltersButton = document.getElementById("botonAplicarFiltros");
 const resetFiltersButton = document.getElementById("botonLimpiarFiltros");
@@ -27,6 +29,21 @@ function initialize() {
   categoriesSelect.addEventListener("change", function (event) {
     const category = getCategory(categoriesSelect.value);
     loadSomeTags(tagsContainer, category.tags);
+  });
+
+  tagsButton.addEventListener("click", function () {
+    // Check which style is currently active
+    if (this.classList.contains("btn-warning")) {
+      this.classList.remove("btn-warning");
+      this.classList.remove("text-black");
+      this.classList.add("btn-outline-warning");
+      this.classList.add("text-warning");
+    } else if (this.classList.contains("btn-outline-warning")) {
+      this.classList.remove("btn-outline-warning");
+      this.classList.remove("text-warning");
+      this.classList.add("btn-warning");
+      this.classList.add("text-black");
+    }
   });
 
   filtersForm.addEventListener("submit", function (event) {
