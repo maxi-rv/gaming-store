@@ -127,7 +127,7 @@ function handleQuantityChange(
   }
 }
 
-// ========== Main Modal Function ==========
+// ---- Main Modal Function ----
 
 export function openProductDetailModal(product) {
   const modalEl = document.getElementById("productDetailModal");

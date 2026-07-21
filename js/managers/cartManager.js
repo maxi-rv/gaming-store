@@ -14,7 +14,7 @@ export function addToCart(productID, quantity) {
   let cartItem = getCartItemByProductID(productID);
 
   if (cartItem != null) {
-    addByQuantityToCart(cartItem.id, quantity);
+    editQuantity(cartItem.id, quantity);
   } else {
     cartItem = createCartItem(productID, quantity);
     cart.push(cartItem);
