@@ -171,7 +171,7 @@ export function openProductDetailModal(product) {
   const catDiv = document.createElement("div");
   catDiv.className = "mb-2";
   const catIcon = document.createElement("i");
-  catIcon.className = "bi bi-tag me-1";
+  catIcon.className = "bi bi-bookmark me-1";
   catDiv.appendChild(catIcon);
   const catStrong = document.createElement("strong");
   catStrong.textContent = "Category: ";
@@ -197,7 +197,7 @@ export function openProductDetailModal(product) {
     tagBadgesContainer.className = "d-inline-flex flex-wrap gap-1";
     tags.forEach((tag) => {
       const badge = document.createElement("span");
-      badge.className = "badge bg-secondary rounded-pill";
+      badge.className = "badge bg-warning rounded-pill text-black";
       badge.textContent = tag;
       tagBadgesContainer.appendChild(badge);
     });

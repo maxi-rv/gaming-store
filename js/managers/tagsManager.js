@@ -42,6 +42,7 @@ function createTag(name, description) {
     id: crypto.randomUUID(),
     name: name,
     description: description,
+    categories: null,
   };
   return tag;
 }

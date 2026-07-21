@@ -24,98 +24,117 @@ const categories = [
     id: crypto.randomUUID(),
     name: "Audio & Speakers",
     description: "Sound systems and audio output devices",
+    tags: [11, 23, 52, 64],
   },
   {
     id: crypto.randomUUID(),
     name: "Cables & Adapters",
     description: "HDMI, DisplayPort, USB extensions, dongles, and card readers",
+    tags: [53, 56],
   },
   {
     id: crypto.randomUUID(),
     name: "Cases & Towers",
     description: "Computer chassis for housing components",
+    tags: [9, 37, 38, 48, 49],
   },
   {
     id: crypto.randomUUID(),
     name: "Cooling & Thermal Solutions",
     description: "Air coolers, liquid AIOs, case fans, and thermal paste",
+    tags: [33, 48],
   },
   {
     id: crypto.randomUUID(),
     name: "CPU Processors",
     description: "Central processing units for computing power",
+    tags: [6, 7, 25, 26, 31, 43, 47, 57, 60],
   },
   {
     id: crypto.randomUUID(),
     name: "Gaming Furniture & Sim Racing",
     description: "Chairs, desks, racing wheel stands, and cockpit rigs",
+    tags: [],
   },
   {
     id: crypto.randomUUID(),
     name: "Gaming Gear",
     description:
       "Controllers, VR headsets, fight sticks, and gaming accessories",
+    tags: [19, 58, 59, 64],
   },
   {
     id: crypto.randomUUID(),
     name: "Graphics Cards",
     description: "Video processing and gaming performance",
+    tags: [6, 17, 18, 26, 41, 46, 47, 57, 60],
   },
   {
     id: crypto.randomUUID(),
     name: "Hard Drives & SSDs",
     description:
       "Internal and portable storage solutions for files and applications",
+    tags: [15, 16, 21, 27, 35, 44, 45, 47, 50, 51, 53, 56, 57],
   },
   {
     id: crypto.randomUUID(),
     name: "Keyboards & Mice",
     description: "Peripheral input devices for user interaction",
+    tags: [29, 40, 47, 48, 64],
   },
   {
     id: crypto.randomUUID(),
     name: "Laptops",
     description: "Portable computers for mobile computing",
+    tags: [2, 6, 8, 25, 26, 32, 41, 47, 53, 54, 55, 60],
   },
   {
     id: crypto.randomUUID(),
     name: "Memory RAM",
     description: "System memory modules for multitasking speed",
+    tags: [13, 14, 47, 57],
   },
   {
     id: crypto.randomUUID(),
     name: "Monitors",
     description: "Visual display screens for output",
+    tags: [0, 1, 3, 12, 17, 18, 22, 28, 42, 47, 54],
   },
   {
     id: crypto.randomUUID(),
     name: "Motherboards",
     description: "Main circuit boards connecting system components",
+    tags: [7, 9, 31, 37, 38, 49, 53, 62],
   },
   {
     id: crypto.randomUUID(),
     name: "Networking Gear",
     description: "Routers, switches, and WiFi adapters for connectivity",
+    tags: [20, 36, 56, 61],
   },
   {
     id: crypto.randomUUID(),
     name: "Power Supplies",
     description: "PSUs delivering power to all system components",
+    tags: [4, 10, 39],
   },
   {
     id: crypto.randomUUID(),
     name: "Printers & Scanners",
     description: "Document printing and scanning devices",
+    tags: [5, 24, 30, 64],
   },
   {
     id: crypto.randomUUID(),
     name: "Software & OS",
     description: "Operating systems and productivity software",
+    tags: [32, 34, 63],
   },
   {
     id: crypto.randomUUID(),
     name: "Streaming & Capture Devices",
     description: "Webcams, microphones, capture cards, and green screens",
+    tags: [3, 56],
   },
 ];
 
@@ -124,332 +143,397 @@ const tags = [
     id: crypto.randomUUID(),
     name: "144Hz",
     description: "High refresh rate for competitive gaming",
+    categories: [12],
   },
   {
     id: crypto.randomUUID(),
     name: "240Hz",
     description: "Ultra-high refresh rate for pro-level competitive gaming",
+    categories: [12],
   },
   {
     id: crypto.randomUUID(),
     name: "2-in-1",
     description: "Convertible laptop with tablet mode",
+    categories: [10],
   },
   {
     id: crypto.randomUUID(),
     name: "4K",
     description: "Ultra HD 3840x2160 resolution displays",
+    categories: [12, 18],
   },
   {
     id: crypto.randomUUID(),
     name: "80 Plus",
     description: "Energy-efficient power supply with 80 Plus certification",
+    categories: [15],
   },
   {
     id: crypto.randomUUID(),
     name: "All-in-One",
     description: "Print, scan, copy, and fax in one device",
+    categories: [16],
   },
   {
     id: crypto.randomUUID(),
     name: "AMD",
     description: "High-performance processors and GPUs",
+    categories: [4, 7, 10],
   },
   {
     id: crypto.randomUUID(),
     name: "AM5",
     description:
       "AMD's latest CPU socket for Ryzen 7000/9000 series processors",
+    categories: [4, 13],
   },
   {
     id: crypto.randomUUID(),
     name: "Apple",
     description: "Mac gaming and iOS devices",
+    categories: [10],
   },
   {
     id: crypto.randomUUID(),
     name: "ATX",
     description: "Standard full-size form factor motherboards and cases",
+    categories: [2, 13],
   },
   {
     id: crypto.randomUUID(),
     name: "ATX 3.0",
     description: "New PSU standard with 12VHPWR connector for modern GPUs",
+    categories: [15],
   },
   {
     id: crypto.randomUUID(),
     name: "Bluetooth",
     description: "Wireless connectivity for peripherals",
+    categories: [0],
   },
   {
     id: crypto.randomUUID(),
     name: "Curved",
     description: "Immersive curved display panels",
+    categories: [12],
   },
   {
     id: crypto.randomUUID(),
     name: "DDR 4",
     description: "Reliable previous-gen RAM",
+    categories: [11],
   },
   {
     id: crypto.randomUUID(),
     name: "DDR 5",
     description: "Next-gen high-speed memory",
+    categories: [11],
   },
   {
     id: crypto.randomUUID(),
     name: "External Drive",
     description: "Portable external storage for backups and game libraries",
+    categories: [8],
   },
   {
     id: crypto.randomUUID(),
     name: "Flash Memory Card",
     description:
       "SD, microSD, and CFexpress cards for cameras and portable devices",
+    categories: [8],
   },
   {
     id: crypto.randomUUID(),
     name: "FreeSync",
     description: "AMD adaptive sync technology for smooth gameplay",
+    categories: [7, 12],
   },
   {
     id: crypto.randomUUID(),
     name: "G-Sync",
     description: "Nvidia adaptive sync technology for tear-free gaming",
+    categories: [7, 12],
   },
   {
     id: crypto.randomUUID(),
     name: "Gamepad",
     description: "Precision controllers for all platforms",
+    categories: [6],
   },
   {
     id: crypto.randomUUID(),
     name: "Gaming Router",
     description: "Routers optimized for gaming with QoS",
+    categories: [14],
   },
   {
     id: crypto.randomUUID(),
     name: "HDD",
     description: "High-capacity mechanical storage for bulk data and backups",
+    categories: [8],
   },
   {
     id: crypto.randomUUID(),
     name: "HDR",
     description: "High Dynamic Range for better contrast and colors",
+    categories: [12],
   },
   {
     id: crypto.randomUUID(),
     name: "Headsets",
     description: "Immersive gaming audio",
+    categories: [0],
   },
   {
     id: crypto.randomUUID(),
     name: "Inkjet",
     description: "Versatile inkjet printing for photos and documents",
+    categories: [16],
   },
   {
     id: crypto.randomUUID(),
     name: "Integrated Graphics",
     description:
       "CPU with built-in GPU for budget builds without dedicated card",
+    categories: [4, 10],
   },
   {
     id: crypto.randomUUID(),
     name: "Intel",
     description: "Powerful processors for gaming",
+    categories: [4, 7, 10],
   },
   {
     id: crypto.randomUUID(),
     name: "Internal",
     description: "Components designed to be installed inside a PC case",
+    categories: [8],
   },
   {
     id: crypto.randomUUID(),
     name: "IPS",
     description:
       "In-Plane Switching panel with accurate colors and wide viewing angles",
+    categories: [12],
   },
   {
     id: crypto.randomUUID(),
     name: "Keyboard",
     description: "Mechanical and RGB gaming keyboards",
+    categories: [9],
   },
   {
     id: crypto.randomUUID(),
     name: "Laser",
     description: "High-speed laser printing for documents",
+    categories: [16],
   },
   {
     id: crypto.randomUUID(),
     name: "LGA 1700",
     description:
       "Intel CPU socket for 12th, 13th, and 14th Gen Core processors",
+    categories: [4, 13],
   },
   {
     id: crypto.randomUUID(),
     name: "Linux",
     description: "Open-source operating system",
+    categories: [10, 17],
   },
   {
     id: crypto.randomUUID(),
     name: "Liquid Cooling",
     description: "Advanced thermal management with AIO or custom loops",
+    categories: [3],
   },
   {
     id: crypto.randomUUID(),
     name: "macOS",
     description: "Apple operating system for Macs",
+    categories: [17],
   },
   {
     id: crypto.randomUUID(),
     name: "Memory Card",
     description: "Removable flash storage for cameras, phones, and handhelds",
+    categories: [8],
   },
   {
     id: crypto.randomUUID(),
     name: "Mesh WiFi",
     description: "Whole-home mesh WiFi systems",
+    categories: [14],
   },
   {
     id: crypto.randomUUID(),
     name: "Micro-ATX",
     description: "Compact form factor motherboards and cases",
+    categories: [2, 13],
   },
   {
     id: crypto.randomUUID(),
     name: "Mini-ITX",
     description: "Ultra-compact form factor for small builds",
+    categories: [2, 13],
   },
   {
     id: crypto.randomUUID(),
     name: "Modular",
     description: "Fully or semi-modular power supply cables for clean builds",
+    categories: [15],
   },
   {
     id: crypto.randomUUID(),
     name: "Mouse",
     description: "High-DPI gaming mice",
+    categories: [9],
   },
   {
     id: crypto.randomUUID(),
     name: "Nvidia",
     description: "Top-tier gaming graphics cards",
+    categories: [7, 10],
   },
   {
     id: crypto.randomUUID(),
     name: "OLED",
     description: "Premium vivid display panels",
+    categories: [12],
   },
   {
     id: crypto.randomUUID(),
     name: "Overclockable",
     description: "Unlocked CPUs for performance tuning",
+    categories: [4],
   },
   {
     id: crypto.randomUUID(),
     name: "PCIe 4.0",
     description: "Fourth-gen PCIe interface for ultra-fast SSDs and GPUs",
+    categories: [8],
   },
   {
     id: crypto.randomUUID(),
     name: "Portable SSD",
     description:
       "Compact external solid-state drives for fast on-the-go storage",
+    categories: [8],
   },
   {
     id: crypto.randomUUID(),
     name: "Ray Tracing",
     description: "Real-time ray tracing support for realistic lighting",
+    categories: [7],
   },
   {
     id: crypto.randomUUID(),
     name: "Refurbished",
     description: "Certified pre-owned products at discounted prices",
+    categories: [4, 7, 8, 9, 10, 11, 12],
   },
   {
     id: crypto.randomUUID(),
     name: "RGB",
     description: "Customizable RGB lighting",
+    categories: [2, 3, 9],
   },
   {
     id: crypto.randomUUID(),
     name: "SFF (Small Form Factor)",
     description: "Components optimized for compact PC builds",
+    categories: [2, 13],
   },
   {
     id: crypto.randomUUID(),
     name: "SSD M.2 NVMe",
     description: "Ultra-fast M.2 PCIe NVMe drives for OS and games",
+    categories: [8],
   },
   {
     id: crypto.randomUUID(),
     name: "SSD SATA",
     description: "2.5-inch SATA solid-state drives, reliable and affordable",
+    categories: [8],
   },
   {
     id: crypto.randomUUID(),
     name: "Surround Sound",
     description: "Immersive spatial audio for gaming",
+    categories: [0],
   },
   {
     id: crypto.randomUUID(),
     name: "Thunderbolt",
     description: "High-speed data transfer and display connectivity",
+    categories: [1, 8, 10, 13],
   },
   {
     id: crypto.randomUUID(),
     name: "Touchscreen",
     description: "Interactive touch display laptops",
+    categories: [10, 12],
   },
   {
     id: crypto.randomUUID(),
     name: "USB Flash Drive",
     description: "Portable thumb drives for quick file transfers",
+    categories: [10],
   },
   {
     id: crypto.randomUUID(),
     name: "USB-C",
     description: "Modern universal connectivity with power delivery",
+    categories: [1, 8, 14, 18],
   },
   {
     id: crypto.randomUUID(),
     name: "Video Editing",
     description: "Hardware optimized for content creation and video production",
+    categories: [4, 7, 8, 11],
   },
   {
     id: crypto.randomUUID(),
     name: "VR Accessory",
     description: "Controllers, link cables, face covers, and VR add-ons",
+    categories: [6],
   },
   {
     id: crypto.randomUUID(),
     name: "VR Headset",
     description: "Virtual reality headsets for immersive gaming",
+    categories: [6],
   },
   {
     id: crypto.randomUUID(),
     name: "VR Ready",
     description: "Virtual reality gaming compatible",
+    categories: [4, 7, 10],
   },
   {
     id: crypto.randomUUID(),
     name: "Wi-Fi 6",
     description: "Next-gen wireless networking with low latency",
+    categories: [14],
   },
   {
     id: crypto.randomUUID(),
     name: "Wi-Fi 6E / Wi-Fi 7",
     description: "Latest WiFi standards with 6GHz band and ultra-low latency",
+    categories: [13],
   },
   {
     id: crypto.randomUUID(),
     name: "Windows",
     description: "Microsoft Windows operating system",
+    categories: [17],
   },
   {
     id: crypto.randomUUID(),
     name: "Wireless",
     description: "Wireless peripherals and connectivity",
+    categories: [0, 6, 9, 16],
   },
 ];
 
@@ -1844,10 +1928,28 @@ export function getAccountsMocked() {
 }
 
 export function getCategoriesMocked() {
+  categories.forEach((cat) => {
+    const tagIndexes = cat.tags;
+    cat.tags = [];
+
+    tagIndexes.forEach((tagIndex) => {
+      cat.tags.push(tags[tagIndex].id);
+    });
+  });
+
   return categories;
 }
 
 export function getTagsMocked() {
+  tags.forEach((tag) => {
+    const catIndexes = tag.categories;
+    tag.categories = [];
+
+    catIndexes.forEach((catIndex) => {
+      tag.categories.push(categories[catIndex].id);
+    });
+  });
+
   return tags;
 }
 
