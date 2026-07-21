@@ -1,8 +1,13 @@
-import { loadCategories, loadTags } from "../commons/loaderCategoryTags.js";
+import {
+  loadAllCategories,
+  loadAllTags,
+  loadSomeTags,
+} from "../commons/loaderCategoryTags.js";
 
 import { filterProductsBy, allProducts } from "../managers/productsManager.js";
 
 import { loadCatalog } from "../catalog/catalogView.js";
+import { getCategory } from "../managers/categoriesManager.js";
 
 const filtersForm = document.getElementById("formFiltros");
 const categoriesSelect = document.getElementById("select_categorias");
@@ -14,11 +19,16 @@ const resetFiltersButton = document.getElementById("botonLimpiarFiltros");
 
 window.addEventListener("load", function () {
   initialize();
-  loadCategories(categoriesSelect);
-  loadTags(tagsContainer);
+  loadAllCategories(categoriesSelect);
+  loadAllTags(tagsContainer);
 });
 
 function initialize() {
+  categoriesSelect.addEventListener("change", function (event) {
+    const category = getCategory(categoriesSelect.value);
+    loadSomeTags(tagsContainer, category.tags);
+  });
+
   filtersForm.addEventListener("submit", function (event) {
     event.preventDefault();
     const filteredProducts = filterProductsBy(
@@ -49,5 +59,6 @@ function getSelectedTags() {
 
 function resetFilters() {
   filtersForm.reset();
+  loadAllTags(tagsContainer);
   loadCatalog(allProducts());
 }
