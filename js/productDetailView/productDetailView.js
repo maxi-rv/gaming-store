@@ -115,7 +115,7 @@ function handleQuantityChange(
     updateButtonState(addToCartButton, true);
 
     if (showToastOnAdd) {
-      showToast("Item Added to Cart", "ADD", 3000);
+      showToast("Product Added to Cart", "ADD", 3000);
     }
   } else if (quantity === 0) {
     const cartItem = getCartItemByProductID(productId);
@@ -123,17 +123,40 @@ function handleQuantityChange(
       deleteFromCart(cartItem.id);
       updateCartBadge();
       updateButtonState(addToCartButton, false);
+      showToast("Product Removed from Cart", "DELETE", 3000);
     }
   }
 }
 
-// ---- Main Modal Function ----
+// Helper to initialize Bootstrap tooltip
+function initTooltip(element) {
+  if (typeof bootstrap !== "undefined" && bootstrap.Tooltip) {
+    bootstrap.Tooltip.getOrCreateInstance(element);
+  }
+}
 
+// ---- Main Modal Function ----
 export function openProductDetailModal(product) {
   const modalEl = document.getElementById("productDetailModal");
   const modalTitle = document.getElementById("modalTitle");
   const modalBody = document.getElementById("modalBody");
   const modalFooter = document.getElementById("modalFooter");
+
+  // ---- Attach cleanup for tooltips (once) ----
+  if (!modalEl._tooltipCleanup) {
+    modalEl.addEventListener("hidden.bs.modal", function () {
+      const tooltipElements = modalEl.querySelectorAll(
+        '[data-bs-toggle="tooltip"]',
+      );
+      tooltipElements.forEach((el) => {
+        const tooltip = bootstrap.Tooltip.getInstance(el);
+        if (tooltip) {
+          tooltip.dispose();
+        }
+      });
+    });
+    modalEl._tooltipCleanup = true;
+  }
 
   // Set title
   modalTitle.textContent = product.name;
@@ -142,9 +165,9 @@ export function openProductDetailModal(product) {
   modalBody.innerHTML = "";
   modalFooter.innerHTML = "";
 
-  // ---- Build modal body (image, price, category, tags, description) ----
+  // Build modal body (image, price, category, tags, description)
   const container = document.createElement("div");
-  container.className = "row g-3 align-items-start p-2"; // added padding
+  container.className = "row g-3 align-items-start p-2";
 
   // Image column
   const imgCol = document.createElement("div");
@@ -167,7 +190,7 @@ export function openProductDetailModal(product) {
   priceP.innerHTML = `<strong>$${product.price}</strong>`;
   detailCol.appendChild(priceP);
 
-  // Category
+  // Category (with tooltip)
   const catDiv = document.createElement("div");
   catDiv.className = "mb-2";
   const catIcon = document.createElement("i");
@@ -177,14 +200,21 @@ export function openProductDetailModal(product) {
   catStrong.textContent = "Category: ";
   catDiv.appendChild(catStrong);
   const catSpan = document.createElement("span");
-  catSpan.textContent = getCategory(product.category)?.name || "N/A";
+  // Get full category object
+  const categoryObj = getCategory(product.category);
+  catSpan.textContent = categoryObj?.name || "N/A";
+  if (categoryObj?.description) {
+    catSpan.setAttribute("data-bs-toggle", "tooltip");
+    catSpan.setAttribute("title", categoryObj.description);
+  }
   catDiv.appendChild(catSpan);
   detailCol.appendChild(catDiv);
 
-  // Tags
+  // Tags (with tooltips)
   const tagIds = product.tags || [];
-  const tags = tagIds.map((id) => getTag(id)?.name).filter(Boolean);
-  if (tags.length > 0) {
+  // Get full tag objects so we can access descriptions
+  const tagObjs = tagIds.map((id) => getTag(id)).filter(Boolean);
+  if (tagObjs.length > 0) {
     const tagDiv = document.createElement("div");
     tagDiv.className = "mb-2";
     const tagIcon = document.createElement("i");
@@ -195,12 +225,20 @@ export function openProductDetailModal(product) {
     tagDiv.appendChild(tagStrong);
     const tagBadgesContainer = document.createElement("span");
     tagBadgesContainer.className = "d-inline-flex flex-wrap gap-1";
-    tags.forEach((tag) => {
+
+    tagObjs.forEach((tagObj) => {
       const badge = document.createElement("span");
       badge.className = "badge bg-warning rounded-pill text-black";
-      badge.textContent = tag;
+      badge.textContent = tagObj.name;
+      if (tagObj.description) {
+        badge.setAttribute("data-bs-toggle", "tooltip");
+        badge.setAttribute("title", tagObj.description);
+      }
       tagBadgesContainer.appendChild(badge);
+      // Initialize tooltip on the badge
+      initTooltip(badge);
     });
+
     tagDiv.appendChild(tagBadgesContainer);
     detailCol.appendChild(tagDiv);
   }
@@ -213,6 +251,9 @@ export function openProductDetailModal(product) {
 
   container.appendChild(detailCol);
   modalBody.appendChild(container);
+
+  // ---- Initialize tooltip on category span (must be after appending to DOM) ----
+  initTooltip(catSpan);
 
   // ---- Build the footer row (stock, quantity, add-to-cart) ----
   const row = document.createElement("div");
@@ -241,7 +282,7 @@ export function openProductDetailModal(product) {
 
   modalFooter.appendChild(row);
 
-  // ---- Initialize state ----
+  // ---- Initialize state and event listeners (unchanged) ----
   if (product.stock <= 0) {
     quantityInput.value = 0;
     quantityInput.min = 0;
@@ -253,15 +294,15 @@ export function openProductDetailModal(product) {
     if (isProductInCart(product.id)) {
       const cartItem = getCartItemByProductID(product.id);
       quantityInput.value = cartItem.quantity;
+      quantityInput.min = 0;
       updateButtonState(addToCartButton, true);
     } else {
       quantityInput.value = 1;
+      quantityInput.min = 0;
     }
   }
 
-  // ---- Event Listeners ----
-
-  // Minus button
+  // ---- Event Listeners (unchanged) ----
   minusButton.addEventListener("click", function () {
     let val = parseInt(quantityInput.value) || 0;
     const min = parseInt(quantityInput.min) || 0;
@@ -272,7 +313,6 @@ export function openProductDetailModal(product) {
     }
   });
 
-  // Plus button
   plusButton.addEventListener("click", function () {
     let val = parseInt(quantityInput.value) || 0;
     const max = parseInt(quantityInput.max) || Infinity;
@@ -283,7 +323,6 @@ export function openProductDetailModal(product) {
     }
   });
 
-  // Manual input change
   quantityInput.addEventListener("change", function () {
     const val = parseInt(this.value) || 0;
     if (val >= 0 && val <= product.stock) {
@@ -293,7 +332,6 @@ export function openProductDetailModal(product) {
     }
   });
 
-  // Add-to-Cart button click toggles
   addToCartButton.addEventListener("click", function () {
     if (isProductInCart(product.id)) {
       const cartItem = getCartItemByProductID(product.id);
@@ -302,14 +340,14 @@ export function openProductDetailModal(product) {
         updateCartBadge();
         updateButtonState(addToCartButton, false);
         quantityInput.value = 1;
-        showToast("Item Removed from Cart", "REMOVE", 3000);
+        showToast("Product Removed from Cart", "DELETE", 3000);
       }
     } else {
       const qty = parseInt(quantityInput.value) || 0;
       if (qty > 0) {
         handleQuantityChange(product.id, quantityInput, addToCartButton, true);
       } else {
-        showToast("Quantity must be at least 1", "INFO", 2000);
+        showToast("Quantity must be at least 1", "DELETE", 3000);
       }
     }
   });

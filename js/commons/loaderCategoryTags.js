@@ -1,9 +1,15 @@
 import { allCategories } from "../managers/categoriesManager.js";
-
 import { allTags, getTag } from "../managers/tagsManager.js";
 
 let categories = [];
 let tags = [];
+
+// Helper to initialize Bootstrap tooltip on an element
+function initTooltip(element) {
+  if (typeof bootstrap !== "undefined" && bootstrap.Tooltip) {
+    bootstrap.Tooltip.getOrCreateInstance(element);
+  }
+}
 
 export function loadAllCategories(categoriesSelect) {
   categories = allCategories();
@@ -13,6 +19,10 @@ export function loadAllCategories(categoriesSelect) {
 
     option.value = category.id;
     option.textContent = category.name;
+    // Add native title (browser tooltip) for category description
+    if (category.description) {
+      option.title = category.description;
+    }
 
     categoriesSelect.appendChild(option);
   });
@@ -39,10 +49,18 @@ export function loadAllTags(tagsSelect) {
     label.setAttribute("for", checkbox.id);
     label.textContent = tag.name;
 
+    // Add Bootstrap tooltip attributes
+    if (tag.description) {
+      label.setAttribute("data-bs-toggle", "tooltip");
+      label.setAttribute("title", tag.description);
+    }
+
     col.appendChild(checkbox);
     col.appendChild(label);
-
     tagsSelect.appendChild(col);
+
+    // Initialize Bootstrap tooltip on the label
+    initTooltip(label);
   });
 }
 
@@ -51,6 +69,7 @@ export function loadSomeTags(tagsSelect, someTags) {
 
   if (someTags.length <= 0) {
     tagsSelect.textContent = "No tags available for this category";
+    return; // early exit to avoid further processing
   }
 
   someTags.forEach((tagID) => {
@@ -70,10 +89,18 @@ export function loadSomeTags(tagsSelect, someTags) {
     label.setAttribute("for", checkbox.id);
     label.textContent = tag.name;
 
+    // Add Bootstrap tooltip attributes
+    if (tag.description) {
+      label.setAttribute("data-bs-toggle", "tooltip");
+      label.setAttribute("title", tag.description);
+    }
+
     col.appendChild(checkbox);
     col.appendChild(label);
-
     tagsSelect.appendChild(col);
+
+    // Initialize Bootstrap tooltip on the label
+    initTooltip(label);
   });
 }
 
@@ -104,9 +131,17 @@ export function loadSelectedTags(tagsContainer, selectedTagsIDs) {
     label.setAttribute("for", checkbox.id);
     label.textContent = tag.name;
 
+    // Add Bootstrap tooltip attributes
+    if (tag.description) {
+      label.setAttribute("data-bs-toggle", "tooltip");
+      label.setAttribute("title", tag.description);
+    }
+
     col.appendChild(checkbox);
     col.appendChild(label);
-
     tagsContainer.appendChild(col);
+
+    // Initialize Bootstrap tooltip on the label
+    initTooltip(label);
   });
 }
