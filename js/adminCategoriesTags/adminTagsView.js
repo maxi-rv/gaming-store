@@ -2,6 +2,7 @@ import {
   validateData,
   clearValidation,
 } from "../commons/adminCategoriesTagsValidation.js";
+import { getCategory } from "../managers/categoriesManager.js";
 
 import {
   addTag,
@@ -125,6 +126,16 @@ function loadTable() {
     const tdDescription = document.createElement("td");
     tdDescription.textContent = tag.description;
 
+    const tdCategories = document.createElement("td");
+    for (let index = 0; index < tag.categories.length; index++) {
+      const catID = tag.categories[index];
+      if (index != tag.categories.length - 1) {
+        tdCategories.textContent += getCategory(catID).name + ", ";
+      } else {
+        tdCategories.textContent += getCategory(catID).name;
+      }
+    }
+
     const tdActions = document.createElement("td");
     let editButton = initEditButton("modalEdicionEtiqueta", tag.id);
     let deleteButton = initDeleteButton();
@@ -141,6 +152,7 @@ function loadTable() {
 
     tr.appendChild(tdName);
     tr.appendChild(tdDescription);
+    tr.appendChild(tdCategories);
     tr.appendChild(tdActions);
 
     tagTBody.appendChild(tr);

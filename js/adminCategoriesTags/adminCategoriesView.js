@@ -10,6 +10,7 @@ import {
   deleteCategory,
   getCategory,
 } from "../managers/categoriesManager.js";
+import { getTag } from "../managers/tagsManager.js";
 
 // Modal
 const editCategoryModal = document.getElementById("modalEdicionCategoria");
@@ -125,6 +126,16 @@ function loadTable() {
     const tdDescription = document.createElement("td");
     tdDescription.textContent = category.description;
 
+    const tdTags = document.createElement("td");
+    for (let index = 0; index < category.tags.length; index++) {
+      const tagID = category.tags[index];
+      if (index != category.tags.length - 1) {
+        tdTags.textContent += getTag(tagID).name + ", ";
+      } else {
+        tdTags.textContent += getTag(tagID).name;
+      }
+    }
+
     const tdActions = document.createElement("td");
     let editButton = initEditButton("modalEdicionCategoria", category.id);
     let deleteButton = initDeleteButton();
@@ -141,6 +152,7 @@ function loadTable() {
 
     tr.appendChild(tdName);
     tr.appendChild(tdDescription);
+    tr.appendChild(tdTags);
     tr.appendChild(tdActions);
 
     categoriesTBody.appendChild(tr);
