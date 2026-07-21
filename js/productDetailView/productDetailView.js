@@ -1,5 +1,3 @@
-import { addProduct, allProducts } from "../managers/productsManager.js";
-
 import {
   addToCart,
   getCartItemByProductID,
@@ -8,58 +6,70 @@ import {
 } from "../managers/cartManager.js";
 
 import { updateCartBadge } from "../commons/cartBadge.js";
-
 import { getCategory } from "../managers/categoriesManager.js";
+import { getTag } from "../managers/tagsManager.js";
+import { showToast } from "../commons/toasts.js";
 
-// Tabla tBody
-const catalog = document.getElementById("cardContainer");
+// ========== Helper Functions (reused from catalog) ==========
 
-// Inicialmente carga completamente todo el listado de productos.
-window.addEventListener("load", function () {
-  const products = allProducts();
-  loadCatalog(products);
-});
+function createQuantityControls() {
+  const container = document.createElement("div");
+  container.className = "input-group justify-content-center flex-nowrap";
+  container.style = "max-width: 150px; margin: 0 auto;";
 
-function createProductCard(product) {
-  const containerDiv = document.createElement("div");
-  containerDiv.className = "col p-0";
-  // Set fixed width for cards
-  containerDiv.style.flex = "0 0 280px"; // Fixed card width
-  containerDiv.style.maxWidth = "280px";
+  const minusButton = document.createElement("button");
+  minusButton.className = "btn btn-outline-warning rounded-start-pill";
+  minusButton.type = "button";
+  const minusIcon = document.createElement("i");
+  minusIcon.className = "bi bi-dash-lg";
+  minusButton.appendChild(minusIcon);
+  container.appendChild(minusButton);
 
-  const card = document.createElement("div");
-  card.className = "card shadow border-0 m-1 ";
-  containerDiv.appendChild(card);
+  const plusButton = document.createElement("button");
+  plusButton.className = "btn btn-outline-warning rounded-end-pill";
+  plusButton.type = "button";
+  const plusIcon = document.createElement("i");
+  plusIcon.className = "bi bi-plus-lg";
+  plusButton.appendChild(plusIcon);
+  container.appendChild(plusButton);
 
-  return { containerDiv, card };
+  return { container, minusButton, plusButton };
 }
 
-function createProductImage(product) {
-  const image = document.createElement("img");
-  image.src = product.img;
-  image.classList.add("card-img-top");
-  image.style = "height: 12rem;";
-  return image;
+function createQuantityInput(product) {
+  const input = document.createElement("input");
+  input.className =
+    "form-control border-warning-subtle rounded-center-pill flex-grow-1 text-center";
+  input.type = "number";
+  input.min = 1;
+  input.max = product.stock;
+  input.value = 1;
+  return input;
 }
 
-function createProductTitle(product) {
-  const title = document.createElement("h4");
-  title.innerHTML = product.name;
-  title.className = "card-title";
-  title.style.maxHeight = "5rem";
-  return title;
-}
+function createStockDisplay(product) {
+  const container = document.createElement("div");
+  container.className =
+    "input-group justify-content-center text-nowrap flex-nowrap";
+  container.style = "max-width: 150px; margin: 0.5rem auto;";
 
-function createProductPrice(product) {
-  const price = document.createElement("h3");
-  price.className = "justify-content-center mb-3 text-warning-emphasis";
-  price.innerHTML = "$" + product.price;
-  return price;
+  const label = document.createElement("span");
+  label.className = "input-group-text border-warning-subtle rounded-start-pill";
+  label.textContent = "Stock";
+  container.appendChild(label);
+
+  const value = document.createElement("span");
+  value.className = "input-group-text border-warning-subtle rounded-end-pill";
+  value.style = "min-width: 50px;";
+  value.textContent = product.stock;
+  container.appendChild(value);
+
+  return container;
 }
 
 function createAddToCartButton(productId) {
   const button = document.createElement("button");
-  button.className = "btn btn-outline-warning rounded-pill w-100 my-2";
+  button.className = "btn btn-outline-warning rounded-pill w-75 mx-auto my-2";
   button.type = "button";
   button.setAttribute("data-identificador", productId);
 
@@ -74,92 +84,16 @@ function createAddToCartButton(productId) {
   return button;
 }
 
-function createQuantityInput(product) {
-  const input = document.createElement("input");
-  input.className =
-    "form-control border-warning-subtle rounded-center-pill flex-grow-1";
-  input.style = "min-width: 50px; max-width: 50%";
-  input.type = "number";
-  input.max = product.stock;
-  return input;
-}
-
-function createQuantityControls() {
-  const container = document.createElement("div");
-  container.className = "input-group justify-content-center flex-nowrap";
-  container.style = "max-width: 150px;";
-
-  const minusButton = document.createElement("button");
-  minusButton.className = "btn btn-outline-warning rounded-start-pill";
-  minusButton.type = "button";
-
-  const minusIcon = document.createElement("i");
-  minusIcon.className = "bi bi-dash-lg";
-  minusButton.appendChild(minusIcon);
-  container.appendChild(minusButton);
-
-  const plusButton = document.createElement("button");
-  plusButton.className = "btn btn-outline-warning rounded-end-pill";
-  plusButton.type = "button";
-
-  const plusIcon = document.createElement("i");
-  plusIcon.className = "bi bi-plus-lg";
-  plusButton.appendChild(plusIcon);
-  container.appendChild(plusButton);
-
-  return { container, minusButton, plusButton };
-}
-
-function createStockDisplay(product) {
-  const container = document.createElement("div");
-  container.className =
-    "input-group justify-content-center text-nowrap flex-nowrap";
-  container.style = "max-width: 150px;";
-
-  const label = document.createElement("span");
-  label.className = "input-group-text border-warning-subtle rounded-start-pill";
-  label.innerHTML = "Stock";
-  container.appendChild(label);
-
-  const value = document.createElement("span");
-  value.className = "input-group-text border-warning-subtle rounded-end-pill";
-  value.style = "min-width: 50px;";
-  value.innerHTML = product.stock;
-  container.appendChild(value);
-
-  return container;
-}
-
-function initializeQuantityValue(input, product) {
-  if (product.stock > 0) {
-    if (isProductInCart(product.id)) {
-      input.value = getCartItemByProductID(product.id).quantity;
-      input.min = 1;
-    } else {
-      input.value = 1;
-      input.min = 1;
-    }
-  } else {
-    input.value = 0;
-    input.min = 0;
-    input.disabled = true;
-    return false; // Product is out of stock
-  }
-  return true; // Product is in stock
-}
-
 function updateButtonState(button, isInCart) {
   const icon = button.querySelector("i");
   const span = button.querySelector("span");
 
   if (isInCart) {
-    // Set to "In Cart" state
     icon.className = "bi bi-cart-check-fill mx-1";
     button.classList.add("btn-warning");
     button.classList.remove("btn-outline-warning");
     span.textContent = "In Cart";
   } else {
-    // Reset to default "Add to Cart" state
     icon.className = "bi bi-cart-plus mx-1";
     button.classList.remove("btn-warning");
     button.classList.add("btn-outline-warning");
@@ -184,152 +118,203 @@ function handleQuantityChange(
       showToast("Item Added to Cart", "ADD", 3000);
     }
   } else if (quantity === 0) {
-    // If quantity is 0, remove from cart
-    deleteFromCart(getCartItemByProductID(productId));
-    updateCartBadge();
-    updateButtonState(addToCartButton, false);
+    const cartItem = getCartItemByProductID(productId);
+    if (cartItem) {
+      deleteFromCart(cartItem.id);
+      updateCartBadge();
+      updateButtonState(addToCartButton, false);
+    }
   }
 }
 
-function handleRemoveFromCart(productId, input, addToCartButton) {
-  // Reset quantity input to 1 (or minimum value)
-  const minValue = parseInt(input.min) || 1;
-  input.value = minValue;
+// ========== Main Modal Function ==========
 
-  // Remove from cart
-  deleteFromCart(getCartItemByProductID(productId));
-  updateCartBadge();
+export function openProductDetailModal(product) {
+  const modalEl = document.getElementById("productDetailModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalBody = document.getElementById("modalBody");
+  const modalFooter = document.getElementById("modalFooter");
 
-  // Reset button to default "Add to Cart" state
-  updateButtonState(addToCartButton, false);
+  // Set title
+  modalTitle.textContent = product.name;
 
-  // Show removal toast
-  showToast("Item removed from cart", "DELETE", 3000);
-}
+  // Clear body and footer
+  modalBody.innerHTML = "";
+  modalFooter.innerHTML = "";
 
-// ===== Main Function =====
+  // ---- Build modal body (image, price, category, tags, description) ----
+  const container = document.createElement("div");
+  container.className = "row g-3 align-items-start p-2"; // added padding
 
-export function loadCatalog(products) {
-  // Make catalog responsive with flex-wrap and centered
-  catalog.className =
-    "d-flex flex-wrap justify-content-center gap-2 mx-5 mx-sm-0";
-  catalog.style.gap = "10px";
-  catalog.innerHTML = "";
+  // Image column
+  const imgCol = document.createElement("div");
+  imgCol.className = "col-md-5 text-center";
+  const img = document.createElement("img");
+  img.src = product.img;
+  img.alt = product.name || "";
+  img.className = "img-fluid rounded shadow-sm";
+  img.style.maxHeight = "300px";
+  imgCol.appendChild(img);
+  container.appendChild(imgCol);
 
-  for (let index = 0; index < products.length; index++) {
-    const product = products[index];
+  // Details column
+  const detailCol = document.createElement("div");
+  detailCol.className = "col-md-7";
 
-    // Create card structure
-    const { containerDiv, card } = createProductCard(product);
-    catalog.appendChild(containerDiv);
+  // Price
+  const priceP = document.createElement("h3");
+  priceP.className = "text-warning-emphasis";
+  priceP.innerHTML = `<strong>$${product.price}</strong>`;
+  detailCol.appendChild(priceP);
 
-    // Add image
-    card.appendChild(createProductImage(product));
+  // Category
+  const catDiv = document.createElement("div");
+  catDiv.className = "mb-2";
+  const catIcon = document.createElement("i");
+  catIcon.className = "bi bi-tag me-1";
+  catDiv.appendChild(catIcon);
+  const catStrong = document.createElement("strong");
+  catStrong.textContent = "Category: ";
+  catDiv.appendChild(catStrong);
+  const catSpan = document.createElement("span");
+  catSpan.textContent = getCategory(product.category)?.name || "N/A";
+  catDiv.appendChild(catSpan);
+  detailCol.appendChild(catDiv);
 
-    // Create card body
-    const cardBody = document.createElement("div");
-    cardBody.className = "card-body";
-    card.appendChild(cardBody);
+  // Tags
+  const tagIds = product.tags || [];
+  const tags = tagIds.map((id) => getTag(id)?.name).filter(Boolean);
+  if (tags.length > 0) {
+    const tagDiv = document.createElement("div");
+    tagDiv.className = "mb-2";
+    const tagIcon = document.createElement("i");
+    tagIcon.className = "bi bi-tags me-1";
+    tagDiv.appendChild(tagIcon);
+    const tagStrong = document.createElement("strong");
+    tagStrong.textContent = "Tags: ";
+    tagDiv.appendChild(tagStrong);
+    const tagBadgesContainer = document.createElement("span");
+    tagBadgesContainer.className = "d-inline-flex flex-wrap gap-1";
+    tags.forEach((tag) => {
+      const badge = document.createElement("span");
+      badge.className = "badge bg-secondary rounded-pill";
+      badge.textContent = tag;
+      tagBadgesContainer.appendChild(badge);
+    });
+    tagDiv.appendChild(tagBadgesContainer);
+    detailCol.appendChild(tagDiv);
+  }
 
-    // Add title
-    cardBody.appendChild(createProductTitle(product));
+  // Description
+  const descP = document.createElement("p");
+  descP.className = "mt-2";
+  descP.textContent = product.description || "";
+  detailCol.appendChild(descP);
 
-    // Add price
-    cardBody.appendChild(createProductPrice(product));
+  container.appendChild(detailCol);
+  modalBody.appendChild(container);
 
-    // Create input row
-    const numericRow = document.createElement("div");
-    numericRow.className = "d-flex align-items-center w-100";
-    cardBody.appendChild(numericRow);
+  // ---- Build the footer row (stock, quantity, add-to-cart) ----
+  const row = document.createElement("div");
+  row.className =
+    "d-flex flex-wrap justify-content-center align-items-center gap-2 w-100";
 
-    // Create add to cart button
-    const addToCartButton = createAddToCartButton(product.id);
+  const stockDisplay = createStockDisplay(product);
+  stockDisplay.style.margin = "0";
+  row.appendChild(stockDisplay);
 
-    // Create a container for button
-    const buttonContainer = document.createElement("div");
-    buttonContainer.className = "d-flex align-items-center w-100";
-    buttonContainer.appendChild(addToCartButton);
-    cardBody.appendChild(buttonContainer);
+  const {
+    container: qtyContainer,
+    minusButton,
+    plusButton,
+  } = createQuantityControls();
+  qtyContainer.style.margin = "0";
+  const quantityInput = createQuantityInput(product);
+  qtyContainer.insertBefore(quantityInput, plusButton);
+  row.appendChild(qtyContainer);
 
-    // Create quantity controls
-    const {
-      container: quantityContainer,
-      minusButton,
-      plusButton,
-    } = createQuantityControls();
-    const quantityInput = createQuantityInput(product);
+  const addToCartButton = createAddToCartButton(product.id);
+  addToCartButton.classList.remove("w-75", "mx-auto", "my-2");
+  addToCartButton.classList.add("flex-shrink-0");
+  addToCartButton.style.minWidth = "120px";
+  row.appendChild(addToCartButton);
 
-    // Insert input between minus and plus buttons
-    quantityContainer.insertBefore(quantityInput, plusButton);
-    numericRow.appendChild(quantityContainer);
+  modalFooter.appendChild(row);
 
-    // Create stock display
-    const stockDisplay = createStockDisplay(product);
-    numericRow.appendChild(stockDisplay);
-
-    // Initialize quantity value
-    const isInStock = initializeQuantityValue(quantityInput, product);
-    if (!isInStock) {
-      addToCartButton.disabled = true;
-    }
-
-    // Update button state if product is in cart
+  // ---- Initialize state ----
+  if (product.stock <= 0) {
+    quantityInput.value = 0;
+    quantityInput.min = 0;
+    quantityInput.disabled = true;
+    addToCartButton.disabled = true;
+    minusButton.disabled = true;
+    plusButton.disabled = true;
+  } else {
     if (isProductInCart(product.id)) {
+      const cartItem = getCartItemByProductID(product.id);
+      quantityInput.value = cartItem.quantity;
       updateButtonState(addToCartButton, true);
+    } else {
+      quantityInput.value = 1;
     }
-
-    // ===== Event Listeners =====
-
-    // Minus button handler
-    minusButton.addEventListener("click", function (event) {
-      let currentValue = parseInt(quantityInput.value) || 0;
-      const minValue = parseInt(quantityInput.min) || 0;
-
-      if (currentValue > minValue) {
-        currentValue--;
-        quantityInput.value = currentValue;
-        handleQuantityChange(product.id, quantityInput, addToCartButton);
-      }
-
-      quantityInput.value = Math.max(
-        parseInt(quantityInput.min) || 0,
-        parseInt(quantityInput.value) || 0,
-      );
-    });
-
-    // Plus button handler
-    plusButton.addEventListener("click", function (event) {
-      let currentValue = parseInt(quantityInput.value) || 0;
-      const maxValue = parseInt(quantityInput.max) || Infinity;
-
-      if (currentValue < maxValue) {
-        currentValue++;
-        quantityInput.value = currentValue;
-        handleQuantityChange(product.id, quantityInput, addToCartButton);
-      }
-
-      quantityInput.value = Math.min(
-        parseInt(quantityInput.max) || Infinity,
-        parseInt(quantityInput.value) || 0,
-      );
-    });
-
-    // Manual input change handler
-    quantityInput.addEventListener("change", function () {
-      const value = parseInt(this.value) || 0;
-      if (value >= 0 && value <= product.stock) {
-        handleQuantityChange(product.id, quantityInput, addToCartButton);
-      }
-    });
-
-    // Add to cart button handler
-    addToCartButton.addEventListener("click", function (event) {
-      handleQuantityChange(
-        product.id,
-        quantityInput,
-        addToCartButton,
-        true, // Show toast on button click
-      );
-    });
   }
+
+  // ---- Event Listeners ----
+
+  // Minus button
+  minusButton.addEventListener("click", function () {
+    let val = parseInt(quantityInput.value) || 0;
+    const min = parseInt(quantityInput.min) || 0;
+    if (val > min) {
+      val--;
+      quantityInput.value = val;
+      handleQuantityChange(product.id, quantityInput, addToCartButton);
+    }
+  });
+
+  // Plus button
+  plusButton.addEventListener("click", function () {
+    let val = parseInt(quantityInput.value) || 0;
+    const max = parseInt(quantityInput.max) || Infinity;
+    if (val < max) {
+      val++;
+      quantityInput.value = val;
+      handleQuantityChange(product.id, quantityInput, addToCartButton);
+    }
+  });
+
+  // Manual input change
+  quantityInput.addEventListener("change", function () {
+    const val = parseInt(this.value) || 0;
+    if (val >= 0 && val <= product.stock) {
+      handleQuantityChange(product.id, quantityInput, addToCartButton);
+    } else {
+      this.value = Math.min(Math.max(val, 0), product.stock);
+    }
+  });
+
+  // Add-to-Cart button click toggles
+  addToCartButton.addEventListener("click", function () {
+    if (isProductInCart(product.id)) {
+      const cartItem = getCartItemByProductID(product.id);
+      if (cartItem) {
+        deleteFromCart(cartItem.id);
+        updateCartBadge();
+        updateButtonState(addToCartButton, false);
+        quantityInput.value = 1;
+        showToast("Item Removed from Cart", "REMOVE", 3000);
+      }
+    } else {
+      const qty = parseInt(quantityInput.value) || 0;
+      if (qty > 0) {
+        handleQuantityChange(product.id, quantityInput, addToCartButton, true);
+      } else {
+        showToast("Quantity must be at least 1", "INFO", 2000);
+      }
+    }
+  });
+
+  // ---- Show the modal ----
+  const modal = new bootstrap.Modal(modalEl);
+  modal.show();
 }

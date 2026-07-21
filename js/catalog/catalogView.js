@@ -1,11 +1,10 @@
-import { addProduct, allProducts } from "../managers/productsManager.js";
-
 import {
-  addToCart,
-  getCartItemByProductID,
-  isProductInCart,
-  deleteFromCart,
-} from "../managers/cartManager.js";
+  addProduct,
+  allProducts,
+  getProduct,
+} from "../managers/productsManager.js";
+
+import { openProductDetailModal } from "../productDetailView/productDetailView.js";
 
 import { updateCartBadge } from "../commons/cartBadge.js";
 
@@ -25,6 +24,7 @@ function createProductCard(product) {
   cardContainer.classList.add("container", "col", "m-0");
   cardContainer.style.flex = "0 0 300px";
   cardContainer.style.maxWidth = "300px";
+  cardContainer.dataset.productId = product.id;
 
   const card = document.createElement("div");
   card.className = "card shadow border-0 my-3";
@@ -83,7 +83,6 @@ function createProductPrice(product) {
 export function loadCatalog(products) {
   // Make catalog responsive with flex-wrap and centered
   catalog.className = "d-flex flex-wrap justify-content-center ";
-  //catalog.style.gap = "10px";
   catalog.innerHTML = "";
 
   for (let index = 0; index < products.length; index++) {
@@ -91,4 +90,17 @@ export function loadCatalog(products) {
     const cardContainer = createProductCard(product);
     catalog.appendChild(cardContainer);
   }
+
+  catalog.addEventListener("click", function (e) {
+    // Find the closest element with data-product-id
+    const card = e.target.closest("[data-product-id]");
+    if (!card) return;
+
+    const productId = card.dataset.productId;
+    // Fetch product data (from your manager)
+    const product = getProduct(productId);
+    if (product) {
+      openProductDetailModal(product);
+    }
+  });
 }
