@@ -1,4 +1,7 @@
-import { loadCategories, loadTags } from "../commons/loaderCategoryTags.js";
+import {
+  loadAllCategories,
+  loadAllTags,
+} from "../commons/loaderCategoryTags.js";
 
 import { addProduct } from "../managers/productsManager.js";
 
@@ -33,8 +36,8 @@ const error_descripcion_producto = document.getElementById(
 
 window.addEventListener("load", function () {
   initialize();
-  loadTags(contenedor_de_etiquetas);
-  loadCategories(categoria_producto);
+  loadAllTags(contenedor_de_etiquetas);
+  loadAllCategories(categoria_producto);
 });
 
 function initialize() {

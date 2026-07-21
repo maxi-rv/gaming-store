@@ -14,10 +14,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   </head>
-  <body class="bodyStyle">
+  <body class="bodyStyle" data-bs-theme="dark">
     <!-- Barra de navegacion responsive, se convierte en un offcanvas navBar al
     reducirse el tamaño de la venta. -->
-    <nav class="navbar navbar-expand-md bg-black" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md bg-black fixed-top">
       <div class="container-fluid px-2 px-md-3">
         <button
           class="navbar-toggler border-warning-subtle text-warning"
@@ -74,7 +74,7 @@
                 <a
                   id="linkIniciarSesion"
                   class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="login.html"
+                  href="../html/login.html"
                   role="button">
                   <i class="bi bi-door-open-fill"></i>
                   <span id="txt_sesion">Login</span>
@@ -82,7 +82,7 @@
                 <a
                   id="linkMyOrders"
                   class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="myOrders.html"
+                  href="../html/myOrders.html"
                   role="button">
                   <i class="bi bi-box2-fill"></i>
                   <span>My Orders</span>
@@ -90,7 +90,7 @@
                 <a
                   id="linkCarrito"
                   class="btn rounded-pill btn-warning text-nowrap my-1 position-relative"
-                  href="cart.html"
+                  href="#"
                   role="button">
                   <i class="bi bi-cart-fill"></i>
                   <span>Cart</span>
@@ -102,14 +102,14 @@
                 <a
                   id="linkCatalogo"
                   class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="catalog.html"
+                  href="../html/catalog.html"
                   role="button">
                   <i class="bi bi-bag-fill"></i>
                   <span>Catalog</span>
                 </a>
               </div>
 
-              <div class="dropdown order-md-3" data-bs-theme="dark">
+              <div class="dropdown order-md-3">
                 <button
                   type="button"
                   id="buttonAdminActions"
@@ -152,7 +152,7 @@
       </div>
     </nav>
 
-    <main class="my-2">
+    <main class="pt-5 my-5">
       <!-- Listado del Carrito -->
       <section>
         <div
