@@ -4,12 +4,19 @@ import {
 } from "../commons/adminCategoriesTagsValidation.js";
 
 import {
+  loadAllTags,
+  loadSelectedTags,
+} from "../commons/loaderCategoryTags.js";
+
+import {
   addCategory,
   allCategories,
   editCategory,
   deleteCategory,
   getCategory,
 } from "../managers/categoriesManager.js";
+
+import { getTag } from "../managers/tagsManager.js";
 
 // Modal
 const editCategoryModal = document.getElementById("modalEdicionCategoria");
@@ -28,6 +35,9 @@ const invalidNameCreate = document.getElementById("invalidNameCrearCategoria");
 const invalidDescriptionCreate = document.getElementById(
   "invalidDescripcionCrearCategoria",
 );
+const tagsContainerCreate = document.getElementById(
+  "contenedorEtiquetasCrearCategoria",
+);
 
 // Constantes Form Edicion Categoria
 const editForm = document.getElementById("formEdicionCategoria");
@@ -35,6 +45,10 @@ const nameInputEdit = document.getElementById("inputNameEdicionCategoria");
 const descriptionInputEdit = document.getElementById(
   "inputDescripcionEdicionCategoria",
 );
+const tagsContainerEdit = document.getElementById(
+  "contenedorEtiquetasEdicionCategoria",
+);
+
 const editButton = document.getElementById("buttonEdicionCategoria");
 const invalidNameEdit = document.getElementById("invalidNameEdicionCategoria");
 const invalidDescriptionEdit = document.getElementById(
@@ -43,7 +57,9 @@ const invalidDescriptionEdit = document.getElementById(
 
 window.addEventListener("load", function () {
   initCreateCategory();
+  loadAllTags(tagsContainerCreate);
   initEditCategory();
+  loadAllTags(tagsContainerEdit);
   loadTable();
 });
 
@@ -61,7 +77,11 @@ function initCreateCategory() {
         invalidDescriptionCreate,
       )
     ) {
-      addCategory(nameInputCreate.value, descriptionInputCreate.value);
+      addCategory(
+        nameInputCreate.value,
+        descriptionInputCreate.value,
+        getTags(tagsContainerCreate),
+      );
       createForm.reset();
       clearValidation();
       loadTable();
@@ -77,6 +97,7 @@ function initEditCategory() {
 
     nameInputEdit.value = category.name;
     descriptionInputEdit.value = category.description;
+    loadSelectedTags(tagsContainerEdit, category.tags);
     editButton.setAttribute("data-identificador", id);
   });
 
@@ -93,11 +114,11 @@ function initEditCategory() {
         invalidDescriptionEdit,
       )
     ) {
-      // TO-DO: Editar categoria por id.
       editCategory(
         editButton.getAttribute("data-identificador"),
         nameInputEdit.value,
         descriptionInputEdit.value,
+        getTags(tagsContainerEdit),
       );
       editForm.reset();
       editButton.removeAttribute("data-identificador");
@@ -125,6 +146,16 @@ function loadTable() {
     const tdDescription = document.createElement("td");
     tdDescription.textContent = category.description;
 
+    const tdTags = document.createElement("td");
+    for (let index = 0; index < category.tags.length; index++) {
+      const tagID = category.tags[index];
+      if (index != category.tags.length - 1) {
+        tdTags.textContent += getTag(tagID).name + ", ";
+      } else {
+        tdTags.textContent += getTag(tagID).name;
+      }
+    }
+
     const tdActions = document.createElement("td");
     let editButton = initEditButton("modalEdicionCategoria", category.id);
     let deleteButton = initDeleteButton();
@@ -141,6 +172,7 @@ function loadTable() {
 
     tr.appendChild(tdName);
     tr.appendChild(tdDescription);
+    tr.appendChild(tdTags);
     tr.appendChild(tdActions);
 
     categoriesTBody.appendChild(tr);
@@ -180,4 +212,18 @@ function initDeleteButton() {
   button.appendChild(i);
 
   return button;
+}
+
+function getTags(tagContainer) {
+  const checkboxes = tagContainer.querySelectorAll('input[type="checkbox"]');
+
+  const tags = [];
+
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      tags.push(checkbox.getAttribute("data-identificador"));
+    }
+  });
+
+  return tags;
 }

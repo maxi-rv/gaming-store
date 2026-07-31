@@ -1,27 +1,75 @@
 import { allCategories } from "../managers/categoriesManager.js";
-
-import { allTags } from "../managers/tagsManager.js";
+import { allTags, getTag } from "../managers/tagsManager.js";
 
 let categories = [];
 let tags = [];
 
-window.addEventListener("load", function () {
-  categories = allCategories();
-  tags = allTags();
-});
+// Helper to initialize Bootstrap tooltip on an element
+function initTooltip(element) {
+  if (typeof bootstrap !== "undefined" && bootstrap.Tooltip) {
+    bootstrap.Tooltip.getOrCreateInstance(element);
+  }
+}
 
-export function loadCategories(categoriesSelect) {
+export function loadAllCategories(categoriesSelect) {
+  categories = allCategories();
+
   categories.forEach((category) => {
     const option = document.createElement("option");
 
     option.value = category.id;
     option.textContent = category.name;
+    // Add native title (browser tooltip) for category description
+    if (category.description) {
+      option.title = category.description;
+    }
 
     categoriesSelect.appendChild(option);
   });
 }
 
-export function loadTags(tagsSelect) {
+export function loadAllCategoriesInContainers(catsSelect) {
+  categories = allCategories();
+
+  catsSelect.innerHTML = "";
+
+  categories.forEach((cat) => {
+    const col = document.createElement("div");
+    col.classList.add("col", "my-1");
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("btn-check");
+    checkbox.id = "eti-" + cat.id;
+    checkbox.setAttribute("data-identificador", cat.id);
+    checkbox.autocomplete = "off";
+
+    const label = document.createElement("label");
+    label.classList.add("btn", "btn-outline-warning", "rounded-pill");
+    label.setAttribute("for", checkbox.id);
+    label.textContent = cat.name;
+
+    // Add Bootstrap tooltip attributes
+    if (cat.description) {
+      label.setAttribute("data-bs-toggle", "tooltip");
+      label.setAttribute("title", cat.description);
+    }
+
+    col.appendChild(checkbox);
+    col.appendChild(label);
+    catsSelect.appendChild(col);
+
+    // Initialize Bootstrap tooltip on the label
+    initTooltip(label);
+  });
+}
+
+/*
+ * @param
+ */
+export function loadAllTags(tagsSelect) {
+  tags = allTags();
+
   tagsSelect.innerHTML = "";
 
   tags.forEach((tag) => {
@@ -40,14 +88,64 @@ export function loadTags(tagsSelect) {
     label.setAttribute("for", checkbox.id);
     label.textContent = tag.name;
 
+    // Add Bootstrap tooltip attributes
+    if (tag.description) {
+      label.setAttribute("data-bs-toggle", "tooltip");
+      label.setAttribute("title", tag.description);
+    }
+
     col.appendChild(checkbox);
     col.appendChild(label);
-
     tagsSelect.appendChild(col);
+
+    // Initialize Bootstrap tooltip on the label
+    initTooltip(label);
+  });
+}
+
+export function loadSomeTags(tagsSelect, someTags) {
+  tagsSelect.innerHTML = "";
+
+  if (someTags.length <= 0) {
+    tagsSelect.textContent = "No tags available for this category";
+    return;
+  }
+
+  someTags.forEach((tagID) => {
+    const tag = getTag(tagID);
+    const col = document.createElement("div");
+    col.classList.add("col", "my-1");
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("btn-check");
+    checkbox.id = "eti-" + tag.id;
+    checkbox.setAttribute("data-identificador", tag.id);
+    checkbox.autocomplete = "off";
+
+    const label = document.createElement("label");
+    label.classList.add("btn", "btn-outline-warning", "rounded-pill");
+    label.setAttribute("for", checkbox.id);
+    label.textContent = tag.name;
+
+    // Add Bootstrap tooltip attributes
+    if (tag.description) {
+      label.setAttribute("data-bs-toggle", "tooltip");
+      label.setAttribute("title", tag.description);
+    }
+
+    col.appendChild(checkbox);
+    col.appendChild(label);
+    tagsSelect.appendChild(col);
+
+    // Initialize Bootstrap tooltip on the label
+    initTooltip(label);
   });
 }
 
 export function loadSelectedTags(tagsContainer, selectedTagsIDs) {
+  tags = allTags();
+
   tagsContainer.innerHTML = "";
 
   tags.forEach((tag) => {
@@ -72,9 +170,17 @@ export function loadSelectedTags(tagsContainer, selectedTagsIDs) {
     label.setAttribute("for", checkbox.id);
     label.textContent = tag.name;
 
+    // Add Bootstrap tooltip attributes
+    if (tag.description) {
+      label.setAttribute("data-bs-toggle", "tooltip");
+      label.setAttribute("title", tag.description);
+    }
+
     col.appendChild(checkbox);
     col.appendChild(label);
-
     tagsContainer.appendChild(col);
+
+    // Initialize Bootstrap tooltip on the label
+    initTooltip(label);
   });
 }

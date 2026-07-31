@@ -8,13 +8,13 @@ window.addEventListener("load", function () {
   localStorage.setItem(tagsKey, JSON.stringify(tags));
 });
 
-export function addTag(name, description) {
-  let tag = createTag(name, description);
+export function addTag(name, description, categories) {
+  let tag = createTag(name, description, categories);
   tags.push(tag);
   localStorage.setItem(tagsKey, JSON.stringify(tags));
 }
 
-export function editTag(id, name, description) {
+export function editTag(id, name = "", description = "", categories = []) {
   const index = tags.findIndex((tag) => tag.id === id);
   if (index !== -1) {
     tags[index].name = name;
@@ -37,11 +37,12 @@ export function getTag(id) {
   return tags.find((tag) => tag.id === id) || null;
 }
 
-function createTag(name, description) {
+function createTag(name = "", description = "", categories = []) {
   let tag = {
     id: crypto.randomUUID(),
     name: name,
     description: description,
+    categories: categories,
   };
   return tag;
 }
