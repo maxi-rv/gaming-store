@@ -101,7 +101,7 @@
                 </a>
                 <a
                   id="linkCatalogo"
-                  class="btn rounded-pill btn-warning text-nowrap my-1"
+                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
                   href="#"
                   role="button">
                   <i class="bi bi-bag-fill"></i>
@@ -129,19 +129,22 @@
                   </li>
                   <li>
                     <a class="dropdown-item" href="../html/adminAccounts.html"
-                      >Accounts Register</a
+                      >Accounts Registry</a
                     >
                   </li>
                   <li>
                     <a class="dropdown-item" href="../html/adminProducts.html"
-                      >Products Register</a
+                      >Products Registry</a
                     >
                   </li>
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="../html/adminCategoriesTags.html"
-                      >Categories/Tags Register</a
+                    <a class="dropdown-item" href="../html/adminCategories.html"
+                      >Categories Registry</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="../html/adminTags.html"
+                      >Tags Registry</a
                     >
                   </li>
                 </ul>
@@ -205,6 +208,7 @@
                     class="invalid-feedback"
                     id="invalidNameCrearEtiqueta"></div>
                 </div>
+
                 <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                   <span
                     class="input-group-text text-warning border-warning-subtle"
@@ -222,6 +226,28 @@
                   <div
                     class="invalid-feedback"
                     id="invalidDescripcionCrearEtiqueta"></div>
+                </div>
+
+                <div class="input-group my-2 w-75 pb-2 mx-auto">
+                  <span
+                    class="input-group-text rounded-start-pill text-warning border-warning-subtle">
+                    <i class="bi bi-tag"></i>
+                  </span>
+                  <select
+                    name="input_categoria"
+                    id="catSelectCreate"
+                    class="form-select rounded-end-pill text-white border-warning-subtle">
+                    <option
+                      value="Seleccionar_categoria"
+                      disabled
+                      selected
+                      hidden>
+                      Select Category
+                    </option>
+                  </select>
+                  <div
+                    class="invalid-feedback"
+                    id="error_categoria_producto"></div>
                 </div>
 
                 <div class="d-grid my-4 w-75 mx-auto">
@@ -283,6 +309,7 @@
                     class="invalid-feedback"
                     id="invalidNameEdicionEtiqueta"></div>
                 </div>
+
                 <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
                   <span
                     class="input-group-text text-warning border-warning-subtle"
@@ -300,6 +327,24 @@
                   <div
                     class="invalid-feedback"
                     id="invalidDescripcionEdicionEtiqueta"></div>
+                </div>
+
+                <div class="input-group my-2 w-75 pb-2 mx-auto">
+                  <span
+                    class="input-group-text rounded-start-pill text-warning border-warning-subtle">
+                    <i class="bi bi-tag"></i>
+                  </span>
+                  <select
+                    name="tipo"
+                    id="catSelectEdit"
+                    class="form-select rounded-end-pill text-white border-warning-subtle">
+                    <option value="Seleccionar" disabled selected hidden>
+                      Select Category
+                    </option>
+                  </select>
+                  <div
+                    class="invalid-feedback"
+                    id="error_categoria_edicion_producto"></div>
                 </div>
 
                 <div class="d-grid my-4 w-75 mx-auto">

@@ -9,17 +9,18 @@ window.addEventListener("load", function () {
   localStorage.setItem(categoriesKey, JSON.stringify(categories));
 });
 
-export function addCategory(name, description) {
-  let category = createCategory(name, description);
+export function addCategory(name, description, tags) {
+  let category = createCategory(name, description, tags);
   categories.push(category);
   localStorage.setItem(categoriesKey, JSON.stringify(categories));
 }
 
-export function editCategory(id, name, description) {
+export function editCategory(id, name = "", description = "", tags = []) {
   const index = categories.findIndex((cat) => cat.id === id);
   if (index !== -1) {
     categories[index].name = name;
     categories[index].description = description;
+    categories[index].tags = tags;
     localStorage.setItem(categoriesKey, JSON.stringify(categories));
   }
 }
@@ -38,12 +39,12 @@ export function getCategory(id) {
   return categories.find((cat) => cat.id === id) || null;
 }
 
-function createCategory(name, description) {
+function createCategory(name = "", description = "", tags = []) {
   let category = {
     id: crypto.randomUUID(),
     name: name,
     description: description,
-    tags: null,
+    tags: tags,
   };
   return category;
 }

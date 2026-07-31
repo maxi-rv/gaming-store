@@ -231,7 +231,6 @@ function getTags() {
   const checkboxes = tagContainer.querySelectorAll(
     '#formEdicionProducto input[type="checkbox"]',
   );
-  console.log(checkboxes);
 
   const tags = [];
 
@@ -240,6 +239,6 @@ function getTags() {
       tags.push(checkbox.getAttribute("data-identificador"));
     }
   });
-  console.log(tags);
+
   return tags;
 }

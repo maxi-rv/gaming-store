@@ -28,6 +28,45 @@ export function loadAllCategories(categoriesSelect) {
   });
 }
 
+export function loadAllCategoriesInContainers(catsSelect) {
+  categories = allCategories();
+
+  catsSelect.innerHTML = "";
+
+  categories.forEach((cat) => {
+    const col = document.createElement("div");
+    col.classList.add("col", "my-1");
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("btn-check");
+    checkbox.id = "eti-" + cat.id;
+    checkbox.setAttribute("data-identificador", cat.id);
+    checkbox.autocomplete = "off";
+
+    const label = document.createElement("label");
+    label.classList.add("btn", "btn-outline-warning", "rounded-pill");
+    label.setAttribute("for", checkbox.id);
+    label.textContent = cat.name;
+
+    // Add Bootstrap tooltip attributes
+    if (cat.description) {
+      label.setAttribute("data-bs-toggle", "tooltip");
+      label.setAttribute("title", cat.description);
+    }
+
+    col.appendChild(checkbox);
+    col.appendChild(label);
+    catsSelect.appendChild(col);
+
+    // Initialize Bootstrap tooltip on the label
+    initTooltip(label);
+  });
+}
+
+/*
+ * @param
+ */
 export function loadAllTags(tagsSelect) {
   tags = allTags();
 
@@ -69,7 +108,7 @@ export function loadSomeTags(tagsSelect, someTags) {
 
   if (someTags.length <= 0) {
     tagsSelect.textContent = "No tags available for this category";
-    return; // early exit to avoid further processing
+    return;
   }
 
   someTags.forEach((tagID) => {

@@ -2,6 +2,9 @@ import {
   validateData,
   clearValidation,
 } from "../commons/adminCategoriesTagsValidation.js";
+
+import { loadAllCategories } from "../commons/loaderCategoryTags.js";
+
 import { getCategory } from "../managers/categoriesManager.js";
 
 import {
@@ -24,6 +27,7 @@ const nameInputCreate = document.getElementById("inputNameCrearEtiqueta");
 const descriptionInputCreate = document.getElementById(
   "inputDescripcionCrearEtiqueta",
 );
+const categorySelectCreate = document.getElementById("catSelectCreate");
 const createButton = document.getElementById("buttonCrearEtiqueta");
 const invalidNameCreate = document.getElementById("invalidNameCrearEtiqueta");
 const invalidDescriptionCreate = document.getElementById(
@@ -36,6 +40,7 @@ const nameInputEdit = document.getElementById("inputNameEdicionEtiqueta");
 const descriptionInputEdit = document.getElementById(
   "inputDescripcionEdicionEtiqueta",
 );
+const categorySelectEdit = document.getElementById("catSelectEdit");
 const editButton = document.getElementById("buttonEdicionEtiqueta");
 const invalidNameEdit = document.getElementById("invalidNameEdicionEtiqueta");
 const invalidDescriptionEdit = document.getElementById(
@@ -49,6 +54,8 @@ window.addEventListener("load", function () {
 });
 
 function initTagCreation() {
+  loadAllCategories(categorySelectCreate);
+
   createForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -62,7 +69,9 @@ function initTagCreation() {
         invalidDescriptionCreate,
       )
     ) {
-      addTag(nameInputCreate.value, descriptionInputCreate.value);
+      addTag(nameInputCreate.value, descriptionInputCreate.value, [
+        categorySelectCreate.value,
+      ]);
       createForm.reset();
       clearValidation();
       loadTable();
@@ -71,6 +80,8 @@ function initTagCreation() {
 }
 
 function initTagEdition() {
+  loadAllCategories(categorySelectEdit);
+
   editTagModal.addEventListener("shown.bs.modal", function (event) {
     const button = event.relatedTarget;
     const id = button.getAttribute("data-identificador");
@@ -99,6 +110,7 @@ function initTagEdition() {
         editButton.getAttribute("data-identificador"),
         nameInputEdit.value,
         descriptionInputEdit.value,
+        categorySelectEdit.value,
       );
       editForm.reset();
       editButton.removeAttribute("data-identificador");

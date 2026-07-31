@@ -84,8 +84,6 @@ function getTags() {
     '#formAltaProducto input[type="checkbox"]',
   );
 
-  console.log(checkboxes);
-
   const tags = [];
 
   checkboxes.forEach((checkbox) => {
@@ -93,6 +91,6 @@ function getTags() {
       tags.push(checkbox.getAttribute("data-identificador"));
     }
   });
-  console.log(tags);
+
   return tags;
 }
