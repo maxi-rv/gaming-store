@@ -14,5 +14,39 @@
 }
 
 .cantidad {
-  width: 80px
+  width: 80px;
+}
+
+/* Ensure the sticky sidebar stays within the viewport */
+.sidebar-sticky {
+  position: sticky;
+  top: 70px;
+  align-self: flex-start;
+  height: fit-content;
+  max-height: calc(100vh - 70px);
+  overflow-y: auto;
+}
+/* Smooth scrollbar for the sidebar */
+.sidebar-sticky::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-sticky::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-sticky::-webkit-scrollbar-thumb {
+  background: #f0ad4e;
+  border-radius: 8px;
+}
+/* Make the filter card fill the sidebar */
+.filter-card {
+  width: 100%;
+}
+/* Fix for offcanvas nav on small screens */
+@media (max-width: 991.98px) {
+  .sidebar-sticky {
+    position: relative;
+    top: 0;
+    max-height: none;
+    overflow-y: visible;
+  }
 }

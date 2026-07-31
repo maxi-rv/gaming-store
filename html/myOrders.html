@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gaming Web Store: Catalog</title>
+    <title>Gaming Web Store: My Orders</title>
     <link
       rel="shortcut icon"
       href="../img/favicon-yellow-pc-96.png"
@@ -81,8 +81,8 @@
                 </a>
                 <a
                   id="linkMyOrders"
-                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
-                  href="../html/myOrders.html"
+                  class="btn rounded-pill btn-warning text-nowrap my-1"
+                  href="#"
                   role="button">
                   <i class="bi bi-box2-fill"></i>
                   <span>My Orders</span>
@@ -101,8 +101,8 @@
                 </a>
                 <a
                   id="linkCatalogo"
-                  class="btn rounded-pill btn-warning text-nowrap my-1"
-                  href="#"
+                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
+                  href="../html/catalog.html"
                   role="button">
                   <i class="bi bi-bag-fill"></i>
                   <span>Catalog</span>
@@ -155,120 +155,9 @@
       </div>
     </nav>
 
-    <!-- SIDEBAR (RIGHT) + MAIN (LEFT) -->
-    <div class="container-fluid pt-2 my-5">
-      <div class="row">
-        <!-- Main column (catalog) – now on the LEFT -->
-        <main class="col-lg-9 my-3 order-2 order-lg-1">
-          <div id="catalog"></div>
-        </main>
-
-        <!-- Sidebar column (filters) – now on the RIGHT with sticky positioning -->
-        <aside class="col-lg-3 order-1 order-lg-2">
-          <div class="sidebar-sticky">
-            <!-- Barra de Filtrado -->
-            <section id="sectionFilters" class="d-flex my-3">
-              <div class="card bg-black shadow rounded-5 filter-card">
-                <div class="card-body">
-                  <form
-                    id="formFiltros"
-                    class="needs-validation d-flex flex-wrap justify-content-center align-items-center gap-3"
-                    novalidate>
-                    <select
-                      class="form-select bg-black text-warning rounded-pill border-warning-subtle text-center"
-                      id="select_categorias"
-                      required>
-                      <option selected disabled value="">
-                        <i class="bi bi-bookmark"></i>
-                        <span>Categories</span>
-                      </option>
-                    </select>
-
-                    <div class="btn-group dropdown-center w-100">
-                      <button
-                        id="tagsButton"
-                        class="btn rounded-pill btn-outline-warning text-warning text-nowrap w-100"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseSeleccionarEtiquetas"
-                        aria-expanded="false"
-                        aria-controls="collapseSeleccionarEtiquetas">
-                        <i class="bi bi-tags"></i>
-                        <span>Tags</span>
-                      </button>
-                    </div>
-
-                    <div class="w-100">
-                      <input
-                        type="checkbox"
-                        class="btn-check"
-                        id="conStock"
-                        autocomplete="off" />
-                      <label
-                        class="btn btn-outline-warning rounded-pill w-100"
-                        for="conStock"
-                        >With Stock</label
-                      >
-                    </div>
-
-                    <div class="w-100 d-flex gap-2">
-                      <button
-                        id="botonAplicarFiltros"
-                        class="btn btn-warning rounded-pill flex-grow-1"
-                        type="submit">
-                        Apply Filters
-                      </button>
-                      <button
-                        id="botonLimpiarFiltros"
-                        class="btn btn-outline-warning rounded-pill flex-grow-1"
-                        type="button">
-                        Reset Filters
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </section>
-
-            <!-- Collapse Seleccionar Etiquetas en Filtrado -->
-            <section>
-              <div class="collapse" id="collapseSeleccionarEtiquetas">
-                <div
-                  class="container-fluid text-center shadow rounded-5 m-0 py-2 bg-black">
-                  <div
-                    id="contenedor_de_etiquetas"
-                    class="row row-cols-2 justify-content-center"></div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </aside>
-      </div>
-    </div>
-
-    <!-- Product Detail Modal -->
-    <div
-      class="modal fade"
-      id="productDetailModal"
-      tabindex="-1"
-      aria-labelledby="modalTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-header gap-3">
-            <i class="bi bi-box-seam text-warning"></i>
-            <h4 class="modal-title" id="modalTitle"></h4>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="modalBody"></div>
-          <div id="modalFooter" class="modal-footer"></div>
-        </div>
-      </div>
-    </div>
+    <main class="pt-3 my-5">
+      <section id="contenedorPedidos" class="container"></section>
+    </main>
 
     <!-- Contenedor de Toasts -->
     <div
@@ -276,7 +165,7 @@
       class="toast-container position-fixed p-5 bottom-0 end-0"></div>
 
     <!-- Footer -->
-    <footer class="bg-black text-light py-4 mt-auto">
+    <footer class="bg-black text-light py-4 mt-auto" data-bs-theme="dark">
       <div class="container">
         <div class="row g-4">
           <!-- Logo and Description -->
@@ -373,8 +262,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.15.15/validator.min.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>
-    <script type="module" src="../js/catalog/catalogView.js"></script>
-    <script type="module" src="../js/catalog/catalogFilters.js"></script>
+    <script type="module" src="../js/myOrders/myOrders.js"></script>
     <script type="module" src="../js/commons/sessionButton.js"></script>
     <script type="module" src="../js/commons/cartBadge.js"></script>
   </body>

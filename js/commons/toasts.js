@@ -1,16 +1,28 @@
 const toastContainer = document.getElementById("toastContainer");
+const maxToasts = 3;
 
-export function showToast() {
-  const MAX_TOASTS = 3;
+const toastTypes = {
+  ADD: {
+    className: "text-bg-warning",
+    defaultMessage: "Item Added to Cart",
+  },
+  DELETE: {
+    className: "text-bg-danger",
+    defaultMessage: "Item Removed from Cart",
+  },
+};
 
-  while (toastContainer.children.length >= MAX_TOASTS) {
+export function showToast(message, type, delay) {
+  const toastType = toastTypes[type] || toastTypes.SUCCESS;
+
+  while (toastContainer.children.length >= maxToasts) {
     toastContainer.firstChild?.remove();
   }
 
   const toast = document.createElement("div");
-  toast.className = "toast align-items-center text-bg-warning border-0";
+  toast.className = `toast align-items-center border-0 ${toastType.className}`;
   toast.role = "alert";
-  toast.setAttribute("data-bs-delay", "3000");
+  toast.setAttribute("data-bs-delay", delay.toString());
   toastContainer.appendChild(toast);
 
   const divContenedor = document.createElement("div");
@@ -19,7 +31,7 @@ export function showToast() {
 
   const toastBody = document.createElement("div");
   toastBody.className = "toast-body fw-bolder";
-  toastBody.innerHTML = "Producto agregado al Carrito!";
+  toastBody.textContent = message;
   divContenedor.appendChild(toastBody);
 
   const closeButton = document.createElement("button");

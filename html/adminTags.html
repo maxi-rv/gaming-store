@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gaming Web Store: Catalog</title>
+    <title>Gaming Web Store: Tags Registry</title>
     <link
       rel="shortcut icon"
       href="../img/favicon-yellow-pc-96.png"
@@ -101,7 +101,7 @@
                 </a>
                 <a
                   id="linkCatalogo"
-                  class="btn rounded-pill btn-warning text-nowrap my-1"
+                  class="btn rounded-pill btn-outline-warning text-nowrap my-1"
                   href="#"
                   role="button">
                   <i class="bi bi-bag-fill"></i>
@@ -155,128 +155,240 @@
       </div>
     </nav>
 
-    <!-- SIDEBAR (RIGHT) + MAIN (LEFT) -->
-    <div class="container-fluid pt-2 my-5">
-      <div class="row">
-        <!-- Main column (catalog) – now on the LEFT -->
-        <main class="col-lg-9 my-3 order-2 order-lg-1">
-          <div id="catalog"></div>
-        </main>
-
-        <!-- Sidebar column (filters) – now on the RIGHT with sticky positioning -->
-        <aside class="col-lg-3 order-1 order-lg-2">
-          <div class="sidebar-sticky">
-            <!-- Barra de Filtrado -->
-            <section id="sectionFilters" class="d-flex my-3">
-              <div class="card bg-black shadow rounded-5 filter-card">
-                <div class="card-body">
-                  <form
-                    id="formFiltros"
-                    class="needs-validation d-flex flex-wrap justify-content-center align-items-center gap-3"
-                    novalidate>
-                    <select
-                      class="form-select bg-black text-warning rounded-pill border-warning-subtle text-center"
-                      id="select_categorias"
-                      required>
-                      <option selected disabled value="">
-                        <i class="bi bi-bookmark"></i>
-                        <span>Categories</span>
-                      </option>
-                    </select>
-
-                    <div class="btn-group dropdown-center w-100">
-                      <button
-                        id="tagsButton"
-                        class="btn rounded-pill btn-outline-warning text-warning text-nowrap w-100"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseSeleccionarEtiquetas"
-                        aria-expanded="false"
-                        aria-controls="collapseSeleccionarEtiquetas">
-                        <i class="bi bi-tags"></i>
-                        <span>Tags</span>
-                      </button>
-                    </div>
-
-                    <div class="w-100">
-                      <input
-                        type="checkbox"
-                        class="btn-check"
-                        id="conStock"
-                        autocomplete="off" />
-                      <label
-                        class="btn btn-outline-warning rounded-pill w-100"
-                        for="conStock"
-                        >With Stock</label
-                      >
-                    </div>
-
-                    <div class="w-100 d-flex gap-2">
-                      <button
-                        id="botonAplicarFiltros"
-                        class="btn btn-warning rounded-pill flex-grow-1"
-                        type="submit">
-                        Apply Filters
-                      </button>
-                      <button
-                        id="botonLimpiarFiltros"
-                        class="btn btn-outline-warning rounded-pill flex-grow-1"
-                        type="button">
-                        Reset Filters
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </section>
-
-            <!-- Collapse Seleccionar Etiquetas en Filtrado -->
-            <section>
-              <div class="collapse" id="collapseSeleccionarEtiquetas">
-                <div
-                  class="container-fluid text-center shadow rounded-5 m-0 py-2 bg-black">
-                  <div
-                    id="contenedor_de_etiquetas"
-                    class="row row-cols-2 justify-content-center"></div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </aside>
-      </div>
-    </div>
-
-    <!-- Product Detail Modal -->
-    <div
-      class="modal fade"
-      id="productDetailModal"
-      tabindex="-1"
-      aria-labelledby="modalTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-header gap-3">
-            <i class="bi bi-box-seam text-warning"></i>
-            <h4 class="modal-title" id="modalTitle"></h4>
+    <main class="pt-3 my-5">
+      <section
+        id="sectionBar"
+        class="d-flex justify-content-center my-3"
+        data-bs-theme="dark">
+        <div class="card bg-black border-1 shadow border-warning rounded-pill">
+          <div class="card-body">
             <button
+              class="btn rounded-pill btn-outline-warning text-nowrap"
               type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"></button>
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseCrearEtiqueta"
+              aria-expanded="false"
+              aria-controls="collapseCrearEtiqueta">
+              <i class="bi bi-tag text-warning"></i>
+              <span>Create New Tag</span>
+            </button>
           </div>
-          <div class="modal-body" id="modalBody"></div>
-          <div id="modalFooter" class="modal-footer"></div>
+        </div>
+      </section>
+
+      <!-- Collapse Section-->
+      <section class="row my-4">
+        <!-- Collapse Crear Etiqueta -->
+        <div class="collapse" id="collapseCrearEtiqueta">
+          <div
+            class="card mx-auto col-8 col-md-6 border-0 shadow-lg my-2"
+            data-bs-theme="dark">
+            <div class="card-header cardStyle border-bottom border-warning">
+              <i class="bi bi-tag text-warning"></i>
+              <span>Create New Tag</span>
+            </div>
+            <div class="card-body cardStyle">
+              <form id="formCrearEtiqueta" class="needs-validation" novalidate>
+                <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
+                  <span
+                    class="input-group-text rounded-start-pill text-warning border-warning-subtle"
+                    id="basic-addon-name">
+                    <i class="bi bi-pencil"></i>
+                  </span>
+                  <input
+                    type="text"
+                    id="inputNameCrearEtiqueta"
+                    class="form-control rounded-end-pill text-white border-warning-subtle"
+                    placeholder="Nombre"
+                    aria-label="Nombre"
+                    aria-describedby="basic-addon-name"
+                    required />
+                  <div class="valid-feedback">OK</div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidNameCrearEtiqueta"></div>
+                </div>
+
+                <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
+                  <span
+                    class="input-group-text text-warning border-warning-subtle"
+                    id="basic-addon-descrip">
+                    <i class="bi bi-file-text"></i>
+                  </span>
+                  <textarea
+                    class="form-control border-warning-subtle"
+                    id="inputDescripcionCrearEtiqueta"
+                    placeholder="Descripción"
+                    aria-label="Descripción"
+                    aria-describedby="basic-addon-descrip"
+                    required></textarea>
+                  <div class="valid-feedback">OK</div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidDescripcionCrearEtiqueta"></div>
+                </div>
+
+                <div class="input-group my-2 w-75 pb-2 mx-auto">
+                  <span
+                    class="input-group-text rounded-start-pill text-warning border-warning-subtle">
+                    <i class="bi bi-tag"></i>
+                  </span>
+                  <select
+                    name="input_categoria"
+                    id="catSelectCreate"
+                    class="form-select rounded-end-pill text-white border-warning-subtle">
+                    <option
+                      value="Seleccionar_categoria"
+                      disabled
+                      selected
+                      hidden>
+                      Select Category
+                    </option>
+                  </select>
+                  <div
+                    class="invalid-feedback"
+                    id="error_categoria_producto"></div>
+                </div>
+
+                <div class="d-grid my-4 w-75 mx-auto">
+                  <button
+                    id="buttonCrearEtiqueta"
+                    class="btn btn-warning rounded-5"
+                    type="submit">
+                    Register Tag
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ventana Modal de Edicion de Etiqueta -->
+      <div
+        class="modal fade"
+        id="modalEdicionEtiqueta"
+        tabindex="-1"
+        aria-labelledby="modalEdicionEtiquetaLabel"
+        data-bs-theme="dark">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header border-bottom border-warning">
+              <i class="bi bi-tag text-warning fs-5 me-2"></i>
+              <h1 class="modal-title fs-5" id="modalEdicionEtiquetaLabel">
+                Modify Tag
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+              <form
+                id="formEdicionEtiqueta"
+                class="needs-validation"
+                novalidate>
+                <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
+                  <span
+                    class="input-group-text rounded-start-pill text-warning border-warning-subtle"
+                    id="basic-addon-name">
+                    <i class="bi bi-pencil"></i>
+                  </span>
+                  <input
+                    type="text"
+                    id="inputNameEdicionEtiqueta"
+                    class="form-control rounded-end-pill text-white border-warning-subtle"
+                    placeholder="Nombre"
+                    aria-label="Nombre"
+                    aria-describedby="basic-addon-name"
+                    required />
+                  <div class="valid-feedback">OK</div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidNameEdicionEtiqueta"></div>
+                </div>
+
+                <div class="input-group my-2 w-75 pb-2 mx-auto has-validation">
+                  <span
+                    class="input-group-text text-warning border-warning-subtle"
+                    id="basic-addon-descrip">
+                    <i class="bi bi-file-text"></i>
+                  </span>
+                  <textarea
+                    class="form-control border-warning-subtle"
+                    id="inputDescripcionEdicionEtiqueta"
+                    placeholder="Descripción"
+                    aria-label="Descripción"
+                    aria-describedby="basic-addon-descrip"
+                    required></textarea>
+                  <div class="valid-feedback">OK</div>
+                  <div
+                    class="invalid-feedback"
+                    id="invalidDescripcionEdicionEtiqueta"></div>
+                </div>
+
+                <div class="input-group my-2 w-75 pb-2 mx-auto">
+                  <span
+                    class="input-group-text rounded-start-pill text-warning border-warning-subtle">
+                    <i class="bi bi-tag"></i>
+                  </span>
+                  <select
+                    name="tipo"
+                    id="catSelectEdit"
+                    class="form-select rounded-end-pill text-white border-warning-subtle">
+                    <option value="Seleccionar" disabled selected hidden>
+                      Select Category
+                    </option>
+                  </select>
+                  <div
+                    class="invalid-feedback"
+                    id="error_categoria_edicion_producto"></div>
+                </div>
+
+                <div class="d-grid my-4 w-75 mx-auto">
+                  <button
+                    id="buttonEdicionEtiqueta"
+                    class="btn btn-warning rounded-5"
+                    type="submit">
+                    Save Tag
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Contenedor de Toasts -->
-    <div
-      id="toastContainer"
-      class="toast-container position-fixed p-5 bottom-0 end-0"></div>
+      <!-- Tabla de Etiquetas -->
+      <div
+        class="card mx-auto w-75 border-0 shadow-lg mb-4"
+        data-bs-theme="dark">
+        <div class="card-header cardStyle border-bottom border-warning">
+          <i class="bi bi-tags text-warning"></i>
+          <span>Registered Tags </span>
+        </div>
+        <div class="card-body cardStyle">
+          <div class="table-responsive" data-bs-theme="dark">
+            <table class="table table-striped table-hover text-center">
+              <thead class="border-bottom border-warning">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Categories</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyEtiquetas" class="align-text-bottom"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-black text-light py-4 mt-auto">
+    <footer class="bg-black text-light py-4 mt-auto" data-bs-theme="dark">
       <div class="container">
         <div class="row g-4">
           <!-- Logo and Description -->
@@ -323,7 +435,7 @@
               </li>
               <li class="mb-2">
                 <a
-                  href="#"
+                  href="myOrders.html"
                   class="text-secondary text-decoration-none hover-text-warning"
                   >My Orders</a
                 >
@@ -371,11 +483,13 @@
       </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.15.15/validator.min.js"></script>
+    <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>
-    <script type="module" src="../js/catalog/catalogView.js"></script>
-    <script type="module" src="../js/catalog/catalogFilters.js"></script>
+    <script
+      type="module"
+      src="../js/adminCategoriesTags/adminTagsView.js"></script>
     <script type="module" src="../js/commons/sessionButton.js"></script>
     <script type="module" src="../js/commons/cartBadge.js"></script>
+    <script type="module" src="../js/commons/redirectUser.js"></script>
   </body>
 </html>
